@@ -1,0 +1,99 @@
+# Tests and Acceptance Criteria
+
+## Workflow Gating Tests
+```text
+test_protocol_required_before_search
+test_search_phase_locks_dedup_until_sources_closed
+test_dedup_locks_screening_until_exact_duplicates_resolved
+test_screening_locks_fulltext_until_all_records_screened
+test_fulltext_retrieval_locks_eligibility_until_retrieval_status_complete
+test_eligibility_locks_extraction_until_fulltext_decisions_complete
+test_extraction_locks_verification_until_tasks_created
+test_verification_locks_diagnosis_until_required_fields_reviewed
+test_qa_locks_analysis_if_high_findings_open
+test_analysis_locks_writing_until_dataset_built
+test_override_requires_justification
+```
+
+## Search Collection Tests
+```text
+test_pubmed_query_logged_with_result_count
+test_api_search_imports_records_with_query_id
+test_manual_source_waits_for_export_import
+test_supervised_login_source_pauses_for_human
+test_no_credentials_stored
+test_google_scholar_marked_supplementary
+test_no_qa_after_manual_pending_task
+```
+
+## Deduplication Tests
+```text
+test_exact_pmid_groups_created
+test_exact_doi_groups_created
+test_exact_pmcid_groups_created
+test_exact_identifier_bulk_merge_preserves_records
+test_fuzzy_title_group_requires_review
+test_representative_selected_by_metadata_quality
+test_source_provenance_preserved
+test_backup_required_before_bulk_merge
+```
+
+## Screening Tests
+```text
+test_cchd_pulse_ox_newborn_without_outcomes_defaults_maybe
+test_missing_abstract_defaults_needs_review
+test_case_report_not_quantitative
+test_review_article_citation_mining_only
+test_low_priority_not_auto_excluded
+test_do_not_discard_prevents_bulk_exclusion
+```
+
+## Full Text Tests
+```text
+test_no_free_pdf_not_exclusion
+test_manual_retrieval_required_status
+test_not_obtainable_requires_note
+test_fulltext_exclusion_requires_reason
+test_not_retrieved_count_exported
+```
+
+## Extraction Tests
+```text
+test_extraction_only_after_fulltext_include
+test_ai_suggested_not_used_in_analysis
+test_verified_field_used_in_analysis
+test_corrected_field_used_in_analysis
+test_denominator_calculated_only_from_verified_fields
+test_supporting_quote_required_for_extracted_fields
+```
+
+## QA Tests
+```text
+test_denominator_sentinel_blocks_wrong_denominator
+test_number_can_cchd_not_greater_than_denominator
+test_case_report_in_analysis_blocks
+test_unverified_extraction_blocks
+test_duplicate_unresolved_blocks_screening
+test_not_retrieved_without_note_blocks
+```
+
+## Analysis Tests
+```text
+test_analysis_uses_cchd_negative_failed_denominator
+test_primary_proportion_correct
+test_pphn_proportion_correct
+test_overlapping_categories_not_summed_into_can_cchd
+test_case_reports_excluded_from_analysis
+```
+
+## Writing Tests
+```text
+test_draft_requires_human_review
+test_no_final_draft_if_qa_blocked
+test_prisma_counts_exported
+test_search_log_exported
+test_ai_use_disclosure_generated
+```
+
+## Final Acceptance Criteria
+The new app is acceptable when it starts with Research Plan; phases are gated; source searches are logged query-by-query; records retain source/query provenance; deduplication supports exact bulk merge with checkbox confirmation; uncertain duplicates require review; title/abstract screening is sensitive; full-text retrieval does not treat no free PDF as exclusion; extraction occurs only after full-text eligibility; AI extraction requires human verification; case reports are excluded from quantitative synthesis; QA blocks unsafe analysis; analysis uses CCHD-negative failed screens; drafts are generated only from verified data; all actions are auditable.
