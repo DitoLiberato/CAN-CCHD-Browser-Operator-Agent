@@ -62,6 +62,7 @@ def get_collection_stats(conn):
             sum(CASE WHEN abstract IS NOT NULL AND abstract != '' THEN 1 ELSE 0 END) as with_abstract,
             sum(CASE WHEN year >= strftime('%Y', 'now') OR year IS NULL THEN 1 ELSE 0 END) as suspicious_year,
             sum(CASE WHEN enrichment_status = 'enriched' THEN 1 ELSE 0 END) as enriched,
+            sum(CASE WHEN enrichment_status = 'enrichment_attempted' THEN 1 ELSE 0 END) as attempted,
             avg(metadata_completeness_score) as avg_score
         FROM normalized_records
         GROUP BY source_database
@@ -121,7 +122,7 @@ def render_phase1(conn):
 
             source_names = [s["source_name"] for s in sources]
             selected_source_name = st.selectbox("1. Select Platform", source_names, key="src_sel")
-            selected_source = next(s for s in sources if s["source_name"] == selected_source_name)
+            selected_source = dict(next(s for s in sources if s["source_name"] == selected_source_name))
 
             queries = get_queries_for_source(conn, selected_source["source_id"])
             if not queries:
@@ -130,7 +131,7 @@ def render_phase1(conn):
                 query_options = [f"{q['query_label']} ({q['status']})" for q in queries]
                 selected_query_str = st.selectbox("2. Select Search Query", query_options, key="qry_sel")
                 selected_label = selected_query_str.split(" (")[0]
-                selected_query = next(q for q in queries if q["query_label"] == selected_label)
+                selected_query = dict(next(q for q in queries if q["query_label"] == selected_label))
 
                 st.code(selected_query["query_string"], language="text")
 
@@ -240,7 +241,7 @@ def render_phase1(conn):
             stats = get_collection_stats(conn)
             df = pd.DataFrame([dict(r) for r in stats])
             df.columns = ["Source", "Harvested", "With PMID", "With DOI",
-                          "With Abstract", "Suspicious Year", "Enriched", "Avg Score"]
+                          "With Abstract", "Suspicious Year", "Enriched", "Attempted", "Avg Score"]
             st.dataframe(df, use_container_width=True)
 
             st.divider()
@@ -267,7 +268,7 @@ def render_phase1(conn):
                 SELECT source_database, title, authors_raw, year, pmid, doi,
                        abstract_status, metadata_completeness_score, enrichment_status
                 FROM normalized_records
-                ORDER BY metadata_completeness_score ASC
+                ORDER BY metadata_completeness_score DESC
                 LIMIT 500
             """)
             rows = cursor.fetchall()
@@ -282,8 +283,12 @@ def render_phase1(conn):
     # ────────────────────────────────────────────────────────
     with tab3:
         st.subheader("🔬 Enrichment Queue")
-        st.write("Records missing abstracts, routed for enrichment via PubMed / Crossref / OpenAlex / Unpaywall.")
-
+        # Get REAL total count
+        cursor = conn.cursor()
+        cursor.execute("SELECT count(*) as c FROM normalized_records WHERE enrichment_status IN ('pending', 'needs_enrichment') AND (abstract IS NULL OR abstract = '')")
+        real_total_pending = cursor.fetchone()["c"]
+        st.write(f"Records missing abstracts, routed for enrichment via PubMed / Crossref / OpenAlex / Unpaywall.")
+        st.info(f"📊 **Total Pending in Database: {real_total_pending}** (Showing top 200 below)")
         queue = get_enrichment_queue(conn)
         if not queue:
             st.success("No records pending enrichment.")
@@ -378,7 +383,7 @@ def render_phase1(conn):
                 FROM collection_qa_findings
                 WHERE status = 'open'
                 GROUP BY finding_type
-                ORDER BY severity ASC
+                ORDER BY severity DESC
             """)
             findings = cursor.fetchall()
             if findings:

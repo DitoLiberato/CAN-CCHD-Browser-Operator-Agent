@@ -169,9 +169,7 @@ class PubMedAdapter(BaseAdapter):
                     lang_el = art.find("Language")
                     language = lang_el.text if lang_el is not None else ""
 
-                raw_meta = json.dumps({
-                    "pmid": pmid, "mesh": mesh, "pub_types": pub_types
-                })
+                raw_meta = ET.tostring(article, encoding="unicode")
 
                 records.append(RawRecord(
                     query_run_id=query_run_id,
@@ -197,11 +195,22 @@ class PubMedAdapter(BaseAdapter):
 
     def normalize_record(self, raw: RawRecord, raw_record_id: str):
         norm = super().normalize_record(raw, raw_record_id)
-        # Store MeSH from raw_metadata_json
+        # Store MeSH and PubTypes from raw XML metadata
         try:
-            meta = json.loads(raw.raw_metadata_json)
-            norm.mesh_terms_json = json.dumps(meta.get("mesh", []))
-            norm.publication_type = ", ".join(meta.get("pub_types", []))
+            root = ET.fromstring(raw.raw_metadata_json)
+            # Re-extract MeSH
+            mesh = []
+            for mh in root.findall(".//MeshHeading"):
+                dn = mh.findtext("DescriptorName", "")
+                if dn:
+                    mesh.append(dn)
+            norm.mesh_terms_json = json.dumps(mesh)
+            
+            # Re-extract Publication Types
+            pub_types = []
+            for pt in root.findall(".//PublicationType"):
+                pub_types.append(pt.text or "")
+            norm.publication_type = ", ".join(pub_types)
         except Exception:
             pass
         return norm

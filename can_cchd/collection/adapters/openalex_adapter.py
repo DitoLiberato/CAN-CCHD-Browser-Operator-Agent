@@ -128,10 +128,7 @@ class OpenAlexAdapter(BaseAdapter):
             raw_pmid=pmid,
             raw_abstract=abstract,
             raw_publication_type=item.get("type", ""),
-            raw_metadata_json=json.dumps({
-                "openalex_id": item.get("id"), "oa_status": oa_status,
-                "is_oa": is_oa, "pdf_url": pdf_url
-            }),
+            raw_metadata_json=json.dumps(item),
         )
 
     def normalize_record(self, raw: RawRecord, raw_record_id: str):

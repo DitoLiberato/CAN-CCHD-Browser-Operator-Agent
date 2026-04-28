@@ -102,8 +102,5 @@ class SemanticScholarAdapter(BaseAdapter):
             raw_pmid=pmid,
             raw_abstract=abstract,
             raw_publication_type=pub_types,
-            raw_metadata_json=json.dumps({
-                "paperId": item.get("paperId"),
-                "citationCount": item.get("citationCount"),
-            }),
+            raw_metadata_json=json.dumps(item),
         )
