@@ -10,8 +10,30 @@ def normalize_title(title):
     # Remove extra spaces
     return re.sub(r'\s+', ' ', title).strip()
 
+def _assert_qa_gate_passed(conn):
+    """Blocks deduplication if collection QA gate has not passed."""
+    cursor = conn.cursor()
+    try:
+        cursor.execute("SELECT status FROM collection_qa_gate WHERE gate_id = 'main'")
+        row = cursor.fetchone()
+        if not row:
+            raise RuntimeError("Collection QA Gate has not been run. Run Phase 1 QA Gate before deduplication.")
+        status = row["status"] if hasattr(row, '__getitem__') and isinstance(row, dict) else row[0]
+        if status not in ("pass", "warn"):
+            raise RuntimeError(
+                f"Collection QA Gate status is '{status}'. "
+                "Resolve blocking issues in Phase 1 QA Gate before proceeding."
+            )
+    except Exception as e:
+        if "no such table" in str(e).lower():
+            # Old schema — allow dedup to proceed (backward compatibility)
+            return
+        raise
+
+
 def run_exact_matcher(conn):
     """Finds exact duplicates and populates duplicate_groups."""
+    _assert_qa_gate_passed(conn)
     cursor = conn.cursor()
     
     # 1. Clear existing unmerged exact groups
@@ -62,7 +84,9 @@ def run_exact_matcher(conn):
 
 def run_fuzzy_matcher(conn):
     """Finds fuzzy title duplicates."""
+    _assert_qa_gate_passed(conn)
     cursor = conn.cursor()
+
     # Similar clear step
     cursor.execute("DELETE FROM duplicate_group_members WHERE group_id IN (SELECT group_id FROM duplicate_groups WHERE status = 'pending' AND match_type = 'fuzzy_title')")
     cursor.execute("DELETE FROM duplicate_groups WHERE status = 'pending' AND match_type = 'fuzzy_title'")

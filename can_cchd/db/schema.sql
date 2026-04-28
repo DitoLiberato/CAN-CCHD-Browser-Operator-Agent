@@ -255,3 +255,136 @@ CREATE TABLE IF NOT EXISTS qa_findings (
     created_at TEXT,
     updated_at TEXT
 );
+
+-- ============================================================
+-- COLLECTION REFORM TABLES (Robust Search Collection Reform)
+-- ============================================================
+
+-- Tracks every executed query run with full provenance
+CREATE TABLE IF NOT EXISTS query_runs (
+    query_run_id TEXT PRIMARY KEY,
+    protocol_version_id TEXT,
+    source_id TEXT,
+    source_database TEXT,
+    query_label TEXT,
+    query_role TEXT,
+    query_string TEXT,
+    access_mode TEXT,
+    execution_mode TEXT,
+    run_started_at TEXT,
+    run_completed_at TEXT,
+    search_url TEXT,
+    filters_applied_json TEXT,
+    result_count_reported INTEGER,
+    records_harvested INTEGER DEFAULT 0,
+    records_imported_raw INTEGER DEFAULT 0,
+    records_enriched INTEGER DEFAULT 0,
+    records_failed INTEGER DEFAULT 0,
+    warnings_json TEXT,
+    human_intervention_required INTEGER DEFAULT 0,
+    status TEXT DEFAULT 'not_started'
+);
+
+-- Immutable source output — never edited after insertion
+CREATE TABLE IF NOT EXISTS raw_records (
+    raw_record_id TEXT PRIMARY KEY,
+    query_run_id TEXT,
+    source_database TEXT,
+    source_record_id TEXT,
+    source_url TEXT,
+    raw_title TEXT,
+    raw_authors TEXT,
+    raw_year TEXT,
+    raw_journal TEXT,
+    raw_doi TEXT,
+    raw_pmid TEXT,
+    raw_pmcid TEXT,
+    raw_abstract TEXT,
+    raw_publication_type TEXT,
+    raw_language TEXT,
+    raw_metadata_json TEXT,
+    harvested_at TEXT,
+    raw_hash TEXT
+);
+
+-- Cleaned, standardized version of raw_records
+CREATE TABLE IF NOT EXISTS normalized_records (
+    record_id TEXT PRIMARY KEY,
+    raw_record_id TEXT,
+    query_run_id TEXT,
+    source_database TEXT,
+    source_record_id TEXT,
+    title TEXT,
+    title_normalized TEXT,
+    authors_raw TEXT,
+    first_author TEXT,
+    year INTEGER,
+    journal TEXT,
+    doi TEXT,
+    doi_normalized TEXT,
+    pmid TEXT,
+    pmcid TEXT,
+    abstract TEXT,
+    abstract_status TEXT DEFAULT 'unknown',
+    publication_type TEXT,
+    language TEXT,
+    country TEXT,
+    keywords_json TEXT,
+    mesh_terms_json TEXT,
+    landing_page_url TEXT,
+    pdf_url TEXT,
+    is_open_access INTEGER DEFAULT 0,
+    oa_status TEXT,
+    metadata_completeness_score REAL DEFAULT 0,
+    metadata_warnings_json TEXT,
+    normalization_status TEXT DEFAULT 'pending',
+    enrichment_status TEXT DEFAULT 'pending',
+    is_supplementary_source INTEGER DEFAULT 0,
+    created_at TEXT,
+    updated_at TEXT
+);
+
+-- Enrichment attempt log (one row per attempt per record)
+CREATE TABLE IF NOT EXISTS record_enrichment_log (
+    enrichment_id TEXT PRIMARY KEY,
+    record_id TEXT,
+    enrichment_source TEXT,
+    identifier_used TEXT,
+    identifier_value TEXT,
+    fields_updated_json TEXT,
+    warnings_json TEXT,
+    status TEXT,
+    started_at TEXT,
+    completed_at TEXT
+);
+
+-- Collection QA findings (per record or per query_run)
+CREATE TABLE IF NOT EXISTS collection_qa_findings (
+    collection_qa_id TEXT PRIMARY KEY,
+    record_id TEXT,
+    query_run_id TEXT,
+    severity TEXT,
+    finding_type TEXT,
+    message TEXT,
+    recommended_action TEXT,
+    status TEXT DEFAULT 'open',
+    created_at TEXT,
+    resolved_at TEXT,
+    resolution_note TEXT
+);
+
+-- Collection QA gate status (one row, updated after each QA run)
+CREATE TABLE IF NOT EXISTS collection_qa_gate (
+    gate_id TEXT PRIMARY KEY DEFAULT 'main',
+    status TEXT DEFAULT 'not_run',
+    last_run_at TEXT,
+    total_records INTEGER DEFAULT 0,
+    screening_ready INTEGER DEFAULT 0,
+    screening_ready_with_warning INTEGER DEFAULT 0,
+    enrichment_needed INTEGER DEFAULT 0,
+    collection_problem INTEGER DEFAULT 0,
+    blocking_findings INTEGER DEFAULT 0,
+    warning_findings INTEGER DEFAULT 0,
+    summary_json TEXT
+);
+
