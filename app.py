@@ -5,6 +5,12 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
+import sys
+import asyncio
+
+if sys.platform == 'win32':
+    asyncio.set_event_loop_policy(asyncio.WindowsProactorEventLoopPolicy())
+
 st.set_page_config(
     page_title="CAN-CCHD Agent",
     page_icon="🧬",

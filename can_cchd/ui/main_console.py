@@ -57,20 +57,23 @@ def render_main_console():
     try:
         action = get_next_action(conn)
         
-        # --- DEV MODE OVERRIDE ---
-        st.sidebar.divider()
-        st.sidebar.subheader("🛠️ Developer Options")
-        dev_override = st.sidebar.checkbox("Enable Dev Mode (Bypass Gating)")
-        
         phase_id = action["phase_id"]
         
-        if dev_override:
-            # Let the user pick any phase
-            phases_list = [str(i) for i in range(12)]
-            phase_id = st.sidebar.selectbox("Force Active Phase", phases_list, index=int(phase_id) if int(phase_id) < 12 else 0)
-            st.warning(f"DEV MODE ACTIVE: Forcing Phase {phase_id}")
-        else:
+        # --- FREE NAVIGATION ---
+        st.sidebar.divider()
+        st.sidebar.subheader("🗺️ Navigation")
+        
+        # Determine the index of the active phase for the dropdown
+        phases_list = [f"Phase {i}" for i in range(12)]
+        default_index = int(phase_id) if int(phase_id) < 12 else 0
+        
+        selected_phase_str = st.sidebar.selectbox("Jump to Phase:", phases_list, index=default_index)
+        phase_id = selected_phase_str.replace("Phase ", "")
+        
+        if phase_id == action["phase_id"]:
             st.info(action["message"])
+        else:
+            st.warning(f"You are viewing Phase {phase_id} out of order. The next required step is Phase {action['phase_id']}.")
         # -------------------------
         
         # Phase Routing

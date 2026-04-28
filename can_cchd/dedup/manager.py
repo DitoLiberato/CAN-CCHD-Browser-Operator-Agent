@@ -79,3 +79,40 @@ def process_singletons(conn):
         cursor.execute("INSERT INTO study_links (study_id, record_id) VALUES (?, ?)", (study_id, rec["record_id"]))
         
     conn.commit()
+
+def merge_group_manual(conn, group_id, notes=None):
+    """Merges a specific group manually."""
+    cursor = conn.cursor()
+    cursor.execute("SELECT r.* FROM records r JOIN duplicate_group_members m ON r.record_id = m.record_id WHERE m.group_id = ?", (group_id,))
+    members = cursor.fetchall()
+    
+    if not members: return False
+    
+    # Representative logic
+    rep = members[0]
+    for m in members:
+        if m["pmid"]: rep = m; break
+        if m["doi"]: rep = m
+        
+    study_id = str(uuid4())
+    now = datetime.datetime.now(datetime.UTC).isoformat()
+    
+    cursor.execute(
+        """INSERT INTO studies (study_id, title, first_author, year, journal, doi, pmid, pmcid, status, created_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
+        (study_id, rep["title"], rep["authors"], rep["year"], rep["journal"], rep["doi"], rep["pmid"], rep["pmcid"], "candidate", now)
+    )
+    
+    for m in members:
+        cursor.execute("INSERT INTO study_links (study_id, record_id) VALUES (?, ?)", (study_id, m["record_id"]))
+        
+    cursor.execute("UPDATE duplicate_groups SET status = 'merged' WHERE group_id = ?", (group_id,))
+    conn.commit()
+    return True
+
+def reject_group_manual(conn, group_id):
+    """Marks a group as rejected (records are not duplicates)."""
+    cursor = conn.cursor()
+    cursor.execute("UPDATE duplicate_groups SET status = 'rejected' WHERE group_id = ?", (group_id,))
+    conn.commit()
+    return True
