@@ -12,6 +12,16 @@ import streamlit as st
 import pandas as pd
 
 from can_cchd.collection import get_adapter
+from can_cchd.collection.exports import (
+    build_collection_readiness_report,
+    get_collection_qa_findings_export_df,
+    get_collection_qa_gate_payload,
+    get_enrichment_log_export_df,
+    get_full_normalized_records_export_df,
+    get_normalized_records_preview_df,
+    get_query_runs_export_df,
+    get_raw_records_export_df,
+)
 from can_cchd.collection.models import QuerySpec
 from can_cchd.collection.adapters.ris_adapter import RISAdapter
 
@@ -264,19 +274,64 @@ def render_phase1(conn):
 
             st.divider()
             st.subheader("🔍 Browse Normalized Records")
-            cursor.execute("""
-                SELECT source_database, title, authors_raw, year, pmid, doi,
-                       abstract_status, metadata_completeness_score, enrichment_status
-                FROM normalized_records
-                ORDER BY metadata_completeness_score DESC
-                LIMIT 500
-            """)
-            rows = cursor.fetchall()
-            df_all = pd.DataFrame([dict(r) for r in rows])
-            csv = df_all.to_csv(index=False).encode("utf-8")
-            st.download_button("⬇️ Download Full Dataset (CSV)", data=csv,
-                               file_name="can_cchd_normalized_records.csv", mime="text/csv")
-            st.dataframe(df_all, use_container_width=True, height=400)
+            st.caption("Preview below is limited to 500 rows for performance. The download button exports all normalized records.")
+            df_preview = get_normalized_records_preview_df(conn)
+            df_full = get_full_normalized_records_export_df(conn)
+            st.download_button(
+                "⬇️ Download Full Dataset (CSV)",
+                data=df_full.to_csv(index=False).encode("utf-8"),
+                file_name="can_cchd_normalized_records_full.csv",
+                mime="text/csv",
+            )
+            st.dataframe(df_preview, use_container_width=True, height=400)
+
+            st.divider()
+            st.subheader("📦 Additional Phase 1 Exports")
+            query_runs_df = get_query_runs_export_df(conn)
+            raw_records_df = get_raw_records_export_df(conn)
+            enrichment_log_df = get_enrichment_log_export_df(conn)
+            qa_findings_df = get_collection_qa_findings_export_df(conn)
+            gate_payload = get_collection_qa_gate_payload(conn)
+            readiness_report = build_collection_readiness_report(conn)
+
+            export_cols_top = st.columns(3)
+            export_cols_bottom = st.columns(3)
+            export_cols_top[0].download_button(
+                "query_runs.csv",
+                data=query_runs_df.to_csv(index=False).encode("utf-8"),
+                file_name="query_runs.csv",
+                mime="text/csv",
+            )
+            export_cols_top[1].download_button(
+                "raw_records.csv",
+                data=raw_records_df.to_csv(index=False).encode("utf-8"),
+                file_name="raw_records.csv",
+                mime="text/csv",
+            )
+            export_cols_top[2].download_button(
+                "record_enrichment_log.csv",
+                data=enrichment_log_df.to_csv(index=False).encode("utf-8"),
+                file_name="record_enrichment_log.csv",
+                mime="text/csv",
+            )
+            export_cols_bottom[0].download_button(
+                "collection_qa_findings.csv",
+                data=qa_findings_df.to_csv(index=False).encode("utf-8"),
+                file_name="collection_qa_findings.csv",
+                mime="text/csv",
+            )
+            export_cols_bottom[1].download_button(
+                "collection_qa_gate.json",
+                data=json.dumps(gate_payload, indent=2).encode("utf-8"),
+                file_name="collection_qa_gate.json",
+                mime="application/json",
+            )
+            export_cols_bottom[2].download_button(
+                "collection_readiness_report.md",
+                data=readiness_report.encode("utf-8"),
+                file_name="collection_readiness_report.md",
+                mime="text/markdown",
+            )
 
     # ────────────────────────────────────────────────────────
     # TAB 3 — Enrichment Queue

@@ -2,9 +2,14 @@
 from can_cchd.collection.models import NormalizedRecord
 
 
-def calculate_completeness_score(record: NormalizedRecord) -> float:
+def calculate_completeness_score(
+    record: NormalizedRecord,
+    raw_metadata_available: bool | None = None,
+) -> float:
     """Returns a completeness score from 0 to 100."""
     score = 0.0
+    if raw_metadata_available is None:
+        raw_metadata_available = bool(getattr(record, "raw_metadata_available", 0))
     if record.title and len(record.title.strip()) > 3:
         score += 20
     if record.pmid or record.doi or record.pmcid:
@@ -19,7 +24,7 @@ def calculate_completeness_score(record: NormalizedRecord) -> float:
         score += 10
     if record.landing_page_url or record.pdf_url:
         score += 5
-    if record.pmid or record.doi:  # raw_metadata: has an identifier means raw was stored
+    if raw_metadata_available:
         score += 5
     return score
 

@@ -124,17 +124,29 @@ class EuropePMCAdapter(BaseAdapter):
         )
 
     def validate_record(self, norm: NormalizedRecord, query_run_id: str) -> List[CollectionQAFinding]:
-        findings = super().validate_record(norm, query_run_id)
+        findings = [
+            finding
+            for finding in super().validate_record(norm, query_run_id)
+            if finding.finding_type != "current_year"
+        ]
         import datetime
         current_year = datetime.datetime.now().year
-        # Europe PMC specific: flag year == current_year more aggressively
-        if norm.year and norm.year >= current_year and norm.pmid:
+        if norm.year and norm.year == current_year and (norm.pmid or norm.doi):
             findings.append(CollectionQAFinding(
                 query_run_id=query_run_id,
                 severity="warning",
-                finding_type="suspicious_year",
-                message=f"Europe PMC year={norm.year} with PMID present — likely default fill. Verify via PubMed.",
+                finding_type="europepmc_year_needs_verification",
+                message="Europe PMC year requires verification when PMID or DOI exists and enrichment source disagrees.",
                 recommended_action="Enrich via PubMed to get correct year.",
                 record_id=None
+            ))
+        elif norm.year == current_year:
+            findings.append(CollectionQAFinding(
+                query_run_id=query_run_id,
+                severity="info",
+                finding_type="current_year",
+                message=f"Year {norm.year} matches the current year.",
+                recommended_action="Review only if the source shows other metadata conflicts.",
+                record_id=None,
             ))
         return findings

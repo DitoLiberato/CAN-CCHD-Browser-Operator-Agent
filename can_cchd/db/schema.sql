@@ -388,3 +388,85 @@ CREATE TABLE IF NOT EXISTS collection_qa_gate (
     summary_json TEXT
 );
 
+-- ============================================================
+-- DEDUP REBUILD TABLES (normalized_records -> unique_studies)
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS dedup_groups (
+    dedup_group_id TEXT PRIMARY KEY,
+    match_type TEXT,
+    match_key TEXT,
+    confidence REAL,
+    status TEXT,
+    representative_record_id TEXT,
+    representative_study_id TEXT,
+    created_at TEXT,
+    reviewed_at TEXT,
+    reviewer_note TEXT
+);
+
+CREATE TABLE IF NOT EXISTS dedup_group_members (
+    dedup_group_id TEXT,
+    record_id TEXT,
+    is_representative_candidate INTEGER DEFAULT 0,
+    source_database TEXT,
+    query_run_id TEXT,
+    query_label TEXT,
+    pmid TEXT,
+    doi TEXT,
+    pmcid TEXT,
+    title TEXT,
+    year INTEGER,
+    journal TEXT,
+    metadata_completeness_score REAL,
+    PRIMARY KEY (dedup_group_id, record_id)
+);
+
+CREATE TABLE IF NOT EXISTS unique_studies (
+    study_id TEXT PRIMARY KEY,
+    representative_record_id TEXT,
+    title TEXT,
+    first_author TEXT,
+    year INTEGER,
+    journal TEXT,
+    doi TEXT,
+    pmid TEXT,
+    pmcid TEXT,
+    abstract TEXT,
+    publication_type TEXT,
+    language TEXT,
+    source_databases_json TEXT,
+    query_labels_json TEXT,
+    query_run_ids_json TEXT,
+    linked_record_count INTEGER,
+    metadata_completeness_score REAL,
+    dedup_status TEXT,
+    screening_status TEXT DEFAULT 'not_started',
+    created_at TEXT,
+    updated_at TEXT
+);
+
+CREATE TABLE IF NOT EXISTS unique_study_record_links (
+    study_id TEXT,
+    record_id TEXT,
+    raw_record_id TEXT,
+    query_run_id TEXT,
+    source_database TEXT,
+    query_label TEXT,
+    link_reason TEXT,
+    created_at TEXT,
+    PRIMARY KEY (study_id, record_id)
+);
+
+CREATE TABLE IF NOT EXISTS dedup_audit_log (
+    audit_id TEXT PRIMARY KEY,
+    timestamp TEXT,
+    action_type TEXT,
+    dedup_group_id TEXT,
+    study_id TEXT,
+    record_ids_json TEXT,
+    previous_status TEXT,
+    new_status TEXT,
+    reason TEXT,
+    reviewer_note TEXT
+);

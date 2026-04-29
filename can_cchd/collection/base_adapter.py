@@ -39,6 +39,21 @@ def hash_raw_record(raw: RawRecord) -> str:
     return hashlib.md5(key.encode()).hexdigest()
 
 
+def determine_initial_enrichment_status(norm: NormalizedRecord, raw_metadata_available: bool) -> str:
+    """Assign the first enrichment status for a normalized record."""
+    if (
+        norm.title
+        and (norm.pmid or norm.doi or norm.pmcid)
+        and norm.abstract
+        and norm.year
+        and norm.journal
+        and norm.authors_raw
+        and raw_metadata_available
+    ):
+        return "not_required"
+    return "needs_enrichment"
+
+
 class BaseAdapter(ABC):
     source_name: str
     access_mode: str
@@ -124,12 +139,19 @@ class BaseAdapter(ABC):
                 recommended_action="Verify via enrichment."
             ))
         current_year = datetime.datetime.now().year
-        if norm.year and norm.year >= current_year:
+        if norm.year and norm.year > current_year:
             findings.append(CollectionQAFinding(
                 query_run_id=query_run_id, severity="warning",
-                finding_type="suspicious_year",
-                message=f"Year {norm.year} equals current year — possible default fill.",
+                finding_type="future_year",
+                message=f"Year {norm.year} is in the future.",
                 recommended_action="Verify via PubMed/Crossref enrichment."
+            ))
+        elif norm.year == current_year:
+            findings.append(CollectionQAFinding(
+                query_run_id=query_run_id, severity="info",
+                finding_type="current_year",
+                message=f"Year {norm.year} matches the current year.",
+                recommended_action="Review only if the source shows other metadata conflicts."
             ))
         return findings
 
@@ -184,10 +206,19 @@ class BaseAdapter(ABC):
 
                 # 3. Normalize
                 norm = self.normalize_record(raw, raw_record_id)
+                raw_metadata_available = bool(raw.raw_metadata_json)
+                norm.raw_metadata_available = int(raw_metadata_available)
 
                 # 4. Calculate completeness score
                 from can_cchd.collection.completeness import calculate_completeness_score
-                norm.metadata_completeness_score = calculate_completeness_score(norm)
+                norm.metadata_completeness_score = calculate_completeness_score(
+                    norm,
+                    raw_metadata_available=raw_metadata_available,
+                )
+                norm.enrichment_status = determine_initial_enrichment_status(
+                    norm,
+                    raw_metadata_available=raw_metadata_available,
+                )
 
                 record_id = str(uuid4())
 
