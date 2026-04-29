@@ -75,6 +75,7 @@ class NormalizedRecord:
     normalization_status: str = "complete"
     enrichment_status: str = "pending"
     is_supplementary_source: int = 0
+    raw_metadata_available: int = 0
 
 
 @dataclass

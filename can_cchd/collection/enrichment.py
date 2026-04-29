@@ -247,10 +247,12 @@ def run_enrichment_queue(conn, limit: int = 50) -> dict:
     """
     cursor = conn.cursor()
     cursor.execute("""
-        SELECT record_id, pmid, doi, abstract, enrichment_status
-        FROM normalized_records
-        WHERE enrichment_status IN ('pending', 'needs_enrichment')
-          AND (abstract IS NULL OR abstract = '' OR abstract_status = 'not_collected')
+            SELECT nr.record_id, nr.pmid, nr.doi, nr.abstract, nr.enrichment_status,
+                   rr.raw_metadata_json
+            FROM normalized_records nr
+            LEFT JOIN raw_records rr ON rr.raw_record_id = nr.raw_record_id
+            WHERE nr.enrichment_status IN ('pending', 'needs_enrichment')
+              AND (nr.abstract IS NULL OR nr.abstract = '' OR nr.abstract_status = 'not_collected')
         LIMIT ?
     """, (limit,))
     records = cursor.fetchall()
@@ -300,8 +302,12 @@ def run_enrichment_queue(conn, limit: int = 50) -> dict:
                 journal=row["journal"] or "",
                 authors_raw=row["authors_raw"] or "",
                 landing_page_url=row["landing_page_url"] or "",
+                raw_metadata_available=1 if rec["raw_metadata_json"] else 0,
             )
-            score = calculate_completeness_score(norm)
+            score = calculate_completeness_score(
+                norm,
+                raw_metadata_available=bool(rec["raw_metadata_json"]),
+            )
             enrichment_status = "enriched" if enriched else "enrichment_attempted"
             cursor.execute(
                 "UPDATE normalized_records SET metadata_completeness_score = ?, enrichment_status = ? WHERE record_id = ?",
