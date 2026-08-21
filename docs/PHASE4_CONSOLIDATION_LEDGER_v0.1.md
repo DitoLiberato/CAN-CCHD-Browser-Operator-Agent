@@ -23,19 +23,20 @@ Historical universe = 156 reports (49 initially `include`, 107 `maybe`). A prior
 
 ## Canonical tranche files
 - `PHASE4_TRANCHE_R016_R025.md`
+- `PHASE4_TRANCHE_R038_R047.md`
 - `PHASE4_TRANCHE_R077_R085.md`
 - `PHASE4_TRANCHE_R086_R096.md`
 - `PHASE4_TRANCHE_R097_R115.md`
 - `PHASE4_TRANCHE_R116_R132.md`
 
 ## Current nominal Phase 4 status
-- INCLUDE / INCLUDE-with-flag reports: 66
-- EXCLUDE PRIMARY / RETAIN CONTEXT or NICU reports: 58
+- INCLUDE / INCLUDE-with-flag reports: 68
+- EXCLUDE PRIMARY / RETAIN CONTEXT or NICU reports: 64
 - COMPANION / NO INDEPENDENT COHORT reports: 4
 - CONDITIONAL / SUPPORTING reports: 1
 - MAYBE among adjudicated reports: 0
-- Total nominal reports represented: 129 / 156 (82.7%)
-- Remaining unreconciled reports: 27
+- Total nominal reports represented: 137 / 156 (87.8%)
+- Remaining unreconciled reports: 19
 
 These are report-level counts, not unique quantitative cohort counts. Site-level units within multi-site reports are tracked separately for extraction without inflating report counts.
 
@@ -50,6 +51,16 @@ These are report-level counts, not unique quantitative cohort counts. Site-level
 - R024 Gopalakrishnan 2021: 16 positive; 3 CCHD; CCHD-negative 13 = 8 sepsis/congenital pneumonia, 2 PPHN, 3 transitional circulation.
 - R025 Flórez-Muñoz 2021: 4 positive; 1 TGA/CCHD; remaining 3 = 1 moderate pulmonary hypertension, 2 healthy/discharged.
 - R016 Gómez-Rodríguez excluded under strict criterion 6: CCHD false-positive count is inferable but clinical classification of that group is not defensibly extractable.
+
+## Gap-tranche additions R038-R047
+- R039 Bradshaw 2012: 6,745 screened; 9 positive. One CCHD; four noncritical CHD (including dextrocardia with lobar pneumonia requiring NICU); one confirmed no CHD after evaluation; three positives had no further work-up. CCHD-negative denominator = 8, with diagnosis-not-ascertained flag for 3.
+- R043 Oakley 2015: 6,329 screened; 14 low-saturation; 7 CCHD; among remaining 7, 3 significant noncritical CHD and 4 respiratory illness/sepsis. All low-saturation infants had identifiable pathology.
+- R038 Vaidyanathan 2011 excluded: combined clinical + POX strategy, no isolated CCHD-negative failed-POX outcome cohort.
+- R040 Prudhoe 2013 excluded from primary CAN-CCHD synthesis: strong detection study but no extractable final CCHD-negative failed-screen outcome denominator; North-East UK historical overlap/context flag.
+- R044 Saxena 2015 QA-corrected to EXCLUDE PRIMARY under strict criterion 6: low specificity is discussed, but CCHD-negative POX positives are not clinically classified sufficiently for a defensible CAN-CCHD numerator.
+- R045 Miller 2016 excluded primary / retain overlap context: 2013–2014 Wisconsin SHINE cohort has 16 failed, 3 CCHD detected; remaining failures incompletely classified. Overlaps earlier 2013 J Pediatr SHINE report with 2 sepsis + 1 CHD among 3 failures.
+- R046 Patriciu 2017 excluded: CHD accuracy study without CCHD-negative failed-screen outcome classification.
+- R047 Shahzad 2017 excluded: all-enrollee echo diagnostic study without usable clinical outcome classification among CCHD-negative test positives.
 
 ## Canonical-ID assignments completed
 - R101 = Singh & Chen 2022
@@ -74,12 +85,14 @@ These are report-level counts, not unique quantitative cohort counts. Site-level
 - Birmingham: Singh 2014 / Henderson 2022 partial temporal overlap.
 - PulseOx: Ewer 2011 / Ewer 2012 companion reports.
 - Meberg 2008 / 2009 companion/overlap.
-- Saxena / Arvind same 19,009-newborn cohort.
+- Saxena / Arvind same 19,009-newborn cohort; R044 now excluded from primary CAN-CCHD synthesis and R054 remains companion/non-independent.
 - Taksande 2013 / 2017 possible cumulative extension.
 - El Bakry R141 / R145 same enriched cohort.
 - R101 Cambridge/Rosie is distinct from Birmingham.
 - Shanghai R116 / R117 overlap 2019-2021; neither contributes primary denominator because POX-only CCHD-negative outcomes are not separable.
 - R125 SIBEN contains multiple site-level units; audit each against separate publications.
+- R040 Prudhoe belongs to North-East UK historical program context and requires overlap audit against earlier Richmond-region work before any secondary use.
+- R045 Miller 2016 overlaps earlier Wisconsin SHINE 2013 J Pediatr report; do not pool blindly.
 
 ## Active QA flags before pooling
 1. R101 denominator convention.
@@ -97,10 +110,13 @@ These are report-level counts, not unique quantitative cohort counts. Site-level
 13. R022 one lost-to-echo positive and predominantly non-actionable findings.
 14. R023 noncritical-CHD actionability.
 15. R020 disposition of 87 CCHD false positives without noncardiac illness reported in abstract.
-16. Continue strict criterion-6 QA on older INCLUDE rows.
+16. R039 three failed screens without further diagnostic work-up.
+17. R043 actionability of the three significant noncritical CHD lesions.
+18. R045 Wisconsin SHINE report-cluster reconstruction.
+19. Continue strict criterion-6 QA on older INCLUDE rows.
 
 ## Next reconciliation tasks
-1. Reconstruct the remaining 27 reports. Known gap blocks include R033, R038-R040, R043-R047, R052-R065 plus post-R145/unmapped reports; verify exact difference before adjudication.
+1. Reconstruct the remaining 19 reports. Known gaps now include R033, R052-R065 plus post-R145/unmapped reports; verify exact difference before adjudication.
 2. Assign canonical IDs to remaining dash-ID rows/post-R145 records.
 3. Resolve overlap clusters before pooled estimates.
 4. Freeze actionability coding for non-critical CHD, transitional physiology, and management-only outcomes.
