@@ -5,7 +5,7 @@ Date: 2026-08-21
 Branch: `phase4-consolidation`
 
 ## Purpose
-This ledger is the canonical reconstruction point for Phase 4 full-text adjudication after work was split across chats. It supersedes free-text chat counts once reports are reconciled by canonical corpus ID.
+Canonical reconstruction point for Phase 4 full-text adjudication after work was split across chats. Free-text chat counts are superseded by named reports in this ledger and tranche files.
 
 ## Governance rules
 - Unit of tracking: report, linked to canonical `raw_record_id` whenever available.
@@ -13,30 +13,43 @@ This ledger is the canonical reconstruction point for Phase 4 full-text adjudica
 - Primary denominator: CCHD-negative failed screens.
 - Primary outcome: any clinically actionable non-CCHD diagnosis among CCHD-negative failed screens.
 - Preserve separate categories: actionable CAN-CCHD; transitional/non-actionable physiology; explicitly healthy/no diagnosis; diagnosis not reported.
-- NICU-only cohorts are excluded from the primary meta-analysis per protocol, but retained for possible secondary/sensitivity analysis.
-- Mixed nursery/NICU cohorts are flagged for sensitivity analysis unless a separable well-baby denominator is available.
+- NICU-only cohorts are excluded from primary meta-analysis, retained for secondary/sensitivity.
+- Mixed nursery/NICU cohorts are sensitivity-flagged unless separable.
 - Absence of reported alternative diagnosis is not equivalent to healthy.
-- A calculable CCHD false-positive count alone is insufficient for inclusion unless diagnosis, outcome, management, or explicit no-diagnosis information is available in that group.
+- A calculable CCHD false-positive count alone is insufficient unless diagnosis, outcome, management, or explicit no-diagnosis information is available in that group.
 
 ## Historical Phase 4 checkpoint
-The prior chat established a Phase 4 universe of 156 reports: 49 initially routed as `include` and 107 as `maybe`. A historical checkpoint recorded 18 reports already adjudicated as eligible, but their complete nominal list was not preserved. Therefore all current totals are derived only from named reports reconstructed in this ledger/tranche files; the historical 18 are never mechanically added.
+Historical universe = 156 reports (49 initially `include`, 107 `maybe`). A prior anonymous checkpoint of 18 eligible reports is not mechanically added; all current totals derive from named reports.
 
 ## Canonical tranche files
+- `PHASE4_TRANCHE_R016_R025.md`
 - `PHASE4_TRANCHE_R077_R085.md`
 - `PHASE4_TRANCHE_R086_R096.md`
 - `PHASE4_TRANCHE_R097_R115.md`
 - `PHASE4_TRANCHE_R116_R132.md`
 
-## Current nominal Phase 4 status through R145, with R116-R132 now adjudicated
-- INCLUDE / INCLUDE-with-flag reports: 57
-- EXCLUDE PRIMARY / RETAIN CONTEXT or NICU reports: 57
+## Current nominal Phase 4 status
+- INCLUDE / INCLUDE-with-flag reports: 66
+- EXCLUDE PRIMARY / RETAIN CONTEXT or NICU reports: 58
 - COMPANION / NO INDEPENDENT COHORT reports: 4
 - CONDITIONAL / SUPPORTING reports: 1
 - MAYBE among adjudicated reports: 0
-- Total nominal reports represented: 119 / 156
-- Remaining unreconciled reports: 37
+- Total nominal reports represented: 129 / 156 (82.7%)
+- Remaining unreconciled reports: 27
 
-These are report-level counts, not unique quantitative cohort counts. Site-level units within a multi-site implementation report (e.g., R125 SIBEN) are tracked separately for quantitative extraction but do not increase the report count.
+These are report-level counts, not unique quantitative cohort counts. Site-level units within multi-site reports are tracked separately for extraction without inflating report counts.
+
+## High-information gap-tranche additions R016-R025
+- R017 Jawin 2015: 15 positive; 2 CCHD; all 13 CCHD-negative positives had significant non-cardiac disease requiring hospitalisation/treatment (2 sepsis, 11 respiratory).
+- R018 Özalkaya 2016: 7 positive; 6 CCHD; 1 CCHD-negative = PFO, transitional/non-actionable flag.
+- R019 POPSICLe 2016: 2 failed; 1 CCHD, 1 neonatal sepsis.
+- R020 POLAR 2018: 221 CCHD false positives; 134 noncardiac illness (31 infections, 88 respiratory pathology).
+- R021 Panama: 16 positive; 1 CCHD; remaining 15 = 6 normal echo, 6 PDA, 3 anomalous pulmonary venous connections; lesion-classification flag.
+- R022 Soto Torselli 2020: 11 positive; 10 echoes, 1 lost; no CCHD; mainly PFO/small noncritical findings, no important haemodynamic/clinical compromise.
+- R023 Morocco 2020: 15 failed; 5 CCHD, 5 noncritical CHD, 5 false positives = 1 PPHN, 2 sepsis, 2 normal.
+- R024 Gopalakrishnan 2021: 16 positive; 3 CCHD; CCHD-negative 13 = 8 sepsis/congenital pneumonia, 2 PPHN, 3 transitional circulation.
+- R025 Flórez-Muñoz 2021: 4 positive; 1 TGA/CCHD; remaining 3 = 1 moderate pulmonary hypertension, 2 healthy/discharged.
+- R016 Gómez-Rodríguez excluded under strict criterion 6: CCHD false-positive count is inferable but clinical classification of that group is not defensibly extractable.
 
 ## Canonical-ID assignments completed
 - R101 = Singh & Chen 2022
@@ -46,47 +59,49 @@ These are report-level counts, not unique quantitative cohort counts. Site-level
 - R109 = Murni 2022
 - R118 = Hu 2016 NICU-only
 
-## High-information additions from R097-R115
-- R099 Tekleab 2019: 56 persistent failed screens, no CCHD; 10 PPHN (2 also sepsis), 11 PDA, 2 ASD, 33 clinically unremarkable after negative echo.
-- R100 Cloete/New Zealand 2019: 16,644 screened; 48 failed; 37 significant pathology, 11 no pathology; national report indicates 33 respiratory/infectious and one SVT, with cardiac classification to reconcile before freezing exact CCHD-negative denominator.
-- R101 Singh & Chen 2022: 23,614 screened; 360 protocol-positive after second screen, 171 reclassified clinically well/normal on repeat, 189 study-defined true positive; 156 significant non-cardiac diagnoses. Denominator-definition flag remains active.
-- R102 Sero et al. 2025: 301 positive; 101 sepsis, 16 congenital pneumonia, 32 polycythaemia, 52 TTN; mutual exclusivity must be verified.
-- R108 Shah 2026: 6 persistent failures at 6 h; 2 CCHD, 4 early PDA/transitional cardiac findings without follow-up.
-
-## High-information additions from R116-R132
-- R125 Sola/SIBEN 2020 contains directly extractable site-level implementation units. San Luis: >1,400 screened, 4 hypoxemic screen-detected infants, none CCHD, all required supplemental oxygen. Rosario: one final positive after repeat testing, normal echo, severe TTN, NICU admission and supplemental oxygen for 5 days. Treat site units separately and audit overlap before pooling.
-- R126 Atitlán-Gil 2020 Hidalgo: 1,748 screened; 29 positive; detailed flow reports 14 simple/noncritical CHD + 3 CCHD among screen positives, leaving 12 without CHD on echo. Use detailed screen-positive flow; abstract/detail discrepancy flag active.
-- R127 González-Andrade 2018 Quito: 963 term newborns; 53 positive; no CCHD; at least 23 ASD and 6 PDA+ASD. High-altitude subgroup flag (2,820 m).
-- R128 Witkowski 2024 Brazil: 5,667 screened; 10 positive; no CCHD; 1 ostium secundum ASD, 7 PFO, 2 normal echo. Actionability coding for PFO/transitional physiology pending.
-- R130 Rendón Díez 2025 Colombia: 609 neonates; 42 pulse-ox positive; no CCHD; exploratory analysis reports 29 noncritical CHD detected by screening. Early-screen median 15.4 h and lesion-level actionability flags active.
+## Other high-information recent additions
+- R099 Tekleab: 56 persistent fails, no CCHD; 10 PPHN (2 also sepsis), 11 PDA, 2 ASD, 33 clinically unremarkable.
+- R100 New Zealand: 48 failed; 37 significant pathology, 11 no pathology.
+- R101 Singh & Chen: denominator-definition flag 360 algorithm-positive vs 189 study-defined true-positive; 156 significant noncardiac.
+- R102 Turkey 2025: 301 positive; 101 sepsis, 16 pneumonia, 32 polycythaemia, 52 TTN; mutual-exclusivity flag.
+- R125 SIBEN: site-level units. San Luis 4/4 CCHD-negative hypoxemic infants required O2; Rosario final positive = severe TTN, NICU, O2 5 days.
+- R126 Hidalgo: 29 positive; detailed flow 14 noncritical CHD + 3 CCHD, 12 remaining no CHD on echo; abstract/detail discrepancy.
+- R127 Quito: 53 positive, no CCHD; high-altitude flag.
+- R128 Brazil: 10 positive, no CCHD; 1 ASD, 7 PFO, 2 normal.
+- R130 Colombia 2025: 42 positive, no CCHD; 29 noncritical CHD detected; early-screen/actionability flags.
 
 ## Cohort-overlap register
-- Birmingham: Singh 2014 and Henderson 2022 have partial temporal overlap; resolve unique cohort contribution before pooling.
-- PulseOx: Ewer 2011 and Ewer 2012 are companion reports of the same cohort.
-- Meberg: 2008 and 2009 are companion/overlap reports.
-- Saxena/Arvind: Arvind 2022 re-analyses the 19,009-newborn Saxena 2015 cohort.
-- Taksande: 2013 and 2017 same-centre update cluster; possible cumulative extension.
-- El Bakry Egypt/UAE: R141 and R145 same 2014-2016 enriched cohort.
-- R101 Singh & Chen is a distinct Cambridge/Rosie cohort, not the Birmingham R014/R027 cohort.
-- Shanghai: R116 Ma 2023 (2017-2021, whole Shanghai) and R117 Tian 2025 (2019-2023, south Shanghai) overlap during 2019-2021 and share program/investigators; neither currently contributes to the primary CAN-CCHD denominator because POX-only CCHD-negative outcomes are not separable.
-- R125 SIBEN contains multiple site-level implementation units; check each against separate publications before pooling.
+- Birmingham: Singh 2014 / Henderson 2022 partial temporal overlap.
+- PulseOx: Ewer 2011 / Ewer 2012 companion reports.
+- Meberg 2008 / 2009 companion/overlap.
+- Saxena / Arvind same 19,009-newborn cohort.
+- Taksande 2013 / 2017 possible cumulative extension.
+- El Bakry R141 / R145 same enriched cohort.
+- R101 Cambridge/Rosie is distinct from Birmingham.
+- Shanghai R116 / R117 overlap 2019-2021; neither contributes primary denominator because POX-only CCHD-negative outcomes are not separable.
+- R125 SIBEN contains multiple site-level units; audit each against separate publications.
 
 ## Active QA flags before pooling
-1. R101 denominator convention: 360 algorithm-positive vs 189 clinician-confirmed true-positive.
+1. R101 denominator convention.
 2. R099 PPHN/sepsis overlap.
-3. R100 lesion-level cardiac classification before exact CCHD-negative denominator.
-4. R102 mutual exclusivity of non-cardiac categories.
-5. R108 transitional PDA findings without follow-up.
-6. R125 site-level extraction and overlap audit.
-7. R126 abstract/detail discrepancy in CCHD count among positives.
+3. R100 lesion-level cardiac classification.
+4. R102 mutual exclusivity.
+5. R108 transitional PDA without follow-up.
+6. R125 site-level overlap audit.
+7. R126 abstract/detail discrepancy.
 8. R127 altitude heterogeneity.
-9. R128 PFO/transitional physiology coding.
-10. R130 lesion-level actionability and early-screen timing.
-11. Continue strict criterion-6 QA on older INCLUDE rows; Huang 2022 and Nuntnarumit 2018 were already corrected to EXCLUDE PRIMARY during R077-R085.
+9. R128 PFO/transitional coding.
+10. R130 lesion-level actionability/early timing.
+11. R018 PFO/transitional coding.
+12. R021 PDA/anomalous pulmonary venous connection classification.
+13. R022 one lost-to-echo positive and predominantly non-actionable findings.
+14. R023 noncritical-CHD actionability.
+15. R020 disposition of 87 CCHD false positives without noncardiac illness reported in abstract.
+16. Continue strict criterion-6 QA on older INCLUDE rows.
 
 ## Next reconciliation tasks
-1. Reconstruct the remaining 37 reports, prioritising unreconciled earlier IDs and any post-R145 additions that formed the historical 156-report Phase 4 universe.
-2. Assign canonical corpus IDs to any remaining dash-ID rows.
-3. Resolve overlap clusters before any pooled estimates.
+1. Reconstruct the remaining 27 reports. Known gap blocks include R033, R038-R040, R043-R047, R052-R065 plus post-R145/unmapped reports; verify exact difference before adjudication.
+2. Assign canonical IDs to remaining dash-ID rows/post-R145 records.
+3. Resolve overlap clusters before pooled estimates.
 4. Freeze actionability coding for non-critical CHD, transitional physiology, and management-only outcomes.
 5. Convert ledger/tranches to structured extraction table after nominal Phase 4 saturation.
