@@ -1,0 +1,77 @@
+unit_id,source_report_ids,primary_representative_report_id,program_cluster_id,country,site_program,frozen_phase45_note,screening_population,setting_flag,altitude_flag,screening_timing_raw,screening_timing_harmonized,screening_algorithm_raw,total_screened,final_failed_screens,study_target_definition_raw,target_definition_flag,harmonized_cchd_cases_among_final_failed_screens,cchd_negative_final_failed_screen_denominator,can_a_n,can_b_n,can_ab_n,strict_can_cchd_n,can_u_n,expanded_can_cchd_n,transitional_nonactionable_n,explicitly_healthy_no_diagnosis_n,unknown_unascertained_n,diagnosis_categories_raw,diagnosis_counts_raw,diagnostic_category_exclusivity,individual_diagnoses,lesion_mapping_status,management_actionability_evidence,ascertained_cchd_negative_failed_screens,ascertainment_pct,ascertainment_ge_90pct,missingness_flag,entry_hold_flag,entry_hold_reason,poolability_status,poolability_reason,source_full_text_provenance,extraction_notes,qa_status
+U_R001,R001,R001,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R002,R002,R002,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R003,R003,R003,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R006,R006,R006,,,,R075 companion excluded from extra weight,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R007,R007,R007,,,,echo-normal; diagnosis not ascertained beyond echo,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R008,R008,R008,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R009,R009,R009,,,,clean detailed classification,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R010,R010,R010,,,,R011 companion; PulseOx cohort,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R013,R013,R013,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R015,R015,R015,,,,PFO/transitional; no primary evidence for prior secondary PPHN interpretation,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R017,R017,R017,,,,highly informative,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R018,R018,R018,,,,PFO/transitional,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R019,R019,R019,,,,clean sepsis outcome,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R020,R020,R020,DUTCH_POLS_POLAR,,,Dutch POLAR; program_cluster_id=DUTCH_POLS_POLAR,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R021,R021,R021,,,,lesion mapping required,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,lesion/actionability mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R022,R022,R022,,,,one unascertained positive; largely non-actionable findings,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R023,R023,R023,,,,noncritical-CHD actionability mapping,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,noncritical-CHD actionability mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R024,R024,R024,,,,clean actionable/transitional split,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R025,R025,R025,,,,clean PH + healthy outcome,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R026,R026,R026,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R029,R029,R029,TAIPEI_POX_PROGRAM,,,Taipei extended program; program_cluster_id=TAIPEI_POX_PROGRAM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R030,R030,R030,,,,target mapping + transitional-period + duplicate-publication flag,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,target-definition / lesion-actionability mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R031,R031,R031,,,,Jordan; target/table QA before pooling,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R032,R032,R032,,,,Tanzania; 2 screen-positive infants unascertained outside confirmed denominator,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R033,R033,R033,,,,Qatar; detailed alternative diagnoses require final extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R034,R034,R034,,,,Denmark; treatment/actionability coding,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R035,R035,R035,,,,partial outcome ascertainment,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R036,R036,R036,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R037,R037,R037,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R039,R039,R039,,,,3/8 CCHD-negative positives not fully ascertained,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R041,R041,R041,,,,detailed secondary-target distribution,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R042,R042,R042,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R043,R043,R043,,,,highly informative,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R049,R049,R049,,,,lesion/actionability mapping,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,lesion/actionability mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R053,R053,R053,,,,Ghana; confirmed denominator excludes two pre-echo deaths unless diagnosis established,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R066,R066,R066,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R067,R067,R067,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R068,R068,R068,,,,PPHN/PFO/VSD/large symptomatic PDA mapping,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,lesion/actionability mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R069,R069,R069,,,,ASD/PFO mapping,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,lesion/actionability mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R071,R071,R071,,,,clean early-onset sepsis outcome,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R072,R072,R072,,,,exact actionable numerator 10/33; subtype-limited,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R076,R076,R076,,,,6 PPHN + 2 congenital pneumonia,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R077,R077,R077,TAIPEI_POX_PROGRAM,,,Taipei pilot; program_cluster_id=TAIPEI_POX_PROGRAM,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R086,R086,R086,,,,denominator framing QA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R087,R087,R087,,,,Minnesota; R088 companion; implementation-error flag,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R089,R089,R089,,,,clean 1/1 PPHN,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R093,R093,R093,,,,clean 2/2 respiratory illness,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R099,R099,R099,,,,PPHN/sepsis overlap; PDA/ASD mapping,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R100,R100,R100,,,,New Zealand; cardiac classification QA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R101,R101,R101,,,,denominator convention 360 algorithm-positive vs 189 study-defined true-positive,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,denominator convention: 360 algorithm-positive vs 189 study-defined true-positive,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R102,R102,R102,,,,category mutual-exclusivity QA,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,diagnostic-category mutual exclusivity,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R104,R104,R104,,,,standard extraction,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R105,R105,R105,,,,detailed noncardiac classification,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R108,R108,R108,,,,early/transitional findings without follow-up,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,transitional/actionability mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R109,R109,R109,,,,ASD/PFO actionability mapping,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,lesion/actionability mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R126,R126,R126,,,,abstract/detail discrepancy; detailed flow governs unless resolved,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,abstract vs detailed CCHD-count discrepancy,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R127,R127,R127,,,,high-altitude subgroup,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,altitude subgroup + lesion/actionability mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R128,R128,R128,,,,PFO/transitional coding,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,PFO/transitional coding,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R130,R130,R130,,,,early-screen timing + lesion actionability,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,early-screen timing + lesion actionability,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R135,R135,R135,,,,partial alternative-pathology classification,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_NR002,NR002,NR002,,,,Gamhewage Sri Lanka; CCHD-negative diagnoses incompletely specified,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_NR007,NR007,NR007,,,,Williams out-of-hospital; denominator-convention flag,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_NR008,NR008,NR008,DUTCH_POLS_POLAR,,,Dutch POLS; program_cluster_id=DUTCH_POLS_POLAR; non-overlapping with R020,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_NR009,NR009,NR009,,,,altitude; 9 PDA + 12 incompletely characterized positives,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,altitude + PDA/incompletely characterized positive mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_NR044,NR044,NR044,,,,Bangalore; locked CCHD lesion remapping required,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,locked CCHD lesion remapping required,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_NR050,NR050,NR050,,,,Bagalkot representative; NR051–NR054 companions,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,lesion/actionability mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_NR058,NR058,NR058,,,,ASD+VSD+pulmonary stenosis target mapping,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,ASD+VSD+pulmonary stenosis target mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_NR059,NR059,NR059,,,,West Virginia; 10 confirmed CCHD-negative nominal diagnoses; 2 failed screens without TTE unascertained,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,lesion/actionability mapping + unascertained failed screens,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_NR062,NR062,NR062,,,,Nellore; target-definition/lesion mapping; NR063 companion,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,target-definition/lesion mapping,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_NR064,NR064,NR064,,,,echo-normal CCHD-negative infant is not automatically healthy,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_BIRMINGHAM_R027_MAIN,R014;R027,R027,BIRMINGHAM_POX_PROGRAM,,,April–July 2013 participant-period overlap; R027 main representative; R014 supporting/sensitivity only; never sum as independent.,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R125_SAN_LUIS_AR,R125,R125,R125_SIBEN_2020,Argentina,"San Luis, Argentina",">1,400 screened; 4 CCHD-negative hypoxemic infants; all required O2; diagnoses not reported → diagnosis_not_reported + treatment_required.",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R125_ROSARIO_AR,R125,R125,R125_SIBEN_2020,Argentina,"Provincial Hospital Rosario, Argentina","final positive n=1; no CCHD; severe TTN, NICU, O2 5 days.",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R125_BARRANQUILLA_CO,R125,R125,R125_SIBEN_2020,Colombia,"Hospital Niño Jesús/MACSA, Barranquilla","9,241 screened; 38 positive; detailed structural/hypoxemic table; locked CCHD lesion mapping required.",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,locked CCHD lesion mapping required,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R125_SONORA_MX,R125,R125,R125_SIBEN_2020,Mexico,"Sonora program, Mexico","9,181 screened; 22 positive; source category counts arithmetically inconsistent (sum 24).",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,YES,22 positives but source categories sum to 24; no forced reconciliation,NOT_YET_ASSESSED,,,,NOT_STARTED
+U_R125_GUADALAJARA_MX,R125,R125,R125_SIBEN_2020,Mexico,"private hospital, Guadalajara",">1,000 analyzed; 6 fails; 2 CCHD, 2 PPHN, 2 study-defined true false positives. CCHD-negative denominator=4.",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,NO,,NOT_YET_ASSESSED,,,,NOT_STARTED
