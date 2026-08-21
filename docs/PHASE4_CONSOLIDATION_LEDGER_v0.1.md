@@ -1,42 +1,52 @@
 # CAN-CCHD Phase 4 Consolidation Ledger v0.1
 
-Status: WORKING / NORMALIZED-MEMBERSHIP RECONCILIATION REQUIRED
+Status: WORKING / RESTART-NATIVE MASTER RECONCILIATION
 Date: 2026-08-21
 Branch: `phase4-consolidation`
 
-## Critical QA amendment — 2026-08-21
+## Binding provenance boundary
 
-The previous report-level countdown `149/156 (95.5%); 7 remaining` is **withdrawn as a formal Phase 4 closure metric**.
+This Phase 4 ledger belongs exclusively to the **August 2026 restarted systematic review**.
 
-Reason: the historical Phase 4 universe of 156 was created after normalization/deduplication of the 327-record raw corpus and is tracked by normalized IDs (`Nxxx`). This ledger was reconstructed primarily from raw/public report IDs (`Rxxx`) plus non-PubMed reports. Rxxx membership is not one-to-one with the Nxxx Phase 4 universe, and several initially no-ID reports were later assigned Rxxx IDs. Therefore raw-report counts can both include records outside the historical 156 and double-count identity-reconciled reports.
+The pre-existing CAN-CCHD Browser Agent application, including `data/processed/can_cchd_agent.db`, legacy `records`, `studies`, `screening_decisions`, `eligibility_decisions`, and any other historical app tables, is `LEGACY_HISTORICAL_ONLY` and cannot supply scientific membership or adjudication data to this ledger.
 
-The individual study adjudications below and in tranche files remain valid report-level evidence. Global Phase 4 counts will be frozen only after completion of `PHASE4_MEMBERSHIP_RECONCILIATION.md`, which creates a one-row-per-Nxxx crosswalk.
+Binding firewall: `RESTART_LEGACY_DATA_FIREWALL.md`.
 
-## Historical normalized Phase 4 facts
+Current restart report inventory: `PHASE45_RESTART_REPORT_MASTER_v0.1.md`.
 
-- Raw corpus before normalization: 327 records.
-- Phase 3 routing: 49 `include`, 111 `maybe`, 9 `separate_analysis`.
-- Active Phase 4 full-text universe: 49 `include` + 107 `maybe` = **156 normalized records**.
-- Four maybe-routed normalized records not in the active FT-resolvable queue: `N228`, `N265`, `N298`, `N299`.
-- Nine `separate_analysis` records remain outside the primary 156.
+Membership/reconstruction method: `PHASE4_MEMBERSHIP_RECONCILIATION.md`.
+
+## Provenance audit result
+
+The Rxxx lineage is restart-native:
+
+- R001–R132 were already present in the restart public-corpus workbooks through `CAN-CCHD_Public_Corpus_v0.6.xlsx`.
+- The restart v0.7 manifest explicitly states base v0.6 = 132 raw reports and adds R133–R145 as 13 new regional reports, for a logical total of 145.
+- Those artifacts predate the later diagnostic inspection of the legacy SQLite database.
+- Therefore the later SQLite inspection did not introduce any Rxxx report identity into the restarted review.
+- Independently verified non-R additions are tracked as NRxxx in `PHASE45_RESTART_REPORT_MASTER_v0.1.md` with explicit restart-native provenance.
+
+A temporary diagnostic workflow read the legacy SQLite only to determine whether it contained the missing restart corpus artifact. It did not. No exported legacy data were committed or merged. The workflow was removed, temporary PR #4 was closed without merge, and the local exported ZIP was deleted.
+
+## Historical count correction
+
+The earlier working statements based on a historical `156 Nxxx` Phase 4 queue are retained only as historical audit context. They are not used as the binding denominator for closing the restarted review because the exact normalization artifact behind those IDs is unavailable and cannot be safely reconstructed from the legacy app database.
+
+No future `x/156` claim should be used as the primary completion metric unless the restart-native artifact itself is recovered and independently validated.
 
 ## Governance rules
 
-- Formal Phase 4 accounting unit: normalized Phase 4 member (`Nxxx`).
-- Report-level provenance unit: source report, linked to `raw_record_id` (`Rxxx`) whenever available.
+- Bibliographic membership must originate from restart-native search/export/reconciliation artifacts or independently reverified citation chasing.
+- Unit of report-level tracking: unique bibliographic report.
 - Quantitative unit: unique cohort; companion/overlapping reports are linked and never blindly summed.
 - Primary denominator: CCHD-negative failed screens.
-- Primary outcome: any clinically actionable non-CCHD diagnosis among CCHD-negative failed screens.
+- Primary outcome: clinically actionable non-CCHD diagnosis among CCHD-negative failed screens.
 - Preserve separate categories: actionable CAN-CCHD; transitional/non-actionable physiology; explicitly healthy/no diagnosis; diagnosis not reported/not ascertained.
-- NICU-only cohorts are excluded from primary meta-analysis and retained for secondary/sensitivity analysis.
+- NICU-only cohorts are excluded from the primary meta-analysis and retained for secondary/sensitivity analysis.
 - Mixed nursery/NICU cohorts are sensitivity-flagged unless separable.
 - Absence of reported alternative diagnosis is not equivalent to healthy.
 - A calculable CCHD false-positive count alone is insufficient unless diagnosis, outcome, management, or explicit no-diagnosis information is available in that group.
 - Reports with zero CCHD-negative failed screens may remain in study-selection accounting but cannot contribute to the CAN-CCHD proportion.
-
-## Canonical reconciliation file
-
-- `PHASE4_MEMBERSHIP_RECONCILIATION.md` — binding gate before Phase 4 closure.
 
 ## Canonical tranche files
 
@@ -48,19 +58,7 @@ The individual study adjudications below and in tranche files remain valid repor
 - `PHASE4_TRANCHE_R097_R115.md`
 - `PHASE4_TRANCHE_R116_R132.md`
 
-## Report-level adjudication progress
-
-Extensive report-level full-text adjudication has been completed across the Rxxx corpus and non-PubMed reports. These decisions are retained in tranche files and prior ledger history. They are not converted into a formal x/156 completion percentage until mapped to the normalized Nxxx universe.
-
-Examples of raw-ID reconciliation already completed:
-- Garg 2013 = R086.
-- Kochilas/Minnesota 2013 = R087; R088 is companion/reanalysis.
-- Singh & Chen 2022 = R101.
-- Gaonkar 2024 = R104.
-- Jain 2022 = R105.
-- Eltahlawi 2025 = R106.
-- Murni 2022 = R109.
-- Hu 2016 NICU = R118.
+Other report-level decisions are preserved in this branch history and the restart report master.
 
 ## High-information primary-study anchors already adjudicated
 
@@ -78,12 +76,11 @@ Examples of raw-ID reconciliation already completed:
 - R093 Cawsey: 2/2 CCHD-negative failed homebirth screens had significant respiratory disease.
 - R099 Tekleab: 56 persistent fails, no CCHD; 10 PPHN (2 also sepsis), 11 PDA, 2 ASD, 33 clinically unremarkable.
 - R100 New Zealand: 48 failed; 37 significant pathology, 11 no pathology.
-- R101 Singh & Chen: 360 algorithm-positive vs 189 study-defined true-positive; 156 significant noncardiac diagnoses.
-- R102 Turkey 2025: 301 positive; 101 sepsis, 16 pneumonia, 32 polycythaemia, 52 TTN; mutual-exclusivity flag.
-- R125 SIBEN: directly extractable site units (San Luis 4/4 CCHD-negative required O2; Rosario final positive severe TTN, NICU, O2 5 days).
+- R101 Singh & Chen: denominator-definition flag; 156 significant noncardiac diagnoses among study-defined true positives.
+- R102 Turkey 2025: 301 positive; sepsis, pneumonia, polycythaemia and TTN categories require mutual-exclusivity QA.
+- R125 SIBEN: extractable site-level units; site overlap audit required.
 - R128 Brazil: 10 positive, no CCHD; 1 ASD, 7 PFO, 2 normal.
 - R130 Colombia 2025: 42 positive, no CCHD; 29 noncritical CHD detected; early-screen/actionability flags.
-- R133 Abu Jarir/Qatar: 26 CCHD false positives with noncardiac diagnoses; PPHN predominant.
 - R135 Salih 2018: 55 CCHD false positives; 28 had other pathology.
 
 ## Cohort-overlap register
@@ -95,36 +92,41 @@ Examples of raw-ID reconciliation already completed:
 - Taksande 2013 / 2017 possible cumulative extension.
 - El Bakry R141 / R145 same enriched cohort.
 - R101 Cambridge/Rosie distinct from Birmingham.
-- Shanghai R116 / R117 overlap 2019-2021; neither contributes primary denominator because POX-only CCHD-negative outcomes are not separable.
+- Shanghai R116 / R117 overlap 2019–2021; neither contributes primary denominator because POX-only CCHD-negative outcomes are not separable.
 - R125 SIBEN site units require overlap audit against separate publications.
 - R040 Prudhoe belongs to North-East UK historical program context.
 - R045 Miller 2016 overlaps earlier Wisconsin SHINE 2013 report.
+- NR005 / NR006 represent the same Hainan 2019–2021 provincial program and are not independent quantitative cohorts.
 
 ## Active QA flags before pooling
 
-1. Reconstruct the exact 156-row Nxxx membership crosswalk before any final Phase 4 count.
-2. R101 denominator convention.
-3. R099 PPHN/sepsis overlap.
-4. R100 lesion-level cardiac classification.
-5. R102 mutual exclusivity.
-6. R108 transitional PDA without follow-up.
-7. R125 site-level overlap audit.
-8. R126 abstract/detail discrepancy.
-9. R127 altitude heterogeneity.
-10. R128 PFO/transitional coding.
-11. R130 lesion-level actionability/early timing.
-12. R018 PFO/transitional coding.
-13. R021 PDA/anomalous pulmonary venous connection classification.
-14. R022 one lost-to-echo positive and predominantly non-actionable findings.
-15. R023 noncritical-CHD actionability.
-16. R020 disposition of remaining false positives not characterized as noncardiac illness.
-17. R039 three failed screens without further diagnostic work-up.
-18. R043 actionability of significant noncritical CHD lesions.
-19. R045 Wisconsin SHINE report-cluster reconstruction.
-20. R133 exact alternative-diagnosis breakdown among 26 Qatar false positives.
-21. R053 Ghana: actionability of non-CCHD CHD; echo-negative infants clinically unclassified; two pre-echo deaths outside confirmed CCHD-negative denominator.
-22. Continue strict criterion-6 QA on older INCLUDE rows.
+1. Complete the restart-native report-master closing reconciliation waves.
+2. Resolve R101 denominator convention.
+3. Resolve R099 PPHN/sepsis overlap.
+4. Complete R100 cardiac lesion classification.
+5. Verify R102 mutual exclusivity.
+6. Resolve R108 transitional PDA coding.
+7. Audit R125 site-level overlap.
+8. Resolve R126 abstract/detail discrepancy.
+9. Preserve R127 altitude heterogeneity.
+10. Freeze R128 PFO/transitional coding.
+11. Freeze R130 lesion-level actionability/early timing.
+12. Freeze R018 PFO/transitional coding.
+13. Resolve R021 PDA/anomalous pulmonary venous connection classification.
+14. Preserve R022 lost-to-echo / non-actionable distinctions.
+15. Freeze R023 noncritical-CHD actionability.
+16. Resolve incomplete classifications in R020 and R039 without equating missing diagnosis to healthy.
+17. Reconstruct R045 Wisconsin SHINE report cluster.
+18. Continue strict criterion-6 QA on all older INCLUDE reports.
 
 ## Next step
 
-Recover/reconstruct the normalized Phase 4 membership list and populate `PHASE4_MEMBERSHIP_RECONCILIATION.md`. Only then identify genuinely unmatched terminal records, adjudicate them, recompute INCLUDE/EXCLUDE/other counts from the 156 Nxxx rows, and close Phase 4.
+Continue the report-master completeness audit using **restart-native sources only**:
+
+1. reconcile the native PubMed PMID export against R001–R145 + NRxxx;
+2. reconcile Cochrane/Saganski/van Vliet primary references;
+3. reconcile regional/LILACS/SciELO/IMEMR ledgers;
+4. identify any post-v0.7 citation-chasing reports not yet assigned R/NR identity;
+5. freeze the bibliographic report master after two independent zero-new-report closing waves;
+6. recompute terminal Phase 4 decisions from that master;
+7. proceed to structured Phase 5 extraction.
