@@ -63,56 +63,63 @@ The prior chat established a Phase 4 universe of 156 reports: 49 initially route
 | — | Huang 2022 | INCLUDE | 44,147 births; 27 POX-positive, 20 CHD; 7 non-CHD without adequate diagnosis breakdown. |
 | — | Nuntnarumit 2018 | INCLUDE | 10,603 healthy newborns; approximately 1 false positive; alternative diagnosis not reported. |
 | — | Garg 2013 | INCLUDE | New Jersey program; 49 failed; among 30 investigations triggered solely by POX, 3 CCHD and 17 other diagnoses/findings. |
-| — | Eltahlawi 2025 | EXCLUDE PRIMARY / RETAIN CONTEXT | Mixed/enriched tertiary population without separable routine well-baby denominator: includes neonates born in or transferred to 10 university hospitals and emergency-incubator screening; 23% failed screens and 42% mortality among positives. Rich descriptive data, but incompatible with primary population denominator. |
-| — | Minocha 2018 | EXCLUDE PRIMARY | Referral/enriched population: neonates already referred for suspected CHD, not a screening denominator. |
+| — | Eltahlawi 2025 | EXCLUDE PRIMARY / RETAIN CONTEXT | Mixed/enriched tertiary population without separable routine well-baby denominator. |
+| — | Minocha 2018 | EXCLUDE PRIMARY | Referral/enriched population: neonates already referred for suspected CHD. |
 | R070 | Van Naarden Braun 2017 | EXCLUDE PRIMARY / RETAIN NICU | NICU-only cohort. |
 | R074 | Manja 2015 | EXCLUDE PRIMARY / RETAIN NICU | NICU-only cohort. |
 | — | Hu 2016 | EXCLUDE PRIMARY / RETAIN NICU | NICU-only cohort. |
-| — | Uygur 2019 | EXCLUDE PRIMARY | Eligible newborn population and valid POX screening, but full-text review does not provide an extractable diagnosis/outcome/no-diagnosis numerator among CCHD-negative failed POX screens. |
-| R049 | Hamilcikan 2018 | INCLUDE | 4,518 newborns; 9 CCHD false positives in post-24h group; 6 noncritical CHD and 3 significant noncardiac pathology. |
-| R055 | Taksande 2013 | INCLUDE / MIXED-POPULATION FLAG | 2,110 newborns from postnatal ward and NICU; at least 1 CCHD-negative failure plus noncritical CHD after repeat; sensitivity flag. |
-| R048 | Taksande 2017 | INCLUDE REPORT / OVERLAP PENDING | Same-centre update; 4,926 newborns; possible cumulative extension of R055. Do not pool independently until dates resolved. |
-| R051 | Banait 2020 | EXCLUDE PRIMARY | Regional CCHD registry/era comparison; cannot identify extractable CCHD-negative failed-screen denominator/outcomes. |
-| R056 | de-Wahl Granelli 2005 | EXCLUDE PRIMARY | Case-control/method-development sample assembled from normal newborns and referred CCHD cases; not screening cohort. |
-| R054 | Arvind 2022 | COMPANION / NO INDEPENDENT COHORT | Reanalysis of same 19,009-newborn cohort reported by Saxena 2015; retain companion information but no independent denominator. |
-| R050 | Dilli 2019 | EXCLUDE PRIMARY | 4,888 multicentre newborns; 42 POX positives and 5 screen-detected CCHD (PPV 11.9%), yielding 37 CCHD-negative failed screens. Full text reports overall echo categories but not their distribution within failed screens, so the CAN-CCHD numerator/no-diagnosis category cannot be extracted. |
-| R133 | Mosayebi 2012 | EXCLUDE PRIMARY | 1,506 healthy term newborns; 29 persistent SpO2<95% referred for echocardiography and 6 had critical/cyanotic CHD. The report does not provide an extractable diagnosis/outcome/no-diagnosis classification for the remaining 23 CCHD-negative failed screens. |
-| R134 | Dehvari 2022 | EXCLUDE PRIMARY | 3,151 term neonates; 29 persistent SpO2<95%, 26 underwent echocardiography and 22 had CHD. The four non-CHD evaluated failures are not clinically classified, and three positive infants were lost before echo; CAN-CCHD numerator is not extractable. |
-| R135 | Salih 2018 | INCLUDE | 2,181 neonates; 100 positive POS, 45 CHD and 55 CCHD-false-positive; 28/55 false positives had other pathology. Primary denominator and actionable numerator are directly extractable, although pathology subcategories remain to be recovered. |
-| R136 | Methlouthi 2016 | EXCLUDE PRIMARY | 10,447 births; 26 CHD overall and five cardiac diagnoses attributed to saturation screening, but the report does not provide total failed-screen count or outcomes among CCHD-negative failed screens. |
-| R137 | Al Mazrouei 2013 | EXCLUDE PRIMARY / RETAIN CONTEXT | Emirate-wide Abu Dhabi implementation report; 86% screening coverage and 10 CCHD identified, but no extractable CCHD-negative failed-screen denominator or non-CCHD outcome distribution. Retain for implementation context. |
-| R138 | Al Zarouni 2022 | EXCLUDE PRIMARY / RETAIN CONTEXT | UAE EHS EMR-automation implementation study focused on compliance and time/prevalence of CCHD diagnosis; no extractable CCHD-negative failed-screen denominator/outcome distribution for CAN-CCHD synthesis. |
-| R139 | Ismail 2021 | EXCLUDE PRIMARY / ZERO ELIGIBLE DENOMINATOR | 100 newborns underwent PO and echocardiography; 5 true-positive and 95 true-negative results, with no CCHD-negative failed screens. Thus the primary denominator is zero and the report cannot contribute to the CAN-CCHD proportion. |
-| R140 | Abdel Rahman 2022 | EXCLUDE PRIMARY | 460 neonates total, including 423 asymptomatic; study reports performance of POX plus cardiac auscultation and CHD diagnoses, but does not provide an isolated failed-POX CCHD-negative denominator with diagnosis/outcome/no-diagnosis classification. |
-| R141 | El Bakry 2023 | EXCLUDE PRIMARY / ENRICHED POPULATION | Prospective report explicitly framed around newborn patients with congenital heart disease admitted to well-baby nursery and NICU at two tertiary hospitals; population is CHD-enriched/selected rather than an unselected screening denominator. |
-| R142 | Saeedi 2024 | EXCLUDE PRIMARY | 994 healthy neonates; 218 had abnormal pulse-oximetry screening prompting echocardiography and 53 had abnormal echo. The remaining 165 echo-negative abnormal screens are not clinically classified for actionable diagnosis/outcome/no-diagnosis; CAN-CCHD numerator cannot be extracted. |
-| R143 | Kadivar 2020 | EXCLUDE PRIMARY / RETAIN NICU | Enriched/NICU diagnostic cohort using perfusion-related measures rather than an unselected well-baby screening denominator; retain only for NICU/methodological context. |
-| R144 | Majeed-Saidan 2019 | EXCLUDE PRIMARY / RETAIN CONTEXT | Saudi CHD prevalence/risk-factor cohort; routine postnatal pulse oximetry was introduced during the study, but the report does not provide an extractable failed-screen denominator or outcomes among CCHD-negative failures. |
-| R145 | El Bakry 2024 | COMPANION / NO INDEPENDENT COHORT | Companion publication of the El Bakry Egypt/UAE 2014-2016 report cluster; same enriched cohort as R141. No independent quantitative contribution; retain only if it supplements report-level details. |
+| — | Uygur 2019 | EXCLUDE PRIMARY | No extractable outcome among CCHD-negative failed POX screens. |
+| R049 | Hamilcikan 2018 | INCLUDE | 4,518 newborns; 9 CCHD false positives; 6 noncritical CHD and 3 significant noncardiac pathology. |
+| R055 | Taksande 2013 | INCLUDE / MIXED-POPULATION FLAG | 2,110 newborns from postnatal ward and NICU; sensitivity flag. |
+| R048 | Taksande 2017 | INCLUDE REPORT / OVERLAP PENDING | Same-centre update; possible cumulative extension of R055. |
+| R051 | Banait 2020 | EXCLUDE PRIMARY | Cannot identify extractable CCHD-negative failed-screen denominator/outcomes. |
+| R056 | de-Wahl Granelli 2005 | EXCLUDE PRIMARY | Case-control/method-development sample; not screening cohort. |
+| R054 | Arvind 2022 | COMPANION / NO INDEPENDENT COHORT | Reanalysis of same 19,009-newborn cohort reported by Saxena 2015. |
+| R050 | Dilli 2019 | EXCLUDE PRIMARY | 37 CCHD-negative failed screens but CAN-CCHD numerator/no-diagnosis category cannot be extracted. |
+| R133 | Mosayebi 2012 | EXCLUDE PRIMARY | 29 persistent low-SpO2, 6 critical/cyanotic CHD; remaining 23 not clinically classified. |
+| R134 | Dehvari 2022 | EXCLUDE PRIMARY | 29 persistent low-SpO2; non-CHD failures not clinically classified. |
+| R135 | Salih 2018 | INCLUDE | 2,181 neonates; 55 CCHD-false-positive; 28/55 had other pathology. |
+| R136 | Methlouthi 2016 | EXCLUDE PRIMARY | No total failed-screen denominator/outcomes among CCHD-negative failures. |
+| R137 | Al Mazrouei 2013 | EXCLUDE PRIMARY / RETAIN CONTEXT | Implementation report without extractable CAN-CCHD denominator/outcome. |
+| R138 | Al Zarouni 2022 | EXCLUDE PRIMARY / RETAIN CONTEXT | EMR-automation implementation study without extractable CAN-CCHD outcome. |
+| R139 | Ismail 2021 | EXCLUDE PRIMARY / ZERO ELIGIBLE DENOMINATOR | 5 TP, 95 TN; no CCHD-negative failed screens. |
+| R140 | Abdel Rahman 2022 | EXCLUDE PRIMARY | Combined POX/auscultation study without isolated CCHD-negative failed-POX outcome. |
+| R141 | El Bakry 2023 | EXCLUDE PRIMARY / ENRICHED POPULATION | CHD-enriched/selected population. |
+| R142 | Saeedi 2024 | EXCLUDE PRIMARY | 165 echo-negative abnormal screens not clinically classified. |
+| R143 | Kadivar 2020 | EXCLUDE PRIMARY / RETAIN NICU | Enriched/NICU diagnostic cohort. |
+| R144 | Majeed-Saidan 2019 | EXCLUDE PRIMARY / RETAIN CONTEXT | No extractable failed-screen denominator/outcomes. |
+| R145 | El Bakry 2024 | COMPANION / NO INDEPENDENT COHORT | Companion of R141 enriched cohort. |
+| R067 | Klausner 2017 | INCLUDE | 10,320 screened; no CCHD detected by POX alone; four positive POX screens had noncritical cardiac lesions, therefore four actionable CCHD-negative failed screens. |
+| R068 | Almawazini 2017 | INCLUDE | 2,961 nursery infants; 114 positive; 7 critical cardiac defects and 13 severe pulmonary hypertension. Study reports 94 study-defined false positives; preserve authors' TP/FP terminology separately from CCHD-based CAN extraction. |
+| R069 | Andrews 2014 | INCLUDE | 1,905 screened; three failed, all CCHD-negative: 2 ASD and 1 PFO. Two actionable noncritical CHD, one non-actionable/normal-variant PFO. |
+| R071 | Cubells 2018 | INCLUDE | 8,856 screened; three severe congenital cardiac malformations and two early-onset sepsis detected among positive screens. Two CCHD-negative failures are actionable sepsis, pending target-definition QA. |
+| R073 | Kardasevic 2017 | EXCLUDE PRIMARY | 1,860 evaluable; seven required repeat POX and all normalized. CHD diagnoses derive from combined clinical/POX algorithm; no final failed-POX CCHD-negative denominator. |
+| R075 | Meberg 2009 | COMPANION / NO INDEPENDENT COHORT | Companion/complementary-strategy report linked to R006 Meberg 2008 cohort. |
+| R076 | Mohsin 2019 | INCLUDE / MIXED-POPULATION FLAG | 1,650 well-baby/NICU newborns; 16 POX-positive. Eight POX false positives for CHD were all actionable: 6 PPHN and 2 congenital pneumonia. |
 
 ## Current nominal ledger status
 This is a report-level working count, not yet a count of unique quantitative cohorts.
-- INCLUDE or INCLUDE-with-flag reports: 42
-- EXCLUDE PRIMARY or EXCLUDE PRIMARY / RETAIN CONTEXT reports: 19
+- INCLUDE or INCLUDE-with-flag reports: 47
+- EXCLUDE PRIMARY or EXCLUDE PRIMARY / RETAIN CONTEXT reports: 20
 - EXCLUDE PRIMARY / RETAIN NICU reports: 4
 - MAYBE reports: 0
 - CONDITIONAL / SUPPORTING reports: 1
-- COMPANION / NO INDEPENDENT COHORT reports: 2
-- Total nominal reports represented in ledger: 68
+- COMPANION / NO INDEPENDENT COHORT reports: 3
+- Total nominal reports represented in ledger: 75
 
-These counts intentionally do not add the historical anonymous checkpoint of 18; all totals must be derived only from named rows in this ledger. `MAYBE = 0` refers only to the 68 nominal reports currently reconstructed, not to the unreconciled remainder of the historical 156-report Phase 4 universe.
+These counts intentionally do not add the historical anonymous checkpoint of 18; all totals are derived only from named rows in this ledger. `MAYBE = 0` refers only to the 75 nominal reports currently reconstructed, not to the unreconciled remainder of the historical 156-report Phase 4 universe.
 
 ## Cohort-overlap register
-- Birmingham: Singh 2014 and Henderson 2022 have partial temporal overlap (approximately Apr-Jul 2013); retain both reports but resolve unique cohort contribution before pooling.
-- PulseOx: Ewer 2011 and Ewer 2012 are companion reports of the same cohort; primary quantitative contribution should come from the best report while companion data may supplement extraction.
-- Meberg: 2008 and 2009 reports require companion/overlap adjudication.
-- Saxena/Arvind: Arvind 2022 explicitly re-analyses the 19,009-newborn Saxena 2015 cohort; do not count as independent cohorts.
-- Taksande: 2013 (n=2,110) and 2017 (n=4,926) originate from the same centre with near-identical methods; 2017 is an “update work”. Treat as potential cumulative extension until study dates prove independence.
-- El Bakry Egypt/UAE: R141 (2023) and R145 (2024) describe the same 2014-2016 enriched cohort; no independent pooling.
+- Birmingham: Singh 2014 and Henderson 2022 have partial temporal overlap; resolve unique cohort contribution before pooling.
+- PulseOx: Ewer 2011 and Ewer 2012 are companion reports of the same cohort.
+- Meberg: R006 Meberg 2008 and R075 Meberg 2009 are companion/overlapping reports; use a single independent cohort denominator.
+- Saxena/Arvind: Arvind 2022 re-analyses the Saxena 2015 cohort.
+- Taksande: 2013 and 2017 same-centre reports may be cumulative.
+- El Bakry Egypt/UAE: R141 and R145 describe the same enriched cohort.
 
 ## Next reconciliation tasks
-1. Reconstruct the remaining 88 reports from the historical 156-report Phase 4 universe into this nominal ledger; do not infer their status from the old aggregate counts.
+1. Reconstruct the remaining 81 reports from the historical 156-report Phase 4 universe.
 2. Assign canonical corpus IDs to every dash-ID row above.
 3. Recover the nominal identities of the historical 18-study checkpoint and deduplicate against this ledger.
-4. Resolve all overlap clusters before any pooled denominator/numerator is produced.
+4. Resolve all overlap clusters before pooled denominator/numerator production.
 5. Convert this markdown ledger to a structured extraction table once Phase 4 nominal reconciliation reaches saturation.
