@@ -1,0 +1,94 @@
+name: Phase 4.5 Export Normalized Records
+
+on:
+  push:
+    branches:
+      - phase4-consolidation
+    paths:
+      - '.github/workflows/phase45-export-normalized.yml'
+      - 'data/processed/can_cchd_agent.db'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Inspect database
+        shell: bash
+        run: |
+          set -euo pipefail
+          DB='data/processed/can_cchd_agent.db'
+          test -f "$DB"
+          echo 'Database file:'
+          ls -lh "$DB"
+          echo 'Tables:'
+          sqlite3 "$DB" '.tables'
+          echo 'Row counts:'
+          for table in raw_records normalized_records records studies screening_decisions eligibility_decisions; do
+            if sqlite3 "$DB" "SELECT 1 FROM sqlite_master WHERE type='table' AND name='$table';" | grep -q 1; then
+              printf '%s=' "$table"
+              sqlite3 "$DB" "SELECT COUNT(*) FROM $table;"
+            fi
+          done
+
+      - name: Export authoritative collection tables
+        shell: bash
+        run: |
+          set -euo pipefail
+          DB='data/processed/can_cchd_agent.db'
+          mkdir -p phase45_export
+
+          if sqlite3 "$DB" "SELECT 1 FROM sqlite_master WHERE type='table' AND name='normalized_records';" | grep -q 1; then
+            sqlite3 -header -csv "$DB" 'SELECT * FROM normalized_records ORDER BY record_id;' > phase45_export/normalized_records.csv
+          fi
+
+          if sqlite3 "$DB" "SELECT 1 FROM sqlite_master WHERE type='table' AND name='raw_records';" | grep -q 1; then
+            sqlite3 -header -csv "$DB" 'SELECT * FROM raw_records ORDER BY raw_record_id;' > phase45_export/raw_records.csv
+          fi
+
+          if sqlite3 "$DB" "SELECT 1 FROM sqlite_master WHERE type='table' AND name='query_runs';" | grep -q 1; then
+            sqlite3 -header -csv "$DB" 'SELECT * FROM query_runs ORDER BY query_run_id;' > phase45_export/query_runs.csv
+          fi
+
+          # Legacy tables are exported only for audit/crosswalk, not as the source of truth.
+          for table in records studies study_links screening_decisions eligibility_decisions fulltext_records; do
+            if sqlite3 "$DB" "SELECT 1 FROM sqlite_master WHERE type='table' AND name='$table';" | grep -q 1; then
+              sqlite3 -header -csv "$DB" "SELECT * FROM $table;" > "phase45_export/legacy_${table}.csv"
+            fi
+          done
+
+          sqlite3 "$DB" '.schema normalized_records' > phase45_export/normalized_records_schema.sql || true
+          sqlite3 "$DB" '.schema raw_records' > phase45_export/raw_records_schema.sql || true
+          sqlite3 "$DB" '.tables' > phase45_export/tables.txt
+
+          {
+            echo '# Phase 4.5 database inventory'
+            echo
+            echo "Commit: $GITHUB_SHA"
+            echo
+            for table in raw_records normalized_records query_runs records studies study_links screening_decisions eligibility_decisions fulltext_records; do
+              if sqlite3 "$DB" "SELECT 1 FROM sqlite_master WHERE type='table' AND name='$table';" | grep -q 1; then
+                count=$(sqlite3 "$DB" "SELECT COUNT(*) FROM $table;")
+                echo "- $table: $count rows"
+              else
+                echo "- $table: table absent"
+              fi
+            done
+          } > phase45_export/inventory.md
+
+          echo 'Export files:'
+          ls -lh phase45_export
+
+      - name: Upload Phase 4.5 export
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase45-normalized-export
+          path: phase45_export/
+          if-no-files-found: error
+          retention-days: 30
