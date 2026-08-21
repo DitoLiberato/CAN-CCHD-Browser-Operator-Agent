@@ -26,10 +26,7 @@ The prior chat established a Phase 4 universe of 156 reports: 49 initially route
 - `PHASE4_TRANCHE_R086_R096.md`
 - `PHASE4_TRANCHE_R097_R115.md`
 
-These tranche files preserve report-level adjudication and QA details. Earlier rows R001-R076 and R133-R145 were reconstructed in this master ledger during prior passes.
-
 ## Current nominal Phase 4 status through R115 plus regional R133-R145
-Report-level count, not yet unique quantitative cohorts:
 - INCLUDE / INCLUDE-with-flag reports: 52
 - EXCLUDE PRIMARY / RETAIN CONTEXT or NICU reports: 46
 - COMPANION / NO INDEPENDENT COHORT reports: 4
@@ -39,7 +36,6 @@ Report-level count, not yet unique quantitative cohorts:
 - Remaining unreconciled reports: 53
 
 ## Important canonical-ID assignments completed in R097-R115
-The following reports were already represented under dash IDs and have now been mapped to corpus IDs without increasing the nominal count:
 - R101 = Singh & Chen 2022
 - R104 = Gaonkar 2024
 - R105 = Jain 2022
@@ -48,31 +44,31 @@ The following reports were already represented under dash IDs and have now been 
 
 ## High-information additions from R097-R115
 - R099 Tekleab 2019: 56 persistent failed screens, no CCHD; 10 PPHN (2 also sepsis), 11 PDA, 2 ASD, 33 clinically unremarkable after negative echo.
-- R100 Cloete/New Zealand 2019: 16,644 screened; 48 failed; 37 significant pathology, 11 no pathology; national report indicates 33 respiratory/infectious and one SVT, with cardiac classification to reconcile before freezing the exact CCHD-negative denominator.
+- R100 Cloete/New Zealand 2019: 16,644 screened; 48 failed; 37 significant pathology, 11 no pathology; national report indicates 33 respiratory/infectious and one SVT, with cardiac classification to reconcile before freezing exact CCHD-negative denominator.
 - R101 Singh & Chen 2022: 23,614 screened; 360 protocol-positive after second screen, 171 reclassified clinically well/normal on repeat, 189 study-defined true positive; 156 significant non-cardiac diagnoses. Denominator-definition flag remains active.
-- R102 Sero et al. 2025: 301 positive; non-cardiac morbidities include 101 sepsis, 16 congenital pneumonia, 32 polycythaemia, 52 TTN; mutual exclusivity must be verified.
-- R108 Shah 2026: 6 persistent failures at 6 h; 2 CCHD, 4 early PDA/transitional cardiac findings without follow-up. Include with transitional-period/actionability flag.
+- R102 Sero et al. 2025: 301 positive; 101 sepsis, 16 congenital pneumonia, 32 polycythaemia, 52 TTN; mutual exclusivity must be verified.
+- R108 Shah 2026: 6 persistent failures at 6 h; 2 CCHD, 4 early PDA/transitional cardiac findings without follow-up.
 
 ## Cohort-overlap register
-- Birmingham: Singh 2014 and Henderson 2022 have partial temporal overlap (approximately Apr-Jul 2013); retain both reports but resolve unique cohort contribution before pooling.
-- PulseOx: Ewer 2011 and Ewer 2012 are companion reports of the same cohort; use the best report for quantitative contribution and companion data only to supplement extraction.
-- Meberg: 2008 and 2009 are companion/overlap reports; no blind summation.
-- Saxena/Arvind: Arvind 2022 re-analyses the 19,009-newborn Saxena 2015 cohort; no independent denominator.
-- Taksande: 2013 and 2017 same-centre update cluster; potential cumulative extension until dates prove independence.
-- El Bakry Egypt/UAE: R141 and R145 same 2014-2016 enriched cohort; no independent pooling.
-- R101 Singh & Chen is a distinct Cambridge/Rosie cohort, not the Birmingham R014/R027 cohort; retain local-companion audit only.
+- Birmingham: Singh 2014 and Henderson 2022 have partial temporal overlap; resolve unique cohort contribution before pooling.
+- PulseOx: Ewer 2011 and Ewer 2012 are companion reports of the same cohort.
+- Meberg: 2008 and 2009 are companion/overlap reports.
+- Saxena/Arvind: Arvind 2022 re-analyses the 19,009-newborn Saxena 2015 cohort.
+- Taksande: 2013 and 2017 same-centre update cluster; possible cumulative extension.
+- El Bakry Egypt/UAE: R141 and R145 same 2014-2016 enriched cohort.
+- R101 Singh & Chen is a distinct Cambridge/Rosie cohort, not the Birmingham R014/R027 cohort.
 
 ## Active QA flags before pooling
-1. R101: pre-specify denominator convention (360 algorithm-positive vs 189 clinician-confirmed true-positive) before meta-analysis.
-2. R099: PPHN/sepsis overlap; do not add overlapping diagnoses.
-3. R100: lesion-level cardiac classification needed to freeze exact CCHD-negative denominator.
-4. R102: verify whether non-cardiac categories are mutually exclusive.
-5. R108: four PDA findings are transitional-period findings without follow-up; do not automatically classify as definite actionable non-critical CHD.
-6. Revisit all older INCLUDE rows under the strict criterion-6 rule where only false-positive counts, but no clinical outcome/no-diagnosis data, had originally been available. Huang 2022 and Nuntnarumit 2018 were already corrected to EXCLUDE PRIMARY during the R077-R085 QA pass.
+1. R101 denominator convention: 360 algorithm-positive vs 189 clinician-confirmed true-positive.
+2. R099 PPHN/sepsis overlap.
+3. R100 lesion-level cardiac classification before exact CCHD-negative denominator.
+4. R102 mutual exclusivity of non-cardiac categories.
+5. R108 transitional PDA findings without follow-up.
+6. Continue strict criterion-6 QA on older INCLUDE rows; Huang 2022 and Nuntnarumit 2018 were already corrected to EXCLUDE PRIMARY during R077-R085.
 
 ## Next reconciliation tasks
-1. Reconstruct the remaining 53 reports from the 156-report Phase 4 universe, beginning with R116 onward and any unreconciled earlier IDs.
-2. Assign canonical corpus IDs to any remaining dash-ID rows.
-3. Resolve overlap clusters before generating any pooled denominator/numerator.
-4. Freeze an actionability coding dictionary for non-critical CHD, transitional physiology, and management-only outcomes before final extraction.
-5. Convert the markdown ledger/tranches into a structured extraction table after nominal Phase 4 saturation.
+1. Reconstruct the remaining 53 reports, beginning with R116 onward and any unreconciled earlier IDs.
+2. Assign canonical corpus IDs to remaining dash-ID rows.
+3. Resolve overlap clusters before any pooled estimates.
+4. Freeze actionability coding for non-critical CHD, transitional physiology, and management-only outcomes.
+5. Convert ledger/tranches to structured extraction table after nominal Phase 4 saturation.
