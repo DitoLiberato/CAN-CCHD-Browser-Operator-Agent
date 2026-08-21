@@ -7,6 +7,9 @@ on:
     paths:
       - '.github/workflows/phase45-export-normalized.yml'
       - 'data/processed/can_cchd_agent.db'
+  pull_request:
+    branches:
+      - phase4-consolidation
   workflow_dispatch:
 
 permissions:
