@@ -76,18 +76,24 @@ The prior chat established a Phase 4 universe of 156 reports: 49 initially route
 | R056 | de-Wahl Granelli 2005 | EXCLUDE PRIMARY | Case-control/method-development sample assembled from normal newborns and referred CCHD cases; not screening cohort. |
 | R054 | Arvind 2022 | COMPANION / NO INDEPENDENT COHORT | Reanalysis of same 19,009-newborn cohort reported by Saxena 2015; retain companion information but no independent denominator. |
 | R050 | Dilli 2019 | EXCLUDE PRIMARY | 4,888 multicentre newborns; 42 POX positives and 5 screen-detected CCHD (PPV 11.9%), yielding 37 CCHD-negative failed screens. Full text reports overall echo categories but not their distribution within failed screens, so the CAN-CCHD numerator/no-diagnosis category cannot be extracted. |
+| R133 | Mosayebi 2012 | EXCLUDE PRIMARY | 1,506 healthy term newborns; 29 persistent SpO2<95% referred for echocardiography and 6 had critical/cyanotic CHD. The report does not provide an extractable diagnosis/outcome/no-diagnosis classification for the remaining 23 CCHD-negative failed screens. |
+| R134 | Dehvari 2022 | EXCLUDE PRIMARY | 3,151 term neonates; 29 persistent SpO2<95%, 26 underwent echocardiography and 22 had CHD. The four non-CHD evaluated failures are not clinically classified, and three positive infants were lost before echo; CAN-CCHD numerator is not extractable. |
+| R135 | Salih 2018 | INCLUDE | 2,181 neonates; 100 positive POS, 45 CHD and 55 CCHD-false-positive; 28/55 false positives had other pathology. Primary denominator and actionable numerator are directly extractable, although pathology subcategories remain to be recovered. |
+| R136 | Methlouthi 2016 | EXCLUDE PRIMARY | 10,447 births; 26 CHD overall and five cardiac diagnoses attributed to saturation screening, but the report does not provide total failed-screen count or outcomes among CCHD-negative failed screens. |
+| R137 | Al Mazrouei 2013 | EXCLUDE PRIMARY / RETAIN CONTEXT | Emirate-wide Abu Dhabi implementation report; 86% screening coverage and 10 CCHD identified, but no extractable CCHD-negative failed-screen denominator or non-CCHD outcome distribution. Retain for implementation context. |
+| R138 | Al Zarouni 2022 | EXCLUDE PRIMARY / RETAIN CONTEXT | UAE EHS EMR-automation implementation study focused on compliance and time/prevalence of CCHD diagnosis; no extractable CCHD-negative failed-screen denominator/outcome distribution for CAN-CCHD synthesis. |
 
 ## Current nominal ledger status
 This is a report-level working count, not yet a count of unique quantitative cohorts.
-- INCLUDE or INCLUDE-with-flag reports: 41
-- EXCLUDE PRIMARY or EXCLUDE PRIMARY / RETAIN CONTEXT reports: 9
+- INCLUDE or INCLUDE-with-flag reports: 42
+- EXCLUDE PRIMARY or EXCLUDE PRIMARY / RETAIN CONTEXT reports: 14
 - EXCLUDE PRIMARY / RETAIN NICU reports: 3
 - MAYBE reports: 0
 - CONDITIONAL / SUPPORTING reports: 1
 - COMPANION / NO INDEPENDENT COHORT reports: 1
-- Total nominal reports represented in ledger: 55
+- Total nominal reports represented in ledger: 61
 
-These counts intentionally do not add the historical anonymous checkpoint of 18; all totals must be derived only from named rows in this ledger. `MAYBE = 0` refers only to the 55 nominal reports currently reconstructed, not to the unreconciled remainder of the historical 156-report Phase 4 universe.
+These counts intentionally do not add the historical anonymous checkpoint of 18; all totals must be derived only from named rows in this ledger. `MAYBE = 0` refers only to the 61 nominal reports currently reconstructed, not to the unreconciled remainder of the historical 156-report Phase 4 universe.
 
 ## Cohort-overlap register
 - Birmingham: Singh 2014 and Henderson 2022 have partial temporal overlap (approximately Apr-Jul 2013); retain both reports but resolve unique cohort contribution before pooling.
@@ -97,7 +103,7 @@ These counts intentionally do not add the historical anonymous checkpoint of 18;
 - Taksande: 2013 (n=2,110) and 2017 (n=4,926) originate from the same centre with near-identical methods; 2017 is an “update work”. Treat as potential cumulative extension until study dates prove independence.
 
 ## Next reconciliation tasks
-1. Reconstruct the remaining 101 reports from the historical 156-report Phase 4 universe into this nominal ledger; do not infer their status from the old aggregate counts.
+1. Reconstruct the remaining 95 reports from the historical 156-report Phase 4 universe into this nominal ledger; do not infer their status from the old aggregate counts.
 2. Assign canonical corpus IDs to every dash-ID row above.
 3. Recover the nominal identities of the historical 18-study checkpoint and deduplicate against this ledger.
 4. Resolve all overlap clusters before any pooled denominator/numerator is produced.
