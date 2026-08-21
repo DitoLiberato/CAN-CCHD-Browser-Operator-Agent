@@ -69,17 +69,36 @@ The prior chat established a Phase 4 universe of 156 reports: 49 initially route
 | R074 | Manja 2015 | EXCLUDE PRIMARY / RETAIN NICU | NICU-only cohort. |
 | — | Hu 2016 | EXCLUDE PRIMARY / RETAIN NICU | NICU-only cohort. |
 | — | Uygur 2019 | MAYBE | Eligible newborn population, but likely no extractable diagnosis/outcome among CCHD-negative failed POX screens; final table/supplement check pending. |
+| R049 | Hamilcikan 2018 | INCLUDE | 4,518 newborns; 9 CCHD false positives in post-24h group; 6 noncritical CHD and 3 significant noncardiac pathology. |
+| R055 | Taksande 2013 | INCLUDE / MIXED-POPULATION FLAG | 2,110 newborns from postnatal ward and NICU; at least 1 CCHD-negative failure plus noncritical CHD after repeat; sensitivity flag. |
+| R048 | Taksande 2017 | INCLUDE REPORT / OVERLAP PENDING | Same-centre update; 4,926 newborns; possible cumulative extension of R055. Do not pool independently until dates resolved. |
+| R051 | Banait 2020 | EXCLUDE PRIMARY | Regional CCHD registry/era comparison; cannot identify extractable CCHD-negative failed-screen denominator/outcomes. |
+| R056 | de-Wahl Granelli 2005 | EXCLUDE PRIMARY | Case-control/method-development sample assembled from normal newborns and referred CCHD cases; not screening cohort. |
+| R054 | Arvind 2022 | COMPANION / NO INDEPENDENT COHORT | Reanalysis of same 19,009-newborn cohort reported by Saxena 2015; retain companion information but no independent denominator. |
+| R050 | Dilli 2019 | MAYBE | 4,888 multicentre newborns; 42 positives, 6 CCHD; clinical breakdown of 36 CCHD-negative positives still pending full-text tables. |
+
+## Current nominal ledger status
+This is a report-level working count, not yet a count of unique quantitative cohorts.
+- INCLUDE or INCLUDE-with-flag reports: 41
+- EXCLUDE PRIMARY reports: 6
+- EXCLUDE PRIMARY / RETAIN NICU reports: 3
+- MAYBE reports: 3
+- CONDITIONAL / SUPPORTING reports: 1
+- COMPANION / NO INDEPENDENT COHORT reports: 1
+- Total nominal reports represented in ledger: 55
+
+These counts intentionally do not add the historical anonymous checkpoint of 18; all totals must be derived only from named rows in this ledger.
 
 ## Cohort-overlap register
 - Birmingham: Singh 2014 and Henderson 2022 have partial temporal overlap (approximately Apr-Jul 2013); retain both reports but resolve unique cohort contribution before pooling.
 - PulseOx: Ewer 2011 and Ewer 2012 are companion reports of the same cohort; primary quantitative contribution should come from the best report while companion data may supplement extraction.
 - Meberg: 2008 and 2009 reports require companion/overlap adjudication.
 - Saxena/Arvind: Arvind 2022 explicitly re-analyses the 19,009-newborn Saxena 2015 cohort; do not count as independent cohorts.
-- Taksande: 2013 (n=2,110) and 2017 (n=4,926) originate from the same centre with near-identical methods; 2017 is titled an “update work”. Treat as potential cumulative extension until study dates prove independence.
+- Taksande: 2013 (n=2,110) and 2017 (n=4,926) originate from the same centre with near-identical methods; 2017 is an “update work”. Treat as potential cumulative extension until study dates prove independence.
 
 ## Next reconciliation tasks
 1. Assign canonical corpus IDs to every dash-ID row above.
 2. Recover the nominal identities of the historical 18-study checkpoint and deduplicate against this ledger.
-3. Complete remaining `maybe` full-text adjudication.
+3. Complete remaining `maybe` full-text adjudication, prioritising decisions that reduce the unresolved pool.
 4. Resolve all overlap clusters before any pooled denominator/numerator is produced.
 5. Convert this markdown ledger to a structured extraction table once Phase 4 nominal reconciliation reaches saturation.
