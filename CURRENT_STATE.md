@@ -6,49 +6,41 @@
 
 Last updated: **2026-08-22**  
 Current scientific branch: **`phase6-analysis`**  
-Current safe-resume snapshot: **`docs/PHASE6_PROGRESS_SNAPSHOT_2026-08-22_DATABASE_READY.md`**  
-Snapshot creation commit: **`fab26aa6261de33d5cc5862f432bef564d5d4999`**  
-Current phase status: **PHASE 6 — DATABASE FROZEN / READY FOR META-ANALYSIS**
+Current safe-resume snapshot: **`docs/PHASE6_PROGRESS_SNAPSHOT_2026-08-22_META_CORE_COMPLETE.md`**  
+Snapshot creation commit: **`b8aebdf79afc261f454b354612607183e29e5934`**  
+Current phase status: **PHASE 6 — CORE META-ANALYSIS COMPLETE / SECONDARY & REPORTING QA NEXT**
 
 ## Mandatory new-chat procedure
 
 1. Do **not** infer the scientific state from old files on `main`.
 2. Switch to/read branch `phase6-analysis`.
 3. Read its `CURRENT_STATE.md` first.
-4. Then read `docs/PHASE6_PROGRESS_SNAPSHOT_2026-08-22_DATABASE_READY.md` and `docs/PHASE6_DATABASE_FREEZE_2026-08-22.md`.
-5. Follow `docs/PHASE6_STATISTICAL_ANALYSIS_PLAN_LOCK.md` when quantitative synthesis begins.
+4. Then read `docs/PHASE6_PROGRESS_SNAPSHOT_2026-08-22_META_CORE_COMPLETE.md` and `docs/PHASE6_META_ANALYSIS_AUDIT_2026-08-22.md`.
+5. Continue only from the frozen restart-native database and authoritative Phase 6 outputs.
 
-## Current frozen state
+## Current state
 
-Phase 5 remains frozen at:
+Phase 5 remains frozen at **76 units = 28 PRIMARY_POOLABLE / 40 SENSITIVITY_ONLY / 3 HOLD_PENDING_QA / 5 NOT_POOLABLE**.
 
-- **76** quantitative units;
-- PRIMARY_POOLABLE: **28**;
-- SENSITIVITY_ONLY: **40**;
-- HOLD_PENDING_QA: **3**;
-- NOT_POOLABLE: **5**.
+The Phase 6 database-readiness gate passed before pooling and the database remains frozen.
 
-The Phase 6 database-readiness gate has **PASSED**.
+The authoritative core meta-analysis has now been run under the prospectively locked GLMM:
 
-Canonical inputs on `phase6-analysis`:
+- **Strict CAN-CCHD:** median-study 17.0% (95% CI 3.1%-46.8%), marginal mean 33.8%, tau 3.369;
+- **Expanded CAN-CCHD:** median-study 69.4% (95% CI 57.7%-81.4%), marginal mean 65.8%, tau 1.110.
 
-- `data/phase6/PHASE6_PRIMARY_ANALYSIS_INPUT_v1.0.csv` — frozen primary database, **28 unique units**;
-- `data/phase6/PHASE6_PREAMENDMENT_TGA_SENSITIVITY_INPUT.csv` — corrected historical pre-amendment sensitivity database, **26 units**, sensitivity-only;
-- `docs/PHASE6_PRIMARY_DATABASE_QA.md`;
-- `docs/PHASE6_PREAMENDMENT_SENSITIVITY_QA.md`;
-- `docs/PHASE6_DATABASE_FREEZE_2026-08-22.md`;
-- `docs/PHASE6_STATISTICAL_ANALYSIS_PLAN_LOCK.md`.
-
-No authoritative meta-analysis has yet been run.
+Core S1-S6 robustness analyses are complete and do not reverse the interpretation.
 
 ## Exact next movement
 
-> Begin Phase 6 quantitative synthesis from the frozen restart-native inputs under the prospectively locked statistical analysis plan. Do not edit the frozen database silently during analysis; any new scientific correction requires a formal database amendment first.
+> Finish the Phase 6 subgroup/heterogeneity-feasibility audit, etiologic secondary analyses, exploratory small-study assessment if interpretable, and manuscript-ready reporting outputs. Then close Phase 6 and proceed to the SHA abstract/manuscript phase.
+
+No frozen database value may be edited silently during analysis; any genuine scientific correction requires an explicit dated database amendment before rerunning results.
 
 ## Critical legacy warning
 
-The old Browser Agent/app/database artifacts are historical only and must not be used to recover or resolve scientific review data, denominators, numerators, diagnoses, eligibility, target mappings, missingness, overlap, PRISMA counts, or analysis weights.
+The old Browser Agent/app/database artifacts are historical only and must not be used to recover or resolve current scientific values or analysis weights.
 
 ## One-line handoff
 
-**Switch to `phase6-analysis`, read its database-ready `CURRENT_STATE.md` and safe-resume snapshot, and run the locked Phase 6 analysis only from the frozen 28-unit primary database and the audited sensitivity inputs.**
+**Switch to `phase6-analysis`. The database is frozen and the core Strict/Expanded meta-analysis plus S1-S6 sensitivities are complete. Finish secondary/subgroup/reporting analyses, close Phase 6, then draft the SHA abstract and manuscript.**
