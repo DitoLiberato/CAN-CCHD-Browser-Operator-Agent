@@ -1,0 +1,9 @@
+analysis,endpoint,k,estimate,ci_low,ci_high,tau,notes
+beta_binomial,strict,28,0.3353309372266818,,,,Marginal mean under beta mixing distribution
+conventional_two_stage,strict,28,0.29885190946924356,0.16769601709720158,0.47414879847858954,1.4389609271675021,REML/HK; I2=85.85%
+beta_binomial,expanded,28,0.6628840878303569,,,,Marginal mean under beta mixing distribution
+conventional_two_stage,expanded,28,0.60393734626725,0.5106482521360147,0.6902303963366366,0.6767836365083341,REML/HK; I2=73.48%
+R125_report_cluster_aggregated,strict,27,0.17186011822184283,0.038027530318135216,0.4379281241564678,3.037308168499971,Barranquilla+Rosario replaced by one 39-denominator report-cluster row
+R125_report_cluster_aggregated,expanded,27,0.6896476721830097,0.5722777916844498,0.809994188718493,1.1044164067830453,Barranquilla+Rosario replaced by one 39-denominator report-cluster row
+historical_preamendment_prererun,strict,26,0.1839972234352922,0.018651615042493228,0.5950831723337613,4.026049921204362,Corrected 26-unit historical Snapshot R/S framework; not a pure one-variable d-TGA causal contrast
+historical_preamendment_prererun,expanded,26,0.6972930399158708,0.5601474440941083,0.8371413649362444,1.2293176687880585,Corrected 26-unit historical Snapshot R/S framework; not a pure one-variable d-TGA causal contrast
