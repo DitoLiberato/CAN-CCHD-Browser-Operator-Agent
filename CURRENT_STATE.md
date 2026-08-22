@@ -2,51 +2,47 @@
 
 > **MANDATORY ENTRY POINT FOR NEW CHATS, AGENTS, AND REPOSITORY REVIEWS**
 >
-> The repository default branch is **not** the authoritative location of the current scientific extraction state.
->
-> Before interpreting any Phase file, CSV, snapshot, database, or historical note, read this file and then move to the current scientific branch named below.
+> The default branch is **not** the authoritative location of the current scientific work.
 
 Last updated: **2026-08-22**  
-Current scientific branch: **`phase5-extraction`**  
-Current safe-resume snapshot: **Snapshot T**  
-Snapshot T commit: **`9293bd461998c74f883289b0661bb5f91d53f297`**  
-Current phase status: **PHASE 5 FROZEN / READY FOR QUANTITATIVE SYNTHESIS**
+Current scientific branch: **`phase6-analysis`**  
+Current safe-resume handoff: **`docs/HANDOFF_PHASE6_DATABASE_READY_FOR_META_2026-08-22.md`**  
+Handoff commit: **`dbb43f7478cc3492f50d99885a7066ab0f00390f`**  
+Current phase status: **PHASE 6 — DATABASE READINESS / QA BEFORE META-ANALYSIS**
 
 ## Mandatory new-chat procedure
 
-1. Do **not** infer current scientific state from `main`.
-2. Read the `phase5-extraction` branch.
-3. On that branch, read `CURRENT_STATE.md` first.
-4. Then read `docs/PHASE5_PROGRESS_SNAPSHOT_2026-08-22_T.md`.
-5. Follow the artifact-precedence rules in the branch-level `CURRENT_STATE.md` before using older extraction blocks or snapshots.
+1. Do **not** infer the current scientific state from `main`.
+2. Switch to/read branch `phase6-analysis`.
+3. Read its `CURRENT_STATE.md` first.
+4. Then read `docs/HANDOFF_PHASE6_DATABASE_READY_FOR_META_2026-08-22.md`.
+5. Complete the database-readiness gate before running or interpreting the authoritative meta-analysis.
 
-## Current frozen state
+## Current frozen background
 
-- frozen quantitative units: **76**;
+Phase 5 is frozen at:
+
+- **76** quantitative units;
 - PRIMARY_POOLABLE: **28**;
 - SENSITIVITY_ONLY: **40**;
 - HOLD_PENDING_QA: **3**;
 - NOT_POOLABLE: **5**.
 
-Phase 5 has completed:
+Phase 6 already contains:
 
-- 76/76 structural extraction;
-- 76/76 d-TGA/TGA/ccTGA rerun;
-- 76/76 conditional-lesion <=28-day audit;
-- final hold-resolution attempt;
-- post-rerun numerical overlay;
-- final pool freeze.
+- `data/phase6/PHASE6_PRIMARY_ANALYSIS_INPUT_v1.0.csv` — 28-row candidate primary dataset;
+- `docs/PHASE6_STATISTICAL_ANALYSIS_PLAN_LOCK.md` — prospectively locked statistical plan;
+- `data/phase6/PHASE6_PREAMENDMENT_TGA_SENSITIVITY_INPUT.csv` — historical TGA-mapping sensitivity input;
+- `docs/HANDOFF_PHASE6_DATABASE_READY_FOR_META_2026-08-22.md` — exact task for the next chat.
 
-**No post-freeze meta-analysis has yet been run.**
+## Exact next movement
 
-Exact next movement:
-
-> Construct and QA the canonical 28-row PRIMARY_POOLABLE analysis-input dataset, using the post-rerun numeric overlay for changed units, then begin the prespecified quantitative synthesis.
+> Audit, reconcile, document, and freeze the restart-native Phase-6 analysis database. Only after the database-readiness gate passes should the locked meta-analysis be executed.
 
 ## Critical legacy warning
 
-The old Browser Agent/app/database artifacts in this repository are historical only. They must not be used to recover missing review evidence, denominators, numerators, diagnoses, eligibility, target mappings, overlap, PRISMA counts, or analysis weights.
+The old Browser Agent/app/database artifacts are historical only and must not be used to recover or resolve scientific review data, denominators, numerators, diagnoses, eligibility, target mappings, missingness, overlap, PRISMA counts, or analysis weights.
 
 ## One-line handoff
 
-**Switch to `phase5-extraction` and read its `CURRENT_STATE.md`; Snapshot T (`9293bd4`) is the current safe-resume point.**
+**Switch to `phase6-analysis`, read its `CURRENT_STATE.md` and `docs/HANDOFF_PHASE6_DATABASE_READY_FOR_META_2026-08-22.md`, and finish the database QA/freeze before meta-analysis.**
