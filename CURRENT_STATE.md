@@ -1,58 +1,69 @@
 # CAN-CCHD — CURRENT STATE / START HERE
 
-> **MANDATORY ENTRY POINT FOR NEW CHATS, AGENTS, AND REPOSITORY REVIEWS**
+> **MANDATORY ROUTER FOR NEW CHATS**
 >
-> The default branch is **not** the authoritative location of the current scientific/writing work.
+> `main` is not the authoritative writing branch.
 
 Last updated: **2026-08-22**  
-Current working branch: **`phase11-writing`**  
-Frozen analysis branch: **`phase6-analysis`**  
-Current safe-resume snapshot: **`docs/PHASE11_PROGRESS_SNAPSHOT_2026-08-22_SHA_DRAFT_STARTED.md`**  
-Snapshot creation commit: **`fd15b2ad273d71758400d52e58d57a6b10775b80`**  
-Current phase status: **PHASE 11 — SHA ABSTRACT DRAFTING STARTED / PHASE 6 FROZEN**
+Writing hub: **`phase11-writing`**  
+Frozen analysis: **`phase6-analysis`**  
+Current status: **PHASE 11 — ABSTRACT AND MANUSCRIPT MOVED TO DEDICATED STREAMS**
 
-## Mandatory new-chat procedure
+## Route by task
 
-1. Do **not** infer the current scientific state from historical files on `main`.
-2. Switch to/read branch `phase11-writing`.
-3. Read its `CURRENT_STATE.md` first.
-4. Then read:
-   - `docs/PHASE11_PROGRESS_SNAPSHOT_2026-08-22_SHA_DRAFT_STARTED.md`
-   - `docs/PHASE11_SHA_ABSTRACT_DRAFT_v0.1.md`
-   - `docs/PHASE6_PROGRESS_SNAPSHOT_2026-08-22_ANALYSIS_COMPLETE.md`
-   - `docs/PHASE6_ANALYSIS_CLOSEOUT_2026-08-22.md`
-   - `docs/PHASE6_MANUSCRIPT_READY_RESULTS_PACKAGE.md`
-5. Continue writing only from the frozen restart-native Phase 6 outputs.
+### If working on the SHA abstract
 
-## Current state
+Switch to branch:
 
-Phase 6 is analysis-complete and frozen on `phase6-analysis` at commit `310487b2c2795bcb070ed1b4c138f394e16cab52`.
+`phase11-sha-abstract`
 
-Primary analysis:
+Read first:
 
-- 28 units;
-- 1,999 harmonized-CCHD-negative final failed screens;
+`docs/PHASE11_HANDOFF_SHA_ABSTRACT_CHAT.md`
+
+Then follow that branch's `CURRENT_STATE.md`.
+
+### If working on the full article/manuscript
+
+Switch to branch:
+
+`phase11-manuscript`
+
+Read first:
+
+`docs/PHASE11_HANDOFF_MANUSCRIPT_CHAT.md`
+
+Then follow that branch's `CURRENT_STATE.md`.
+
+### If reviewing the overall writing architecture/handoff
+
+Use hub branch:
+
+`phase11-writing`
+
+Read:
+
+- `CURRENT_STATE.md`
+- `docs/PHASE11_PROGRESS_SNAPSHOT_2026-08-22_WRITING_SPLIT.md`
+- `docs/PHASE11_WRITING_SPLIT_HANDOFF_2026-08-22.md`
+
+## Frozen scientific state
+
+Phase 6 remains analysis-complete and frozen on `phase6-analysis`.
+
+Primary analysis anchors:
+
+- 28 independent PRIMARY_POOLABLE units;
+- denominator 1,999;
 - Strict median-study 17.0% (95% CI 3.1%-46.8%), marginal mean 33.8%, tau 3.369;
-- Expanded median-study 69.4% (95% CI 57.7%-81.4%), marginal mean 65.8%, tau 1.110.
+- Expanded median-study 69.4% (57.7%-81.4%), marginal mean 65.8%, tau 1.110.
 
-Core sensitivity, etiologic outcomes, subgroup feasibility, reporting-bias decision, reporting QA, tables and figure captions are complete.
-
-Phase 11 has begun with:
-
-`docs/PHASE11_SHA_ABSTRACT_DRAFT_v0.1.md`
-
-The current draft is labelled `draft_requires_human_review` and is within the currently published SHA37 300-word abstract limit.
-
-## Exact next movement
-
-> Review/refine the SHA abstract v0.1 into v0.2, then lock the submission draft before proceeding to manuscript Results and Methods.
-
-No frozen database value may be edited silently during writing. Any genuine scientific correction requires an explicit dated Phase 6 database amendment and controlled rerun.
+No writing branch may silently change a scientific value. Any genuine scientific correction requires an explicit Phase 6 amendment and controlled rerun.
 
 ## Critical legacy warning
 
-The old Browser Agent/app/database artifacts are historical only and must not be used to recover or alter current scientific values or analysis weights.
+Legacy Browser Agent/app/database artifacts are historical only and must never be used to alter current scientific values or analysis weights.
 
 ## One-line handoff
 
-**Switch to `phase11-writing`. Phase 6 is frozen and complete; SHA abstract drafting has started and v0.1 is ready for scientific refinement.**
+**For the SHA abstract use `phase11-sha-abstract`; for the full paper use `phase11-manuscript`. Both are anchored to the same frozen Phase 6 analysis, with `phase11-writing` retained only as the common writing hub.**
