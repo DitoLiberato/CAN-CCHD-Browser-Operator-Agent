@@ -43,7 +43,6 @@ Primary source: Abu Lehyah NAA et al. *Prospective Evaluation of Pulse Oximetry 
 
 The echocardiographic table reconciles all 752 final failures:
 
-- normal echo / no ultimate diagnosis pathway accounting = source complement after cardiac/noncardiac diagnoses;
 - PPHN 102;
 - HLHS 23;
 - TOF 18;
@@ -58,7 +57,8 @@ The echocardiographic table reconciles all 752 final failures:
 - cardiac mass 2;
 - tricuspid atresia 2;
 - restrictive cardiomyopathy 1;
-- subvalvular aortic stenosis 1.
+- subvalvular aortic stenosis 1;
+- remaining source accounting permits exact reconstruction of the no-ultimate-diagnosis group.
 
 The article additionally identifies a unique group of 247 babies with PPHN, neonatal sepsis or congenital pneumonia requiring increased monitoring or treatment:
 
@@ -234,29 +234,31 @@ Among the authors' 11 CCHD false positives:
 
 - PDA 1;
 - respiratory problems 10, including TTN/RDS/PPHN;
-- 8/11 required further management including oxygen/ventilatory support.
+- **8/11 required further management including oxygen/ventilatory support**.
 
-Coding:
+The actionable count is exact:
 
-- `CAN-AB = 8` — exact actionable infant count with specific management consequence, although diagnosis-specific A/B subclassification is not fully separable;
-- `CAN-U = 2` — two respiratory diagnoses without qualifying management evidence among the nonmanaged remainder;
-- `NON_CAN = 1` — PDA without documented consequence.
+- `CAN-AB = 8`;
+- Strict = **8/13** after adding the two source-CCHD cases that re-enter the harmonized denominator.
 
-The two source-CCHD cases that re-enter the harmonized denominator are clinically relevant but lack qualifying participant-level actionability evidence:
+However, the article does **not** report whether the single PDA was one of those eight managed babies. Therefore the management-to-diagnosis linkage cannot be imputed.
 
-- additional `CAN-U = 2`.
+Two admissible scenarios remain:
 
-Final:
+1. **PDA not among the managed eight**: two residual respiratory diagnoses are `CAN-U`, PDA is `NON_CAN`, and the two re-entered cardiac diagnoses are `CAN-U` -> total CAN-U=4, NON_CAN=1, Expanded=**12/13**.
+2. **PDA among the managed eight**: the three residual diagnoses are respiratory `CAN-U`, and the two re-entered cardiac diagnoses are `CAN-U` -> total CAN-U=5, NON_CAN=0, Expanded=**13/13**.
 
-- Strict = **8/13**;
-- CAN-U = 4;
-- Expanded = **12/13**;
-- NON_CAN = 1;
-- ascertainment = 100%.
+Thus:
+
+- Strict = **8/13 exact**;
+- Expanded = **12–13/13 bounded**;
+- ascertainment = **100%**.
+
+This correction is important: the study supplies an exact actionable infant count but does not justify assigning the PDA to the managed or nonmanaged subset.
 
 ### Decision
 
-**SENSITIVITY_ONLY / QA_COMPLETE_SENSITIVITY_ONLY** because the cohort mixes well-baby and higher-acuity/NICU populations without separable outcomes. The unit remains valuable for mixed-setting and program-cluster sensitivity analyses.
+**SENSITIVITY_ONLY / QA_COMPLETE_SENSITIVITY_ONLY** because the cohort mixes well-baby and higher-acuity/NICU populations without separable outcomes. The bounded Expanded estimate is retained for sensitivity; no primary point weight is created.
 
 ---
 
@@ -317,7 +319,7 @@ R088 remains companion-only and must never add an independent weight.
 |---|---|---:|---:|---:|---|
 | U_R031 Jordan | PRIMARY_POOLABLE | 712 | 247 | 345 | complete table-level reconstruction, 100% ascertainment |
 | U_R032 Tanzania | SENSITIVITY_ONLY | not point-identifiable | study-defined 26/34 | at least 26/34 | source-CCHD lesions unavailable + 2 pre-echo deaths |
-| U_R077 Taipei pilot | SENSITIVITY_ONLY | 13 | 8 | 12 | mixed well-baby/NICU population |
+| U_R077 Taipei pilot | SENSITIVITY_ONLY | 13 | 8 | 12–13 | mixed well-baby/NICU population; Expanded bounded because PDA-management linkage is unknown |
 | U_R087 Minnesota | SENSITIVITY_ONLY | 6 | 0 | 4 | 66.7% ascertainment + implementation errors |
 
 ### Block-level poolability effect
@@ -333,6 +335,7 @@ R088 remains companion-only and must never add an independent weight.
 3. Final-fail infants who die before diagnostic evaluation remain in the flow and cannot be silently excluded.
 4. An exact actionable count inside a source-defined CCHD-negative subset is valid for sensitivity but does not repair an unidentified harmonized denominator.
 5. Mixed NICU/well-baby setting can independently exclude a fully classified unit from the principal pool.
-6. Historical implementation errors are preserved as design heterogeneity; Phase 5 does not retroactively substitute an ideal algorithm.
+6. Exact management counts must not be assigned to diagnostic subgroups when the source does not identify the linkage.
+7. Historical implementation errors are preserved as design heterogeneity; Phase 5 does not retroactively substitute an ideal algorithm.
 
 Block 09 is QA-closed.
