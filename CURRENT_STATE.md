@@ -2,13 +2,13 @@
 
 > **MANDATORY ENTRY POINT FOR NEW CHATS, AGENTS, AND REPOSITORY REVIEWS**
 >
-> Before interpreting any Phase file, CSV, snapshot, extraction block, database, or historical note, **read this file first**.
+> Before interpreting any Phase file, CSV, snapshot, extraction block, database, result file, or historical note, **read this file first**.
 
 Last updated: **2026-08-22**  
 Current scientific branch: **`phase6-analysis`**  
-Current safe-resume snapshot: **`docs/PHASE6_PROGRESS_SNAPSHOT_2026-08-22_DATABASE_READY.md`**  
-Snapshot creation commit: **`fab26aa6261de33d5cc5862f432bef564d5d4999`**  
-Current phase status: **PHASE 6 — DATABASE FROZEN / READY FOR META-ANALYSIS**
+Current safe-resume snapshot: **`docs/PHASE6_PROGRESS_SNAPSHOT_2026-08-22_META_CORE_COMPLETE.md`**  
+Snapshot creation commit: **`b8aebdf79afc261f454b354612607183e29e5934`**  
+Current phase status: **PHASE 6 — CORE META-ANALYSIS COMPLETE / SECONDARY & REPORTING QA NEXT**
 
 ---
 
@@ -17,43 +17,29 @@ Current phase status: **PHASE 6 — DATABASE FROZEN / READY FOR META-ANALYSIS**
 Read, in order:
 
 1. `CURRENT_STATE.md`
-2. `docs/PHASE6_PROGRESS_SNAPSHOT_2026-08-22_DATABASE_READY.md`
-3. `docs/PHASE6_DATABASE_FREEZE_2026-08-22.md`
-4. `docs/PHASE6_PRIMARY_DATABASE_QA.md`
-5. `docs/PHASE6_PREAMENDMENT_SENSITIVITY_QA.md`
+2. `docs/PHASE6_PROGRESS_SNAPSHOT_2026-08-22_META_CORE_COMPLETE.md`
+3. `docs/PHASE6_META_ANALYSIS_AUDIT_2026-08-22.md`
+4. `analysis/phase6/results/phase6_primary_results.json`
+5. `analysis/phase6/results/phase6_sensitivity_results.csv`
 6. `docs/PHASE6_STATISTICAL_ANALYSIS_PLAN_LOCK.md`
-7. `data/phase6/PHASE6_PRIMARY_ANALYSIS_INPUT_v1.0.csv`
-8. `data/phase6/PHASE6_PREAMENDMENT_TGA_SENSITIVITY_INPUT.csv`
-9. `docs/PHASE5_FINAL_ANALYSIS_POOL_FREEZE.md`
-10. `docs/PHASE45_OVERLAP_AND_NONINDEPENDENCE_RESOLUTION.md`
+7. `docs/PHASE6_DATABASE_FREEZE_2026-08-22.md`
+8. `data/phase6/PHASE6_PRIMARY_ANALYSIS_INPUT_v1.0.csv`
+9. `data/phase6/PHASE6_PREAMENDMENT_TGA_SENSITIVITY_INPUT.csv`
+10. `docs/PHASE5_FINAL_ANALYSIS_POOL_FREEZE.md`
 
-The database-readiness gate has passed. The next chat may execute the locked meta-analysis from these frozen inputs.
-
-No authoritative meta-analysis has yet been run.
+The database-readiness gate passed before any authoritative result was calculated. The core authoritative meta-analysis has now been executed from the frozen inputs.
 
 ---
 
-## 2. Database-readiness result
+## 2. Frozen database state
 
-The Phase 6 database-readiness gates A-H are formally closed.
+Unchanged after viewing results:
 
-Overall result: **PASS**.
-
-Formal freeze artifact:
-
-`docs/PHASE6_DATABASE_FREEZE_2026-08-22.md`
-
-Primary QA:
-
-`docs/PHASE6_PRIMARY_DATABASE_QA.md`
-
-Sensitivity QA:
-
-`docs/PHASE6_PREAMENDMENT_SENSITIVITY_QA.md`
-
----
-
-## 3. Frozen primary database
+- total quantitative units: **76**;
+- `PRIMARY_POOLABLE`: **28**;
+- `SENSITIVITY_ONLY`: **40**;
+- `HOLD_PENDING_QA`: **3**;
+- `NOT_POOLABLE`: **5**.
 
 Canonical primary input:
 
@@ -63,134 +49,143 @@ Frozen blob SHA:
 
 `1dff5eb2475ab588de2a0a76d53d2176f0d3cd35`
 
-State:
+Primary analysis totals:
 
-- rows: **28**;
-- unique units: **28**;
-- duplicates: **0**;
-- exact match to final `PRIMARY_POOLABLE` membership;
-- all integer arithmetic closed;
-- all row proportions independently reproduced;
-- 11 post-rerun overlay rows verified;
-- 17 unchanged rows verified against frozen extraction provenance;
-- all primary units satisfy the required outcome-ascertainment threshold;
-- ontology, terminal-state, cluster, and descriptive metadata gates passed.
+- 28 unique units;
+- 1,999 harmonized-CCHD-negative final failed screens;
+- 638 Strict CAN-CCHD outcomes;
+- 1,015 Expanded CAN-CCHD outcomes.
 
-No primary value changed during Phase 6 QA, so no `v1.1` primary file was created. **v1.0 is the frozen canonical primary input.**
+No scientific database field was changed after meta-analysis results were inspected.
 
 ---
 
-## 4. Frozen historical pre-amendment sensitivity database
+## 3. Authoritative core meta-analysis
 
-Canonical S2 input:
+Binding model remains the prospectively locked one-stage random-effects binomial-logistic-normal GLMM with exact binomial likelihood and no continuity correction.
 
-`data/phase6/PHASE6_PREAMENDMENT_TGA_SENSITIVITY_INPUT.csv`
+### Strict CAN-CCHD — primary endpoint
 
-Frozen corrected blob SHA:
+- median-study pooled probability: **17.0%**;
+- 95% profile-likelihood CI: **3.1% to 46.8%**;
+- marginal mean probability: **33.8%**;
+- tau: **3.369**;
+- 95% prediction interval: approximately **0.03% to 99.34%**.
 
-`61e8ff9f3bb875fbc30f3964ee2e72a448cc94f2`
+Interpretation: **extreme between-study heterogeneity**. The 17.0% median-study probability must not be reported as a universal rate or without the marginal mean, tau, and prediction interval.
 
-Rows: **26**.
+### Expanded CAN-CCHD — secondary endpoint
 
-The original 23-row candidate was rejected during Gate H because it was a hybrid of post-rerun values and a pre-amendment label.
+- median-study pooled probability: **69.4%**;
+- 95% profile-likelihood CI: **57.7% to 81.4%**;
+- marginal mean probability: **65.8%**;
+- tau: **1.110**;
+- 95% prediction interval: **20.4% to 95.2%**.
 
-The corrected file reconstructs the preserved Snapshot R/S pre-rerun `PRIMARY_POOLABLE = 26` framework and is **sensitivity-only**.
+Interpretation: clinically relevant alternative diagnoses are common among harmonized-CCHD-negative final failed screens, although heterogeneity remains substantial.
 
-Membership difference versus the final 28-unit primary database:
+Canonical interpretation/audit:
 
-- current-only after rerun/promotions: U_R006, U_R008, U_R013, U_R023, U_R036;
-- historical-only before later downgrades: U_R020, U_R024, U_R043.
-
-Interpret this S2 as a **historical pre-amendment/pre-rerun framework sensitivity**, not as a pure one-variable causal contrast of the d-TGA ontology change.
-
----
-
-## 5. Frozen Phase 5 scientific disposition
-
-Unchanged by Phase 6 readiness QA:
-
-- total unique quantitative units: **76**;
-- `PRIMARY_POOLABLE`: **28**;
-- `SENSITIVITY_ONLY`: **40**;
-- `HOLD_PENDING_QA`: **3**;
-- `NOT_POOLABLE`: **5**.
-
-The canonical Phase 5 closeout remains:
-
-- `docs/PHASE5_PROGRESS_SNAPSHOT_2026-08-22_T.md`
-- `docs/PHASE5_FINAL_ANALYSIS_POOL_FREEZE.md`
-
-HOLD and NOT_POOLABLE units remain quarantined from primary meta-analysis weights.
+`docs/PHASE6_META_ANALYSIS_AUDIT_2026-08-22.md`
 
 ---
 
-## 6. Binding numerical precedence after freeze
+## 4. Core robustness complete
 
-For the primary analysis:
+The prespecified core S1-S6 framework has been run:
 
-1. `data/phase6/PHASE6_PRIMARY_ANALYSIS_INPUT_v1.0.csv` — **frozen canonical input**;
-2. Phase 6 QA/freeze artifacts for audit;
-3. `data/phase5/PHASE5_POST_RERUN_NUMERIC_OVERLAY_v0.1.csv` for provenance of affected rows;
-4. target-rerun audits and binding ontology documents;
-5. latest frozen Phase 5 extraction blocks for provenance of unchanged rows.
+- S1 Expanded endpoint;
+- S2 corrected historical pre-amendment/pre-rerun 26-unit framework;
+- S3 R125/SIBEN report-cluster aggregation;
+- S4 leave-one-out influence analysis;
+- S5 beta-binomial sensitivity;
+- S6 conventional two-stage REML/Hartung-Knapp comparison.
 
-Do not restore stale block values over the frozen primary file.
+None reverses the core interpretation.
 
-For the pre-amendment historical sensitivity, use only the corrected 26-row Phase 6 S2 input and its QA note.
+Key checks:
 
----
+- historical S2: Strict 18.4%, Expanded 69.7%;
+- R125 aggregation: Strict 17.2%, Expanded 69.0%;
+- Strict leave-one-out pooled range: 14.8%-21.1%;
+- Expanded leave-one-out range: 65.3%-70.9%;
+- beta-binomial marginal means: Strict 33.5%, Expanded 66.3%.
 
-## 7. Locked analysis boundary
-
-Primary endpoint:
-
-`Strict CAN-CCHD / harmonized-CCHD-negative final failed screens`
-
-Secondary endpoint:
-
-`Expanded CAN-CCHD / harmonized-CCHD-negative final failed screens`
-
-Primary model:
-
-one-stage random-effects binomial-logistic-normal GLMM using exact binomial likelihood and no continuity correction.
-
-Binding method document:
-
-`docs/PHASE6_STATISTICAL_ANALYSIS_PLAN_LOCK.md`
-
-The statistical plan was locked before pooled results. No result-driven change is permitted without a dated explicit statistical amendment preserving the locked analysis.
+The historical S2 is a pre-amendment/pre-rerun framework sensitivity, not a pure causal one-variable d-TGA contrast.
 
 ---
 
-## 8. Exact next movement
+## 5. Reproducibility outputs
 
-The next chat may now begin quantitative synthesis, but must start from the frozen Phase 6 integers.
+Authoritative implementation and outputs:
 
-Recommended sequence:
+- `analysis/phase6/run_phase6_meta.py`
+- `analysis/phase6/results/phase6_primary_results.json`
+- `analysis/phase6/results/phase6_study_results.csv`
+- `analysis/phase6/results/phase6_sensitivity_results.csv`
+- `analysis/phase6/results/phase6_leave_one_out.csv`
+- `analysis/phase6/figures/forest_strict.svg`
+- `analysis/phase6/figures/forest_expanded.svg`
 
-1. implement/review the reproducible Phase 6 analysis script;
-2. validate the locked model implementation;
-3. run the Strict primary GLMM;
-4. run Expanded and all prespecified sensitivities, including corrected historical S2 and R125 cluster aggregation;
-5. write machine-readable results and figures;
-6. create a Phase 6 analysis audit/interpretation artifact before manuscript drafting.
-
-No database editing should be mixed silently into analysis. Any new scientific correction requires a formal `PHASE6_DATABASE_AMENDMENT` before rerunning results.
+The GLMM solution was validated across adaptive quadrature orders 21/31/41/61, multiple starting values, positive-definite Hessian checks, and profile-likelihood confidence intervals.
 
 ---
 
-## 9. Critical legacy firewall
+## 6. Exact next movement — remaining Phase 6
+
+The core meta-analysis is complete, but Phase 6 is not closed yet.
+
+Next tasks:
+
+1. **Subgroup/meta-regression feasibility audit** — timing, setting, altitude; do not force unstable inferential models.
+2. **Descriptive heterogeneity summaries** — especially predominantly <24 h vs >=24 h vs mixed/uncertain screening timing.
+3. **Etiologic secondary outcomes** where participant-level numerators are reproducible from frozen extraction: PPHN/pulmonary hypertension, respiratory disease, infection/sepsis, noncritical CHD, and no actionable diagnosis.
+4. **Publication-bias/small-study assessment** only if technically interpretable; exploratory only.
+5. **Manuscript-ready tables and figure captions** plus a final Phase 6 results summary.
+6. **Final Phase 6 closeout/snapshot.**
+7. Then proceed to **Phase 11 — SHA abstract and manuscript drafting**.
+
+No database editing may be mixed silently into secondary analysis. Any genuine scientific correction requires an explicit dated `PHASE6_DATABASE_AMENDMENT` before rerunning results.
+
+---
+
+## 7. Overall review progress
+
+Completed:
+
+- protocol/restart methodological lock;
+- public/regional search and corpus construction;
+- normalization/deduplication/identity reconstruction;
+- title/abstract/full-text screening and terminal eligibility;
+- overlap/non-independence resolution;
+- structured extraction of all 76 units;
+- harmonized target and d-TGA rerun across all 76;
+- conditional-lesion <=28-day audit;
+- final pool freeze;
+- Phase 6 database-readiness gates A-H;
+- primary Strict GLMM;
+- Expanded GLMM;
+- core S1-S6 sensitivity framework;
+- study-level exact-binomial results and core forest plots.
+
+Pending before the scientific review is analysis-complete:
+
+- secondary/subgroup/etiologic analysis package;
+- final Phase 6 reporting QA and closeout;
+- manuscript/SHA abstract drafting and human review.
+
+---
+
+## 8. Critical legacy firewall
 
 The systematic review was rebuilt from scratch.
 
-The old Browser Agent, old application databases, `can_cchd.db`, `data/processed/can_cchd_agent.db`, and related legacy artifacts are **historical only**.
-
-They must not be used to resolve scientific values, including identity, eligibility, numerator, denominator, diagnosis, target mapping, actionability, missingness, overlap, PRISMA counts, or analysis weights.
+The old Browser Agent, old application databases, `can_cchd.db`, `data/processed/can_cchd_agent.db`, and related legacy artifacts remain **historical only** and must never be used to alter current scientific values or analysis weights.
 
 Use only restart-native frozen scientific artifacts.
 
 ---
 
-## 10. One-line handoff
+## 9. One-line handoff
 
-**DATABASE-READINESS GATE PASSED. The canonical primary database is frozen at 28 unique units in `PHASE6_PRIMARY_ANALYSIS_INPUT_v1.0.csv`; the corrected historical pre-amendment sensitivity database is frozen at 26 units; all A-H gates are closed; no authoritative meta-analysis has yet been run. Read the database-ready snapshot and locked SAP, then begin Phase 6 quantitative synthesis from the frozen restart-native inputs.**
+**DATABASE FROZEN; CORE META-ANALYSIS COMPLETE. Strict CAN-CCHD is extremely heterogeneous (median-study 17.0%, marginal mean 33.8%), while Expanded clinically relevant disease is common (median-study 69.4%, marginal mean 65.8%). S1-S6 robustness is complete and does not reverse the interpretation. Finish subgroup/etiologic/reporting analyses, close Phase 6, then move to the SHA abstract and manuscript.**
