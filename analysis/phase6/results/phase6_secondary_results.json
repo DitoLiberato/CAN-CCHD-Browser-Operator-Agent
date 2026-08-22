@@ -11,16 +11,38 @@
       "denominator": 1071,
       "crude_ratio_descriptive": 0.13818860877684408,
       "pooled_median_study_probability": 0.10290152060915064,
-      "ci95": [0.04722190409092947, 0.1627972248337659],
+      "ci95": [
+        0.04722190409080409,
+        0.16279722483377845
+      ],
       "marginal_mean_probability": 0.12501088470824434,
       "tau": 0.7904037577665496,
       "tau2": 0.6247381002914824,
-      "prediction_interval_probability": [0.023786001483388903, 0.35064577161706206],
+      "prediction_interval_probability": [
+        0.023786001483388903,
+        0.35064577161706206
+      ],
       "quadrature_validation": [
-        {"q": 21, "pooled_probability": 0.10290152060915064, "tau": 0.7904037769497915},
-        {"q": 31, "pooled_probability": 0.10290152025112057, "tau": 0.7904037547010122},
-        {"q": 41, "pooled_probability": 0.10290152060915064, "tau": 0.7904037577665496},
-        {"q": 61, "pooled_probability": 0.10290152060915064, "tau": 0.7904037577665496}
+        {
+          "q": 21,
+          "pooled_probability": 0.10290151894824885,
+          "tau": 0.7904037960682161
+        },
+        {
+          "q": 31,
+          "pooled_probability": 0.1029015183779923,
+          "tau": 0.790403743510608
+        },
+        {
+          "q": 41,
+          "pooled_probability": 0.10290152060915064,
+          "tau": 0.7904037577665496
+        },
+        {
+          "q": 61,
+          "pooled_probability": 0.10290152435695435,
+          "tau": 0.7904037736441388
+        }
       ]
     },
     "respiratory": {
@@ -29,16 +51,38 @@
       "denominator": 1063,
       "crude_ratio_descriptive": 0.11853245531514581,
       "pooled_median_study_probability": 0.0871412738604917,
-      "ci95": [0.016034449324331235, 0.23039413112686247],
+      "ci95": [
+        0.01603444932432636,
+        0.23039413112686524
+      ],
       "marginal_mean_probability": 0.20259984330307157,
       "tau": 2.219665028535503,
       "tau2": 4.926912838903514,
-      "prediction_interval_probability": [0.0012298973064340862, 0.880953740350894],
+      "prediction_interval_probability": [
+        0.0012298973064340862,
+        0.880953740350894
+      ],
       "quadrature_validation": [
-        {"q": 21, "pooled_probability": 0.08714085414869718, "tau": 2.2196972353612408},
-        {"q": 31, "pooled_probability": 0.08714129732929175, "tau": 2.2196608374129987},
-        {"q": 41, "pooled_probability": 0.0871412738604917, "tau": 2.219665028535503},
-        {"q": 61, "pooled_probability": 0.08714127765413725, "tau": 2.219665028535503}
+        {
+          "q": 21,
+          "pooled_probability": 0.0871384467577482,
+          "tau": 2.219705905241095
+        },
+        {
+          "q": 31,
+          "pooled_probability": 0.0871415385471764,
+          "tau": 2.219659705521422
+        },
+        {
+          "q": 41,
+          "pooled_probability": 0.0871412738604917,
+          "tau": 2.219665028535503
+        },
+        {
+          "q": 61,
+          "pooled_probability": 0.08714127312535662,
+          "tau": 2.2196650866472334
+        }
       ]
     },
     "infection": {
@@ -47,16 +91,38 @@
       "denominator": 1063,
       "crude_ratio_descriptive": 0.19943555973659455,
       "pooled_median_study_probability": 0.16712359381852454,
-      "ci95": [0.09437453581261909, 0.24222746316422364],
+      "ci95": [
+        0.09437453581261286,
+        0.24222746316425356
+      ],
       "marginal_mean_probability": 0.1890661628924009,
       "tau": 0.7200052666067355,
       "tau2": 0.5184075839414363,
-      "prediction_interval_probability": [0.04664765227997965, 0.45141842405889865],
+      "prediction_interval_probability": [
+        0.04664765227997965,
+        0.45141842405889865
+      ],
       "quadrature_validation": [
-        {"q": 21, "pooled_probability": 0.16712359381852454, "tau": 0.7200052671513846},
-        {"q": 31, "pooled_probability": 0.16712359485496261, "tau": 0.720005270180858},
-        {"q": 41, "pooled_probability": 0.16712359381852454, "tau": 0.7200052666067355},
-        {"q": 61, "pooled_probability": 0.16712359123171242, "tau": 0.7200052398451263}
+        {
+          "q": 21,
+          "pooled_probability": 0.1671235930110016,
+          "tau": 0.7200052345134217
+        },
+        {
+          "q": 31,
+          "pooled_probability": 0.1671235899905456,
+          "tau": 0.7200052821461991
+        },
+        {
+          "q": 41,
+          "pooled_probability": 0.16712359381852454,
+          "tau": 0.7200052666067355
+        },
+        {
+          "q": 61,
+          "pooled_probability": 0.16712358760206397,
+          "tau": 0.7200052701266964
+        }
       ]
     },
     "cardiac_non_target": {
@@ -65,16 +131,38 @@
       "denominator": 1952,
       "crude_ratio_descriptive": 0.14344262295081966,
       "pooled_median_study_probability": 0.26591834405734466,
-      "ci95": [0.14391156621535073, 0.4301352583247615],
+      "ci95": [
+        0.1439115662146531,
+        0.43013525832490396
+      ],
       "marginal_mean_probability": 0.3296199261083661,
       "tau": 1.5562235557277486,
       "tau2": 2.421831755401917,
-      "prediction_interval_probability": [0.0168629577563657, 0.8843993549468535],
+      "prediction_interval_probability": [
+        0.0168629577563657,
+        0.8843993549468535
+      ],
       "quadrature_validation": [
-        {"q": 21, "pooled_probability": 0.26591834405734466, "tau": 1.556223539626492},
-        {"q": 31, "pooled_probability": 0.26591834539151443, "tau": 1.5562235663640447},
-        {"q": 41, "pooled_probability": 0.26591834405734466, "tau": 1.5562235557277486},
-        {"q": 61, "pooled_probability": 0.26591834616476856, "tau": 1.5562236061302956}
+        {
+          "q": 21,
+          "pooled_probability": 0.26591835483267445,
+          "tau": 1.556223573437489
+        },
+        {
+          "q": 31,
+          "pooled_probability": 0.2659183489936944,
+          "tau": 1.5562237320395451
+        },
+        {
+          "q": 41,
+          "pooled_probability": 0.26591834405734466,
+          "tau": 1.5562235557277486
+        },
+        {
+          "q": 61,
+          "pooled_probability": 0.2659183540277991,
+          "tau": 1.5562235638832063
+        }
       ]
     }
   },
@@ -86,10 +174,30 @@
       "p_value": 0.26297890389714745,
       "residual_tau": 3.062097050432146,
       "quadrature_validation": [
-        {"q": 21, "lr_chi2": 2.6713068779295384, "p_value": 0.26298627382001827, "residual_tau": 3.059807221148412},
-        {"q": 31, "lr_chi2": 2.6714564359359656, "p_value": 0.2629666087038813, "residual_tau": 3.0625372564804434},
-        {"q": 41, "lr_chi2": 2.671362926680928, "p_value": 0.26297890389714745, "residual_tau": 3.062097050432146},
-        {"q": 61, "lr_chi2": 2.67138692014953, "p_value": 0.26297574902803467, "residual_tau": 3.0621742330830455}
+        {
+          "q": 21,
+          "lr_chi2": 2.671306877927549,
+          "p_value": 0.26298627382027984,
+          "residual_tau": 3.059807221148412
+        },
+        {
+          "q": 31,
+          "lr_chi2": 2.67145642624277,
+          "p_value": 0.2629666099783746,
+          "residual_tau": 3.0625372564804434
+        },
+        {
+          "q": 41,
+          "lr_chi2": 2.671362926680928,
+          "p_value": 0.26297890389714745,
+          "residual_tau": 3.062097050432146
+        },
+        {
+          "q": 61,
+          "lr_chi2": 2.6713869199515727,
+          "p_value": 0.26297574905406357,
+          "residual_tau": 3.0621742330830455
+        }
       ]
     },
     "expanded": {
@@ -99,10 +207,30 @@
       "p_value": 0.49289556549460145,
       "residual_tau": 1.0715907453087785,
       "quadrature_validation": [
-        {"q": 21, "lr_chi2": 1.4149159251418553, "p_value": 0.4928955652507201, "residual_tau": 1.0715908340641422},
-        {"q": 31, "lr_chi2": 1.4149159241519271, "p_value": 0.4928955654946855, "residual_tau": 1.0715907946575625},
-        {"q": 41, "lr_chi2": 1.4149159241522682, "p_value": 0.49289556549460145, "residual_tau": 1.0715907453087785},
-        {"q": 61, "lr_chi2": 1.4149159241522966, "p_value": 0.49289556549459457, "residual_tau": 1.0715907453087694}
+        {
+          "q": 21,
+          "lr_chi2": 1.4149159251419405,
+          "p_value": 0.4928955652506991,
+          "residual_tau": 1.0715908340641422
+        },
+        {
+          "q": 31,
+          "lr_chi2": 1.4149159241519556,
+          "p_value": 0.4928955654946785,
+          "residual_tau": 1.0715907946575625
+        },
+        {
+          "q": 41,
+          "lr_chi2": 1.4149159241522682,
+          "p_value": 0.49289556549460145,
+          "residual_tau": 1.0715907453087785
+        },
+        {
+          "q": 61,
+          "lr_chi2": 1.4149159241522966,
+          "p_value": 0.49289556549459457,
+          "residual_tau": 1.0715907453087694
+        }
       ]
     }
   },
@@ -111,7 +239,7 @@
     "altitude": "NO_FORMAL_META_REGRESSION: altitude is not reported in 25/28 primary units."
   },
   "interpretation_guards": [
-    "The >=24h Strict subgroup is not promoted as an inferential pooled estimate because it has 3 events/97, extreme tau, and non-reproducible profile-likelihood bracketing.",
+    "The >=24h Strict subgroup is not promoted as an inferential pooled estimate because it has 3 events/97, extreme tau, and non-estimable profile-likelihood confidence limits.",
     "Timing meta-regression is a feasibility/omnibus diagnostic and does not establish equivalence.",
     "Crude numerator/denominator ratios are descriptive only."
   ]

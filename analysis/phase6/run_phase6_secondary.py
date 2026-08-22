@@ -16,6 +16,41 @@ from run_phase6_meta import summarize_glmm, exact_binom_ci, fit_glmm
 
 PRIMARY_Q=41
 VALIDATION_Q=(21,31,41,61)
+ANALYSIS_DATE='2026-08-22'
+
+
+def concise_glmm(sm):
+    """Return the stable, publication-facing subset of a GLMM summary."""
+    return {
+        'k':sm['k'],
+        'events':sm['events'],
+        'denominator':sm['denominator'],
+        'crude_ratio_descriptive':sm['events']/sm['denominator'],
+        'pooled_median_study_probability':sm['pooled_median_study_probability'],
+        'ci95':sm['pooled_median_study_probability_ci95'],
+        'marginal_mean_probability':sm['marginal_mean_probability'],
+        'tau':sm['tau'],
+        'tau2':sm['tau2'],
+        'prediction_interval_probability':sm['prediction_interval_probability'],
+        'quadrature_validation':[
+            {'q':v['q'], 'pooled_probability':v['pooled_probability'], 'tau':v['tau']}
+            for v in sm['quadrature_validation']
+        ],
+    }
+
+
+def subgroup_summary_profile_safe(y,n):
+    """Fit a subgroup and preserve a non-estimable profile CI without aborting.
+
+    Sparse/boundary-heavy subgroups can have a valid point estimate but no
+    numerically bracketable profile-likelihood CI. That state is an analysis
+    result, not a reason to fabricate a CI or terminate all secondary outputs.
+    """
+    try:
+        return summarize_glmm(y,n,profile=True,validate=False),'OK'
+    except (ValueError,RuntimeError):
+        sm=summarize_glmm(y,n,profile=False,validate=False)
+        return sm,'NOT_ESTIMABLE_NUMERICALLY'
 
 def timing_group(x):
     early={'EARLY_FIRST_DAY','EARLY_LT24H','EARLY_LT24H_RAW','EARLY_LT24H_PREDOMINANT',
@@ -81,7 +116,18 @@ def timing_meta_regression(y,n,groups):
                      'residual_tau':math.exp(float(full.x[-1])),
                      'success':bool(full.success)})
     q41=next(v for v in vals if v['q']==41)
-    return {'reference':'mixed_uncertain',**q41,'quadrature_validation':vals}
+    return {
+        'reference':'mixed_uncertain',
+        'lr_chi2':q41['lr_chi2'],
+        'df':q41['df'],
+        'p_value':q41['p_value'],
+        'residual_tau':q41['residual_tau'],
+        'quadrature_validation':[
+            {'q':v['q'], 'lr_chi2':v['lr_chi2'],
+             'p_value':v['p_value'], 'residual_tau':v['residual_tau']}
+            for v in vals
+        ],
+    }
 
 def main():
     ap=argparse.ArgumentParser()
@@ -103,26 +149,27 @@ def main():
           'infection':('infection_n','infection_status'),
           'cardiac_non_target':('cardiac_non_target_n','cardiac_non_target_status')}
     results={'analysis_status':'AUTHORITATIVE_PHASE6_SECONDARY_RUN',
+             'date':ANALYSIS_DATE,
              'database_changed':False,'primary_membership_k':28,
-             'etiology':{},'timing_subgroups':{},'timing_meta_regression':{},
+             'etiology_rule':'Outcome-specific NOT_POINT_IDENTIFIABLE is missing for that outcome, never zero; etiologic categories may overlap and must not be summed.',
+             'etiology':{},'timing_meta_regression':{},
              'feasibility':{
-               'setting':'No formal meta-regression: only one truly out-of-hospital/homebirth primary unit and heterogeneous hospital labels.',
-               'altitude':'No formal meta-regression: altitude not reported in 25/28 primary units.'},
-             'guards':[
-               'NOT_POINT_IDENTIFIABLE is missing for that etiologic outcome, never zero.',
-               'Etiologic categories may overlap and must not be summed.',
-               'Crude event/denominator ratios are descriptive only.']}
+               'setting':'NO_FORMAL_META_REGRESSION: setting categories are heterogeneous and there is only one truly out-of-hospital/homebirth primary unit.',
+               'altitude':'NO_FORMAL_META_REGRESSION: altitude is not reported in 25/28 primary units.'},
+             'interpretation_guards':[
+               'The >=24h Strict subgroup is not promoted as an inferential pooled estimate because it has 3 events/97, extreme tau, and non-estimable profile-likelihood confidence limits.',
+               'Timing meta-regression is a feasibility/omnibus diagnostic and does not establish equivalence.',
+               'Crude numerator/denominator ratios are descriptive only.']}
     study=[]
     for name,(num,status) in spec.items():
         s=et.loc[et[status].eq('EXACT')].copy()
         sm=summarize_glmm(s[num].astype(int),s.denominator.astype(int),profile=True,validate=True)
-        results['etiology'][name]=sm
+        results['etiology'][name]=concise_glmm(sm)
         for _,r in s.iterrows():
             y=int(r[num]); n=int(r.denominator); lo,hi=exact_binom_ci(y,n)
             study.append({'outcome':name,'unit_id':r.unit_id,'study_label':r.study_label,
-                          'country':r.country,'events':y,'denominator':n,
-                          'observed_proportion':y/n,'exact_ci_low':lo,'exact_ci_high':hi,
-                          'timing':r.timing,'setting':r.setting,'altitude':r.altitude})
+                          'events':y,'denominator':n,'observed_proportion':y/n,
+                          'exact_ci_low':lo,'exact_ci_high':hi})
     pd.DataFrame(study).to_csv(out/'phase6_etiology_study_results.csv',index=False)
 
     primary=primary.copy(); primary['timing_group']=primary.timing.map(timing_group)
@@ -130,18 +177,20 @@ def main():
     for group in ('<24h_predominant','>=24h_predominant','mixed_uncertain'):
         s=primary.loc[primary.timing_group.eq(group)]
         for ep in ('strict','expanded'):
-            sm=summarize_glmm(s[ep],s.denominator,profile=True,validate=False)
-            results['timing_subgroups'][f'{group}:{ep}']=sm
+            sm,profile_status=subgroup_summary_profile_safe(s[ep],s.denominator)
+            ci_low,ci_high=sm['pooled_median_study_probability_ci95']
             rows.append({'dimension':'timing','subgroup':group,'endpoint':ep,'k':sm['k'],
                          'events':sm['events'],'denominator':sm['denominator'],
                          'crude_ratio':sm['events']/sm['denominator'],
                          'pooled_probability':sm['pooled_median_study_probability'],
-                         'ci_low':sm['pooled_median_study_probability_ci95'][0],
-                         'ci_high':sm['pooled_median_study_probability_ci95'][1],
+                         'ci_low':ci_low,
+                         'ci_high':ci_high,
                          'marginal_probability':sm['marginal_mean_probability'],
                          'tau':sm['tau'],
                          'prediction_low':sm['prediction_interval_probability'][0],
-                         'prediction_high':sm['prediction_interval_probability'][1]})
+                         'prediction_high':sm['prediction_interval_probability'][1],
+                         'profile_status':profile_status,
+                         'hessian_condition_number':sm['hessian_condition_number']})
     pd.DataFrame(rows).to_csv(out/'phase6_subgroup_results.csv',index=False)
 
     for ep in ('strict','expanded'):
