@@ -5,14 +5,18 @@ from can_cchd.dedup.manager import bulk_merge_exact, process_singletons
 
 def get_group_counts(conn):
     cursor = conn.cursor()
-    cursor.execute("SELECT match_type, COUNT(*) as count FROM duplicate_groups WHERE status = 'pending' GROUP BY match_type")
+    cursor.execute("""
+        SELECT match_type, COUNT(*) as count
+        FROM dedup_groups
+        WHERE status IN ('pending', 'auto_merge_ready')
+        GROUP BY match_type
+    """)
     counts = {r["match_type"]: r["count"] for r in cursor.fetchall()}
     return counts
 
 def render_phase2(conn):
     st.header("Phase 2: Deduplication and Prioritization")
-    
-    st.write("This phase merges duplicate records across different sources into unique 'studies'.")
+    st.write("This phase merges duplicate normalized records into unique studies while preserving source/query provenance.")
     
     # 1. Matching Controls
     col1, col2 = st.columns(2)
@@ -39,19 +43,23 @@ def render_phase2(conn):
         with st.expander(f"View {exact_total} pending exact groups"):
             cursor = conn.cursor()
             cursor.execute("""
-                SELECT g.group_id, g.match_type, r.title, r.authors, r.year, r.source_database, r.pmid, r.doi
-                FROM duplicate_groups g
-                JOIN duplicate_group_members m ON g.group_id = m.group_id
-                JOIN records r ON m.record_id = r.record_id
-                WHERE g.status = 'pending' AND g.match_type LIKE 'exact_%'
-                ORDER BY g.group_id
+                SELECT g.dedup_group_id, g.match_type, g.status, nr.title, nr.authors_raw, nr.year,
+                       nr.source_database, nr.pmid, nr.doi, g.representative_record_id
+                FROM dedup_groups g
+                JOIN dedup_group_members m ON g.dedup_group_id = m.dedup_group_id
+                JOIN normalized_records nr ON m.record_id = nr.record_id
+                WHERE g.status IN ('pending', 'auto_merge_ready') AND g.match_type LIKE 'exact_%'
+                ORDER BY g.dedup_group_id
             """)
             exact_data = cursor.fetchall()
             df_exact = pd.DataFrame([dict(r) for r in exact_data])
             st.dataframe(df_exact, use_container_width=True)
-            
-        st.info("These groups have 100% matches on unique identifiers (PMID/DOI/PMCID).")
-        if st.button("🚀 Bulk Merge All Exact Matches", type="primary", use_container_width=True):
+
+        st.info("This will not delete normalized records. It will create unique studies and link all duplicate records to them, preserving source/query provenance.")
+        confirm_merge = st.checkbox(
+            "I understand that exact duplicate groups will be merged into unique studies while preserving all source records."
+        )
+        if st.button("🚀 Merge selected exact groups", type="primary", use_container_width=True, disabled=not confirm_merge):
             with st.spinner("Merging..."):
                 merged = bulk_merge_exact(conn)
             st.success(f"Successfully merged {merged} exact groups!")
@@ -70,16 +78,17 @@ def render_phase2(conn):
         
         # Fetch the first pending fuzzy group
         cursor = conn.cursor()
-        cursor.execute("SELECT group_id, match_key FROM duplicate_groups WHERE status = 'pending' AND match_type = 'fuzzy_title' LIMIT 1")
+        cursor.execute("SELECT dedup_group_id, match_key FROM dedup_groups WHERE status = 'pending' AND match_type = 'fuzzy_title' LIMIT 1")
         group = cursor.fetchone()
         
         if group:
-            gid = group["group_id"]
+            gid = group["dedup_group_id"]
             cursor.execute("""
-                SELECT r.record_id, r.title, r.authors, r.year, r.source_database, r.pmid, r.doi, r.journal
-                FROM duplicate_group_members m
-                JOIN records r ON m.record_id = r.record_id
-                WHERE m.group_id = ?
+                SELECT nr.record_id, nr.title, nr.authors_raw, nr.year, nr.source_database, nr.pmid, nr.doi, nr.journal, g.confidence
+                FROM dedup_group_members m
+                JOIN normalized_records nr ON m.record_id = nr.record_id
+                JOIN dedup_groups g ON g.dedup_group_id = m.dedup_group_id
+                WHERE m.dedup_group_id = ?
             """, (gid,))
             members = cursor.fetchall()
             
@@ -90,8 +99,8 @@ def render_phase2(conn):
                 with st.container():
                     st.markdown(f"**Record {i+1} from {m['source_database']}**")
                     st.write(f"**Title:** {m['title']}")
-                    st.write(f"**Authors:** {m['authors']}")
-                    st.caption(f"Year: {m['year']} | Journal: {m['journal']} | DOI: {m['doi']}")
+                    st.write(f"**Authors:** {m['authors_raw']}")
+                    st.caption(f"Year: {m['year']} | Journal: {m['journal']} | DOI: {m['doi']} | Score: {m['confidence']:.2f}")
                     st.divider()
             
             # Decision Buttons

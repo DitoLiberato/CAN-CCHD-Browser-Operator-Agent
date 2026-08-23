@@ -29,6 +29,7 @@ def run_qa_gate(conn) -> dict:
     cursor = conn.cursor()
     blocking = []
     warnings = []
+    info = []
 
     # --- Total records ---
     cursor.execute("SELECT count(*) as c FROM normalized_records")
@@ -40,7 +41,7 @@ def run_qa_gate(conn) -> dict:
             "message": "No normalized records found. Run at least one query first.",
             "action": "Run Phase 1 search collection."
         })
-        return _finalize(conn, "block", blocking, warnings, total, 0, 0, 0, 0)
+        return _finalize(conn, "block", blocking, warnings, info, total, 0, 0, 0, 0)
 
     # --- Missing title check (blocking if >10%) ---
     cursor.execute("SELECT count(*) as c FROM normalized_records WHERE title IS NULL OR title = ''")
@@ -100,18 +101,58 @@ def run_qa_gate(conn) -> dict:
             "action": "Run enrichment queue to attempt abstract recovery."
         })
 
-    # --- Suspicious year warnings ---
+    # --- Missing abstract after enrichment (warning, non-blocking) ---
+    cursor.execute("""
+        SELECT count(*) as c FROM normalized_records
+        WHERE abstract_status = 'unavailable_after_enrichment'
+           OR (enrichment_status = 'enrichment_attempted' AND (abstract IS NULL OR abstract = ''))
+    """)
+    missing_after_enrichment = cursor.fetchone()["c"]
+    if missing_after_enrichment > 0:
+        warnings.append({
+            "type": "missing_abstract_after_enrichment",
+            "message": f"{missing_after_enrichment} records remain without abstracts after enrichment attempts.",
+            "action": "Review during screening; do not block collection progression for this alone."
+        })
+
+    # --- Future year warnings ---
     current_year = datetime.datetime.now().year
     cursor.execute("""
         SELECT count(*) as c FROM normalized_records
-        WHERE year >= ? OR year IS NULL
+        WHERE year > ?
     """, (current_year,))
-    suspicious_year_count = cursor.fetchone()["c"]
-    if suspicious_year_count > 0:
+    future_year_count = cursor.fetchone()["c"]
+    if future_year_count > 0:
         warnings.append({
-            "type": "suspicious_year",
-            "message": f"{suspicious_year_count} records have year={current_year} or NULL (possible default fill).",
+            "type": "future_year",
+            "message": f"{future_year_count} records have publication years in the future.",
             "action": "Run enrichment to verify years via PubMed/Crossref."
+        })
+
+    cursor.execute("""
+        SELECT count(*) as c FROM normalized_records
+        WHERE year = ?
+    """, (current_year,))
+    current_year_count = cursor.fetchone()["c"]
+    if current_year_count > 0:
+        info.append({
+            "type": "current_year_publications",
+            "message": f"{current_year_count} records are from the current year.",
+            "action": "Informational only unless source-specific metadata conflicts are present."
+        })
+
+    cursor.execute("""
+        SELECT count(*) as c
+        FROM collection_qa_findings
+        WHERE finding_type = 'europepmc_year_needs_verification'
+          AND status = 'open'
+    """)
+    europepmc_year_conflicts = cursor.fetchone()["c"]
+    if europepmc_year_conflicts > 0:
+        warnings.append({
+            "type": "europepmc_year_conflicts",
+            "message": f"{europepmc_year_conflicts} Europe PMC records need current-year verification.",
+            "action": "Confirm the publication year against PubMed or another enrichment source."
         })
 
     # --- Missing identifier warnings ---
@@ -127,17 +168,29 @@ def run_qa_gate(conn) -> dict:
             "action": "These records will use title/year fallback in deduplication."
         })
 
+    cursor.execute("""
+        SELECT count(*) as c FROM normalized_records
+        WHERE (doi IS NULL OR doi = '') AND pmid IS NOT NULL AND pmid != ''
+    """)
+    pmid_only = cursor.fetchone()["c"]
+    if pmid_only > 0:
+        info.append({
+            "type": "pmid_without_doi",
+            "message": f"{pmid_only} records have PMID but no DOI.",
+            "action": "Informational only; these records remain deduplicable."
+        })
+
     status = "pass"
     if blocking:
         status = "block"
     elif warnings:
         status = "warn"
 
-    return _finalize(conn, status, blocking, warnings, total,
+    return _finalize(conn, status, blocking, warnings, info, total,
                      screening_ready, screening_ready_warn, enrichment_needed, collection_problem)
 
 
-def _finalize(conn, status, blocking, warnings, total,
+def _finalize(conn, status, blocking, warnings, info, total,
               screening_ready, screening_ready_warn, enrichment_needed, collection_problem):
     cursor = conn.cursor()
     summary = {
@@ -148,6 +201,7 @@ def _finalize(conn, status, blocking, warnings, total,
         "collection_problem": collection_problem,
         "blocking_findings": len(blocking),
         "warning_findings": len(warnings),
+        "info_findings": len(info),
     }
 
     cursor.execute("""
@@ -169,6 +223,7 @@ def _finalize(conn, status, blocking, warnings, total,
         "status": status,
         "blocking": blocking,
         "warnings": warnings,
+        "info": info,
         "summary": summary
     }
 
