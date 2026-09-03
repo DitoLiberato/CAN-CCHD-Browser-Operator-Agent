@@ -1,0 +1,13 @@
+candidate_id,label,role,pubmed_native,europepmc_native,europepmc_pmid_match,europepmc_doi_match,europepmc_title_match,provenance_explanation
+D001,Johnson 1952,PRIMARY_DIRECT_CANDIDATE,False,False,False,False,False,supplementary historical/citation discovery
+D002,Sonmez 2006,PRIMARY_DIRECT_CANDIDATE,False,False,False,False,False,hidden-case mining in Morgagni case series
+D003,Goldstein 2006,PRIMARY_DIRECT_CANDIDATE,False,False,False,False,False,Eurorad clinical case repository
+D004,Rao 2014,PRIMARY_DIRECT_CANDIDATE,False,True,True,True,True,Europe PMC native
+D005,Kumar 2015,PRIMARY_DIRECT_CANDIDATE,True,True,True,True,True,PubMed + Europe PMC native
+D006,Aironi 2015,PRIMARY_DIRECT_CANDIDATE,True,False,False,False,False,PubMed native
+D007,Venugopal 2016,PRIMARY_DIRECT_CANDIDATE,False,False,False,False,False,journal/scholarly-web discovery
+D008,Veejeyahshegarun 2024,PRIMARY_DIRECT_CANDIDATE,False,False,False,False,False,conference/grey-literature discovery
+S001,Al-Salem 2014,SERIES_SIGNAL_UNRESOLVED,False,False,False,False,False,series/citation discovery
+S002,Ortiz 2025,SERIES_SIGNAL_UNRESOLVED,False,False,False,False,False,hidden-series discovery
+A001,Zhu 2026,MANAGEMENT_ANALOG_PENDING_ANATOMY,True,True,True,True,True,PubMed + Europe PMC native
+X001,Hatherley 1950,HISTORICAL_CONTEXT,True,True,True,False,True,PubMed + Europe PMC native
