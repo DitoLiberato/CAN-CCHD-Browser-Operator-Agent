@@ -5,7 +5,7 @@
 Last updated: **2026-09-03**  
 Branch: **`case-report-01`**  
 Parent architecture: **`phase11-writing`**  
-Current status: **PIPELINE v1.0 FROZEN; PHASE 0 PROTOCOL DRAFTED; PHASE 0.5 PRIVATE CASE CORE IN PROGRESS**
+Current status: **PHASE 0 LOCKED; PHASE 0.5 PRIVATE CASE CORE IN PROGRESS; PHASE 1 SEARCH CALIBRATION IN PROGRESS**
 
 ## Privacy boundary
 
@@ -26,11 +26,12 @@ The branch must not contain direct patient identifiers, original source PDFs, cl
 Read in this order:
 
 1. `docs/CASE_REPORT_REVIEW_PIPELINE_v1.0.md`
-2. `docs/PHASE0_05_PROGRESS_SNAPSHOT_2026-09-03.md`
-3. `docs/PHASE0_CASE_REVIEW_PROTOCOL_v0.1.md`
-4. `docs/PROJECT_DECISION_RECORD_v0.2.md`
-5. `docs/CASE_REPORT_REVIEW_HANDOFF.md`
-6. `case/CASE_CORE_TEMPLATE.md`
+2. `docs/PHASE0_CASE_REVIEW_PROTOCOL_v1.0_LOCKED.md`
+3. `docs/PHASE1_SEARCH_CALIBRATION_LOG_v0.1.md`
+4. `docs/PHASE0_05_PROGRESS_SNAPSHOT_2026-09-03.md`
+5. `docs/PROJECT_DECISION_RECORD_v0.2.md`
+6. `docs/CASE_REPORT_REVIEW_HANDOFF.md`
+7. `case/CASE_CORE_TEMPLATE.md`
 
 ## Scientific architecture
 
@@ -41,53 +42,57 @@ Two streams remain separate until verification and freeze:
 
 Literature cannot retrospectively rewrite case facts. Case features cannot determine which literature findings are accepted.
 
-## Current methodological decisions
+## Phase 0 — CLOSED
 
-The article is planned as a **case report with an embedded systematic review of reported cases**.
+`docs/PHASE0_CASE_REVIEW_PROTOCOL_v1.0_LOCKED.md` is physician-approved.
 
-The primary direct-analog review set is defined around unique published human patients with the coexisting core cardiac and diaphragmatic diagnoses specified in the Phase 0 protocol.
+Planned article:
 
-The central association itself is not presumed novel. Potential contribution will be adjudicated from presentation, competing physiology, diagnostic reasoning, management sequence, response-guided catheter palliation, bridge-to-growth strategy and/or later surgical outcome.
+> **Case report with an embedded systematic review of reported cases.**
 
-No `first`, `unique`, or equivalent claim is allowed before Phase 10 novelty adjudication.
+Primary review question:
 
-## Phase 0
+> Among published human cases with Tetralogy of Fallot and Morgagni diaphragmatic hernia in the same patient, what presentation, diagnostic pathway, intervention sequence, palliation strategy, hernia management, definitive repair and outcomes have been reported?
 
-`docs/PHASE0_CASE_REVIEW_PROTOCOL_v0.1.md` exists as a draft for physician approval.
+The publication endpoint is locked to the **full staged clinical course through definitive diaphragmatic and cardiac correction plus an initial postoperative/early follow-up endpoint**.
 
-**Gate 0: OPEN.**
+Changing to an earlier bridge-only endpoint requires an explicit Phase 0 protocol amendment.
 
-Formal Phase 1 literature collection must not begin until the protocol is approved and promoted to v1.0 LOCKED.
+## Phase 0.5 — IN PROGRESS, PRIVATE SIDE
 
-## Phase 0.5
+A de-identified private Case Core has been initiated from available primary clinical sources and clinician updates. It remains intentionally outside this public repository.
 
-A private de-identified `CASE_CORE_PRIVATE_v0.1.md` has been reconstructed outside GitHub from available primary clinical information and a treating-clinician update.
+The Case Core remains open until the definitive surgical course and early outcome are available.
 
-It records factual chronology, intervention status, early response, imaging inventory, interpretation boundaries and missing primary-source items.
+## Phase 1 — IN PROGRESS
 
-**Gate 0.5: IN PROGRESS.**
+Initial search calibration and sentinel recall are documented in:
 
-The detailed Case Core remains intentionally off-repository.
+`docs/PHASE1_SEARCH_CALIBRATION_LOG_v0.1.md`
 
-## Publication endpoint
+Initial direct candidate registry:
 
-The final Case Core may freeze at either:
+`review/PHASE1_RAW_DIRECT_CANDIDATE_REGISTRY_v0.1.csv`
 
-- a prospectively defined early bridge-to-growth follow-up endpoint; or
-- the complete staged course including definitive surgery and postoperative outcome.
+Current calibration suggests a small enumerable direct-case literature, with four direct candidates identified so far through PubMed-indexed and scholarly-web discovery.
 
-This decision must be made before Case Core freeze and not retrofitted during manuscript writing.
+The central association is therefore not novel. The likely teaching contribution lies in **different management routes, competing cardiorespiratory physiology, response-guided palliation, and the eventual staged/combined course**.
 
-## Current next action
+Balloon pulmonary/RVOT palliation is already established in TOF generally. Any novelty must be narrower than balloon dilation itself.
 
-**Physician review of the Phase 0 protocol draft.**
+## Gate 1 remains open
 
-After approval:
+Before Phase 1 closes:
 
-1. lock Phase 0 v1.0;
-2. continue Phase 0.5 private verification;
-3. begin Phase 1 calibrated high-recall search with sentinel recall.
+- run source-native PubMed count/export;
+- run Europe PMC count/export;
+- reconcile PubMed/Europe PMC;
+- enrich with OpenAlex/Crossref;
+- complete supplementary scholarly-web/Google Scholar searching;
+- run backward/forward citation chasing;
+- perform a noise audit;
+- freeze the raw candidate registry for Phase 2 deduplication.
 
 ## One-line handoff
 
-**Continue on `case-report-01`; review `docs/PHASE0_CASE_REVIEW_PROTOCOL_v0.1.md`, keep patient-level data/images off public GitHub, lock Gate 0 after physician approval, continue the private Case Core, then begin the systematic reported-case review.**
+**Continue on `case-report-01`; Phase 0 is locked, the private Case Core remains open through definitive surgery, and Phase 1 is actively building an exhaustive direct TOF–Morgagni reported-case corpus plus a separate contextual palliation literature.**
