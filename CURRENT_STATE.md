@@ -5,11 +5,11 @@
 Last updated: **2026-09-03**  
 Branch: **`case-report-01`**  
 Parent architecture: **`phase11-writing`**  
-Current status: **PHASE 0 LOCKED; PHASE 0.5 PRIVATE CASE CORE IN PROGRESS; PHASE 1 ACTIVE — CALIBRATION/SENSITIVITY WAVE 2 COMPLETE, GATE 1 OPEN**
+Current status: **PHASE 0 LOCKED; PHASE 0.5 PRIVATE CASE CORE IN PROGRESS; PHASE 1 SCIENTIFIC DISCOVERY CLOSED AT SATURATION; FORMAL GATE 1 OPEN FOR NATIVE COUNT/EXPORT BACKFILL ONLY**
 
 ## Privacy boundary
 
-This repository is public. Patient-level source documents and potentially identifying clinical details must remain outside this branch until explicit privacy/consent clearance.
+This repository is public. Patient-level source documents and potentially identifying clinical details remain outside this branch until explicit privacy/consent clearance.
 
 The branch may contain methodology, de-identification-safe templates, systematic-review artifacts, privacy-safe project-state summaries, and later manuscript material only after privacy review.
 
@@ -21,13 +21,15 @@ Read in this order:
 
 1. `docs/CASE_REPORT_REVIEW_PIPELINE_v1.0.md`
 2. `docs/PHASE0_CASE_REVIEW_PROTOCOL_v1.0_LOCKED.md`
-3. `docs/PHASE1_SEARCH_CALIBRATION_LOG_v0.2.md`
-4. `docs/PHASE1_NOISE_AND_TERMINOLOGY_AUDIT_v0.1.md`
-5. `review/PHASE1_RAW_DIRECT_CANDIDATE_REGISTRY_v0.2.csv`
-6. `docs/PHASE0_05_PROGRESS_SNAPSHOT_2026-09-03.md`
-7. `docs/PROJECT_DECISION_RECORD_v0.2.md`
-8. `docs/CASE_REPORT_REVIEW_HANDOFF.md`
-9. `case/CASE_CORE_TEMPLATE.md`
+3. `docs/PHASE1_SCIENTIFIC_SEARCH_CLOSEOUT_v1.0.md`
+4. `docs/PHASE1_SATURATION_AUDIT_v1.0.md`
+5. `review/PHASE1_RAW_DIRECT_CANDIDATE_REGISTRY_v0.3_SATURATION.csv`
+6. `docs/PHASE1_SEARCH_CALIBRATION_LOG_v0.2.md`
+7. `docs/PHASE1_NOISE_AND_TERMINOLOGY_AUDIT_v0.1.md`
+8. `docs/PHASE0_05_PROGRESS_SNAPSHOT_2026-09-03.md`
+9. `docs/PROJECT_DECISION_RECORD_v0.2.md`
+10. `docs/CASE_REPORT_REVIEW_HANDOFF.md`
+11. `case/CASE_CORE_TEMPLATE.md`
 
 ## Scientific architecture
 
@@ -58,61 +60,67 @@ Changing to an earlier bridge-only endpoint requires an explicit Phase 0 protoco
 
 A de-identified private Case Core exists outside the public repository. It remains open until the definitive surgical course and early outcome are available.
 
-## Phase 1 — ACTIVE
+## Phase 1 — SCIENTIFIC DISCOVERY CLOSED AT SATURATION
 
-Current source-of-truth:
+Canonical closeout artifacts:
 
-- `docs/PHASE1_SEARCH_CALIBRATION_LOG_v0.2.md`
-- `docs/PHASE1_NOISE_AND_TERMINOLOGY_AUDIT_v0.1.md`
-- `review/PHASE1_RAW_DIRECT_CANDIDATE_REGISTRY_v0.2.csv`
+- `docs/PHASE1_SCIENTIFIC_SEARCH_CLOSEOUT_v1.0.md`
+- `docs/PHASE1_SATURATION_AUDIT_v1.0.md`
+- `review/PHASE1_RAW_DIRECT_CANDIDATE_REGISTRY_v0.3_SATURATION.csv`
 
-### Current candidate signal
+Earlier Phase 1 logs/registries remain provenance history.
 
-The raw registry now contains:
+### Saturation decision
 
-- **6 records with explicit or historically equivalent Morgagni/subcostosternal signal**, pending final eligibility and report-to-patient reconciliation;
-- **1 additional high-value anatomy-pending Pentalogy/CDH case**, guaranteed to remain useful as a management analog even if the diaphragmatic defect proves non-Morgagni.
+**DISCOVERY / CITATION SATURATION = PASS.**
 
-Important newly recovered signals:
+Independent discovery pathways included modern direct terminology, historical/subcostosternal terminology, broad TOF + CDH sensitivity, Cantrell/anterior-midline searches, hidden-case mining inside Morgagni series, adult/repaired-TOF searches, multilingual searches, recent/grey literature, backward/forward citation chasing, large-series anomaly mining and final exact/semantic plateau checks.
 
-- a 1952 `subcostosternal diaphragmatic hernia` report explicitly coexisting with TOF; modern and historical literature equates anteromedial subcostosternal defects with Morgagni-type defects, so this is a direct candidate pending full text;
-- a 2024 Pentalogy of Cantrell case-level abstract explicitly documenting operative Morgagni hernia plus TOF, providing a hernia-first route with poor neonatal outcome;
-- a 2025/2026 Pentalogy case with TOF + large CDH, RVOT stent first, then definitive combined cardiac/diaphragmatic repair; anatomy remains pending for direct-set status.
+After the final productive hidden-series/adult waves, multiple conceptually independent late waves produced no additional individually extractable direct patient.
 
-### Search calibration conclusion
+### Raw literature signal at saturation
 
-- modern `Morgagni` terminology alone is too narrow historically;
-- `subcostosternal` / foramen-of-Morgagni terminology is mandatory for recall;
-- broad TOF + CDH searches are necessary but anatomically noisy;
-- Pentalogy of Cantrell is a required sensitivity pathway;
-- multilingual modern-term sweep has not yet added a new direct case;
-- Down syndrome terms remain sensitivity/comparison terms only, never mandatory.
+The current registry contains:
 
-### Scientific framing
+- **8 individually identifiable direct candidate records/patient-level reports** with explicit or historically equivalent TOF + Morgagni signal, pending Phase 2 identity reconciliation and Phase 5 eligibility;
+- **2 additional aggregate TOF-associated Morgagni patients** reported in the Ortiz 2025 55-patient series, without sufficient patient-level mapping for individual extraction;
+- additional aggregate/unresolved cardiac-series signals preserved without inflating direct patient counts;
+- one high-value TOF + large-CDH management analog whose Morgagni anatomy remains unresolved;
+- explicit non-Morgagni negative/anatomic controls.
 
-The central association is not novel. Current evidence strengthens the intended teaching angle: **different routes through the same rare combined problem**.
+Publication count is not patient count. No final unique-case number is frozen in Phase 1.
 
-Routes already visible in the candidate literature include cardiac palliation/repair before hernia recognition, hernia-first management, direct combined/surgical approaches, and a modern RVOT-stent bridge before definitive combined repair.
+### Important late recoveries
 
-Balloon pulmonary/RVOT palliation is established in TOF generally. Any defensible novelty in the index case must therefore be narrower: response-guided balloon-only palliation sufficient to omit a planned stent, interaction with the diaphragmatic lesion, growth-to-repair strategy, and the later definitive course.
+- Johnson & Mangiardi 1952 — historical subcostosternal/Morgagni-equivalent TOF case.
+- Sönmez et al. 2006 — TOF patient hidden inside a Morgagni case-series table.
+- Rao et al. 2014 — repaired-TOF adult with large Morgagni and competing-physiology/conservative management route.
+- Veejeyahshegarun et al. 2024 — hernia-first Pentalogy/Morgagni + TOF case-level abstract.
+- Ortiz et al. 2025 — two TOF patients embedded at aggregate level within 55 Morgagni cases.
 
-No route is currently claimed superior.
+These findings validate the decision to search beyond exact case-report titles.
 
-## Gate 1 remains open
+### Scientific framing after saturation
 
-Outstanding before Phase 1 closure:
+The association itself is not novel. The literature is rare but sufficiently diverse to support the intended educational framing: **different practical routes through a rare combined cardiorespiratory problem**.
 
-- source-native PubMed exact counts/export for all calibrated families;
-- Europe PMC exact counts/export;
-- PubMed/Europe PMC reconciliation;
-- OpenAlex/Crossref enrichment/citation links;
-- continued scholarly-web/Google Scholar sensitivity work;
-- backward and forward citation saturation;
-- full-text anatomy adjudication for anatomy-pending candidates;
-- final raw collection freeze for Phase 2 normalization/deduplication.
+TOF balloon pulmonary/RVOT palliation is established generally. The saturated direct search did not identify a patient-level TOF–Morgagni report clearly matching the narrower pattern of satisfactory balloon response leading to intentional omission of a planned RVOT stent. This is a provisional search finding, not a final novelty claim.
 
-The current browser-access route has not provided trustworthy machine-readable source-native custom-query counts; none have been fabricated. This is a reproducibility task still to close, not a scientific reason to stop the review.
+No management route is currently claimed superior.
+
+## Formal Gate 1 — TECHNICAL SUBGATE OPEN ONLY
+
+The scientific search should **not** be broadened further merely to generate more records.
+
+The only remaining Phase 1 requirement is reproducibility backfill:
+
+1. obtain exact source-native PubMed counts/exports for the locked calibrated families;
+2. obtain exact Europe PMC counts/exports;
+3. reconcile those exports against the saturated registry;
+4. freeze the raw Phase 1 collection for Phase 2 normalization/deduplication.
+
+The current access route has not exposed trustworthy machine-readable source-native custom-query counts. None have been fabricated or inferred.
 
 ## One-line handoff
 
-**Continue on `case-report-01`; Phase 0 is locked, the private Case Core remains open through definitive surgery, and Phase 1 has expanded the direct-candidate literature through historical subcostosternal and Pentalogy sensitivity searches while keeping source-native reproducibility and citation saturation open.**
+**Continue on `case-report-01`; Phase 0 is locked, the private Case Core remains open through definitive surgery, and Phase 1 scientific discovery has passed saturation. Do not expand searching further without a new signal; complete only PubMed/Europe PMC native count/export backfill, reconcile, freeze the raw collection, then proceed to Phase 2.**
