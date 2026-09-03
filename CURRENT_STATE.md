@@ -1,83 +1,52 @@
-# CAN-CCHD — CURRENT STATE / START HERE
+# Case Report + Review — CURRENT STATE / START HERE
 
-> **MANDATORY ENTRY POINT FOR NEW CHATS, AGENTS, AND REPOSITORY REVIEWS**
+> **MANDATORY ENTRY POINT FOR THIS BRANCH**
 
-Last updated: **2026-08-22**  
-Writing hub branch: **`phase11-writing`**  
-Frozen analysis branch: **`phase6-analysis`**  
-Current safe-resume snapshot: **`docs/PHASE11_PROGRESS_SNAPSHOT_2026-08-22_WRITING_SPLIT.md`**  
-Current phase status: **PHASE 11 — WRITING SPLIT INTO DEDICATED ABSTRACT + MANUSCRIPT STREAMS**
+Last updated: **2026-09-03**  
+Branch: **`case-report-01`**  
+Parent architecture: **`phase11-writing`**  
+Current status: **CASE REPORT + REVIEW PIPELINE v1.0 FROZEN; PHASE 0 IN PROGRESS**
 
-## 1. Mandatory routing
+## Privacy boundary
+
+This repository is public. Patient-level source documents and potentially identifying clinical details must remain outside this branch until an explicit privacy/consent decision makes public storage appropriate.
+
+The branch may contain:
+
+- generic methodology;
+- de-identification-safe templates;
+- search/review artifacts that do not expose the index patient;
+- later manuscript material only after privacy review.
+
+The branch must not contain direct patient identifiers or a detailed case core capable of re-identification before consent/privacy clearance.
+
+## Start here
 
 Read:
 
-1. `CURRENT_STATE.md`
-2. `docs/PHASE11_PROGRESS_SNAPSHOT_2026-08-22_WRITING_SPLIT.md`
-3. `docs/PHASE11_WRITING_SPLIT_HANDOFF_2026-08-22.md`
+1. `docs/CASE_REPORT_REVIEW_PIPELINE_v1.0.md`
+2. `docs/PROJECT_DECISION_RECORD_v0.1.md`
+3. `case/CASE_CORE_TEMPLATE.md`
 
-Then choose exactly one writing stream:
+## Scientific architecture
 
-### SHA abstract
+Two streams remain separate until verification and freeze:
 
-Branch: `phase11-sha-abstract`  
-First file: `docs/PHASE11_HANDOFF_SHA_ABSTRACT_CHAT.md`
+- **CASE STREAM** — what actually happened to the index patient;
+- **LITERATURE STREAM** — what has actually been published.
 
-### Full manuscript/article
+Literature cannot retrospectively rewrite case facts. Case features cannot determine which literature findings are accepted.
 
-Branch: `phase11-manuscript`  
-First file: `docs/PHASE11_HANDOFF_MANUSCRIPT_CHAT.md`
+## Current methodological decision
 
-The hub `phase11-writing` preserves shared routing and guardrails; it should not become a third independent drafting stream.
+The review component is provisionally set to **systematic review of reported cases**, because a small and enumerable prior-case literature is expected to be more informative than an unsystematic narrative review for novelty and management comparison.
 
-## 2. Frozen Phase 6 science
+The central association itself must not be presumed novel. The final novelty claim will be adjudicated only after formal review and completion of the clinically relevant case outcome.
 
-Canonical primary input:
+## Case Core storage
 
-`data/phase6/PHASE6_PRIMARY_ANALYSIS_INPUT_v1.0.csv`
+The detailed `CASE_CORE` is intentionally **not committed to this public branch** at this stage. Use the repository template locally/private-side and commit only after explicit privacy review.
 
-Frozen blob SHA: `1dff5eb2475ab588de2a0a76d53d2176f0d3cd35`.
+## One-line handoff
 
-Primary set:
-
-- 28 PRIMARY_POOLABLE independent units;
-- denominator 1,999 harmonized-CCHD-negative final failed screens;
-- 638 Strict CAN-CCHD outcomes;
-- 1,015 Expanded CAN-CCHD outcomes.
-
-Strict CAN-CCHD: median-study 17.0% (95% CI 3.1%-46.8%), marginal mean 33.8%, tau 3.369, prediction interval approximately 0.03%-99.34%.
-
-Expanded CAN-CCHD: median-study 69.4% (57.7%-81.4%), marginal mean 65.8%, tau 1.110, prediction interval 20.4%-95.2%.
-
-No Phase 6 scientific value may be silently altered during writing. A genuine scientific correction requires explicit amendment and controlled rerun.
-
-## 3. Shared scientific package
-
-Start all scientific verification from:
-
-- `docs/PHASE6_PROGRESS_SNAPSHOT_2026-08-22_ANALYSIS_COMPLETE.md`
-- `docs/PHASE6_ANALYSIS_CLOSEOUT_2026-08-22.md`
-- `docs/PHASE6_MANUSCRIPT_READY_RESULTS_PACKAGE.md`
-- `docs/PHASE6_META_ANALYSIS_AUDIT_2026-08-22.md`
-- `docs/PHASE6_SECONDARY_ETIOLOGY_AND_SUBGROUP_AUDIT_2026-08-22.md`
-- `docs/PHASE6_SMALL_STUDY_REPORTING_BIAS_DECISION_2026-08-22.md`
-
-## 4. Existing abstract artifact
-
-`docs/PHASE11_SHA_ABSTRACT_DRAFT_v0.1.md`
-
-Status: `draft_requires_human_review`. It is the starting point for the abstract stream only.
-
-The manuscript stream must be built directly from the frozen Phase 6 package, not by expanding the conference abstract.
-
-## 5. Cross-document rule
-
-Abstract and manuscript are sibling deliverables. Before final submission/publication, run a consistency audit for terminology, outcome definitions, counts, pooled estimates and conclusions.
-
-## 6. Critical legacy firewall
-
-Legacy Browser Agent/app databases remain historical only and cannot be used to alter current scientific values, diagnoses, denominators, numerators, eligibility decisions or weights.
-
-## 7. One-line handoff
-
-**PHASE 11 WRITING SPLIT COMPLETE. Use `phase11-sha-abstract` for the SHA abstract and `phase11-manuscript` for the full article; both must remain anchored to the frozen Phase 6 analysis.**
+**Continue on `case-report-01`; follow `docs/CASE_REPORT_REVIEW_PIPELINE_v1.0.md`, keep the CASE and LITERATURE streams firewalled, keep patient-level source material off the public branch, and complete Phase 0 before formal collection or manuscript drafting.**
