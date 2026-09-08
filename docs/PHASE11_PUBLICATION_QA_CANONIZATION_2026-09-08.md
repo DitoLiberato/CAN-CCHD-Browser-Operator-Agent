@@ -77,7 +77,7 @@ Permanent rule:
 - companion reports do not create duplicate analytic weights.
 
 CAN-CCHD implementation example:
-`docs/PHASE11_CAN_CCHD_PRIMARY_FIGURE_REFERENCE_CROSSWALK_v1.0.md` / latest equivalent crosswalk artifact.
+`docs/PHASE11_PRIMARY_FIGURE_REFERENCE_CROSSWALK_v1.0.md`
 
 Canon: Publication QA sections 5 and 7; Extraction/QA source-identity fields; acceptance tests.
 
@@ -235,6 +235,7 @@ A `SCIENTIFIC_STOP` or open HIGH publication-QA finding blocks release.
 - `docs/11_PUBLICATION_QA_AND_REPORTING_CANON.md` (new)
 - `docs/templates/PUBLICATION_QA_REPORT_TEMPLATE.md` (new)
 - `README.md`
+- `CURRENT_STATE.md`
 
 Project-specific QA artifacts remain useful examples but are not substitutes for the reusable canon.
 
