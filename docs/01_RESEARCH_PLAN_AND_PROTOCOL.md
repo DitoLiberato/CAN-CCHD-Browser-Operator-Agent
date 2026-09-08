@@ -3,6 +3,30 @@
 ## Purpose
 The app must start with a protocol-driven research plan. No search, import, screening, extraction, or analysis is allowed before the plan is approved.
 
+## Reusable protocol requirements
+Every project using this pipeline must prospectively define and freeze, before search begins:
+
+```text
+review question
+population/exposure/intervention/comparator as applicable
+primary denominator or effect denominator
+primary outcome(s)
+secondary outcome(s)
+sensitivity/exploratory outcome(s)
+outcome hierarchy and precedence
+analytic unit definition
+overlap/companion-report policy
+planned source hierarchy
+planned query set
+AI-assisted task classes
+human-only scientific decision points
+QA gates
+```
+
+The hierarchy `primary -> secondary -> sensitivity/exploratory` is not merely an internal label. It must be preserved later in Methods, Results, tables, figures, and abstracts. A secondary/sensitivity outcome may not be promoted to primary after results are known without a documented protocol amendment.
+
+The protocol must also state which tasks AI may assist and which decisions remain human-controlled. The default pipeline rule is that AI assistance is restricted to mechanical, reversible, and auditable tasks unless a future protocol prospectively specifies another validated design.
+
 ## Default Project
 Title:
 ```text
@@ -133,5 +157,16 @@ Saudi pulse oximetry congenital heart disease newborn
 ```
 Google Scholar is supplementary, not a primary reproducible search.
 
+## AI and human-control plan
+For this default project:
+
+```text
+AI may assist: search execution/logging, metadata normalization, queue preparation, deduplication suggestions, full-text retrieval support, extraction suggestions, consistency checks, drafting, formatting, and other reversible/auditable tasks.
+
+Human-controlled: final eligibility, extraction verification/correction, diagnosis/outcome mapping, overlap adjudication, protocol amendments, dataset freeze, model choice, interpretation, authorship, declarations, and submission decisions.
+```
+
+AI-suggested extraction must remain segregated until verified/corrected. AI is not an independent second reviewer unless a future approved protocol explicitly defines and validates that role.
+
 ## Protocol UI Requirements
-Show review question, denominator, outcomes, criteria, case-report policy, source hierarchy, query plan, and QA rules. Buttons: Edit protocol, Approve protocol, Export protocol markdown, Reset to default CAN-CCHD protocol. No later phase unlocks until `protocol.status = approved`.
+Show review question, denominator, outcome hierarchy, criteria, case-report policy, source hierarchy, query plan, AI/human-control plan, and QA rules. Buttons: Edit protocol, Approve protocol, Export protocol markdown, Reset to default CAN-CCHD protocol. No later phase unlocks until `protocol.status = approved`.
