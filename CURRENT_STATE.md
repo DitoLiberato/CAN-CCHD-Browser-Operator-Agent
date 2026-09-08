@@ -54,7 +54,7 @@ The core pipeline specifications and acceptance tests were also amended so these
 ## Important Phase-11 project-specific QA artifacts
 
 - `docs/PHASE11_MANUSCRIPT_REFERENCE_CLAIM_AUDIT_v1.0.md`
-- `docs/PHASE11_CAN_CCHD_PRIMARY_FIGURE_REFERENCE_CROSSWALK_v1.0.md` or the latest equivalent crosswalk artifact
+- `docs/PHASE11_PRIMARY_FIGURE_REFERENCE_CROSSWALK_v1.0.md`
 - `manuscript/supplements/CAN_CCHD_Supplementary_Search_Strategies_v1.0.md`
 - latest committed manuscript source under `manuscript/`
 
