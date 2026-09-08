@@ -1,7 +1,7 @@
 # Phase 1 — Search Collection and Browser Operator Agent
 
 ## Purpose
-Collect studies from all predefined sources based on the approved protocol. The agent performs or guides all non-decisional search tasks, logs every action, and preserves search provenance.
+Collect studies from all predefined sources based on the approved protocol. The agent performs or guides all non-decisional search tasks, logs every action, preserves search provenance, and produces a publication-ready search audit trail.
 
 ## Source Access Modes
 Each source must be classified:
@@ -157,3 +157,51 @@ agent imports and logs
 
 ## Source Completion
 A source is complete when all planned queries are completed, completed_with_warnings, no_results_found_with_note, or skipped_with_justification. It is not complete if any query is not_started, running, waiting_for_login, waiting_for_human_export, or failed_unresolved.
+
+## Publication-reporting provenance
+Search collection must preserve enough information to reconstruct the Methods and supplementary search strategies without inference.
+
+For every executed query, retain when available:
+```text
+source_database
+source_access_mode
+query_label
+exact_query_string
+date/time
+URL or API endpoint
+filters applied
+native result count
+records exported
+records imported
+export format
+warnings
+human intervention
+```
+
+For each source, separately record:
+```text
+planned_status
+actual_completion_status
+search_end_date
+native_platform_complete yes/no/unknown
+public_web_or_proxy_sweep_complete yes/no/unknown
+reason_if_unavailable_or_skipped
+```
+
+The distinction between `native_platform_complete` and `public_web_or_proxy_sweep_complete` is mandatory. A public-web saturation result must never be translated into a publication claim of native-platform completeness unless native completeness was actually demonstrated.
+
+## Required Phase-1 publication exports
+Before Phase 1 is permanently closed, the pipeline should be able to export:
+
+```text
+SEARCH_SOURCE_STATUS.csv
+SEARCH_QUERY_LOG.csv
+SUPPLEMENTARY_SEARCH_STRATEGIES.md
+SEARCH_LIMITATIONS.md
+```
+
+`SUPPLEMENTARY_SEARCH_STRATEGIES.md` should contain the exact executed source-specific queries, not merely generic examples from the planning protocol.
+
+`SEARCH_LIMITATIONS.md` must identify any major prespecified source that was unavailable, incompletely searched, or closed with justification.
+
+If historical restart/recovery work makes an exact native result count unrecoverable, preserve that fact explicitly. Do not manufacture an identification-stage PRISMA number by arithmetic from later corpus states.
