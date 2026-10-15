@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Assistant Pipeline"
+  short_description: "Human-led research protocols and evidence workflows"
+  default_prompt: "Use $research-assistant-pipeline to help me develop a research question, agree on a protocol, and start my own research project."

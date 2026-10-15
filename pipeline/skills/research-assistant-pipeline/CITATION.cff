@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If this pipeline materially contributes to your research, please cite this tool and the exact version used. Disclose the AI model and actual human supervision separately."
+type: software
+title: "Research Assistant Pipeline: Human-led, protocol-governed AI research assistance"
+authors:
+  - family-names: "de Oliveira"
+    given-names: "Rodrigo Liberato"
+version: "0.1.0-pilot"
+date-released: "2026-10-15"
+url: "https://github.com/DitoLiberato/CAN-CCHD-Browser-Operator-Agent/tree/research-assistant-pilot/pipeline"
+repository-code: "https://github.com/DitoLiberato/CAN-CCHD-Browser-Operator-Agent"
+license: MIT
+abstract: "A portable Agent Skill that helps researchers co-design project-specific protocols and conduct evidence-traceable work through twelve phases, preserving human decisions and documenting AI assistance. Pilot release derived from the CAN-CCHD workflow."
+keywords:
+  - research workflow
+  - human supervision
+  - evidence synthesis
+  - agent skills

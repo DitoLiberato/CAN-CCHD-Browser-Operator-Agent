@@ -1,3 +1,5 @@
+> **Reusable research pipeline / Claude pilot:** see [Start a new research project](START_RESEARCH_PROJECT.md). The general tool is isolated under `pipeline/`; the CAN-CCHD study continues below.
+
 # CAN-CCHD-Browser-Operator-Agent
 
 An AI autonomous research assistant for the CAN-CCHD systematic review and meta-analysis.

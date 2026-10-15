@@ -1,0 +1,13 @@
+# Original patient records and credentials must stay outside this project.
+private/
+clinical-source/
+credentials/
+.env
+.env.*
+*.pem
+*.key
+__pycache__/
+*.pyc
+.DS_Store
+
+# Inspect every commit. Ignore patterns are not a privacy review.
