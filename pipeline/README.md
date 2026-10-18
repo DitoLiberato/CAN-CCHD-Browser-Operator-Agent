@@ -5,7 +5,9 @@ Developed by Rodrigo Liberato de Oliveira from the CAN-CCHD workflow, with AI-as
 implementation. The skill helps a researcher's own AI co-design personalized rules,
 execute authorized work, verify evidence and retain human scientific decisions.
 
-**Start:** [Guia do piloto em português](PILOT_GUIDE_PT.md) · [English guide](PILOT_GUIDE_EN.md)
+**Claude:** [Português](PILOT_GUIDE_PT.md) · [English](PILOT_GUIDE_EN.md)
+
+**ChatGPT:** [Português](CHATGPT_GUIDE_PT.md) · [English](CHATGPT_GUIDE_EN.md)
 
 ## What this is
 
@@ -39,8 +41,10 @@ environment. A private GitHub repository is not automatically a clinical-data st
 ## Structure
 
 - `skills/research-assistant-pipeline/`: self-contained skill and project templates.
-- `dist/`: Claude upload ZIP and checksum.
+- `dist/`: full skill ZIP, manual project-context export and checksums.
 - `build_distribution.py`: reproducible packaging from the skill source.
+- `build_chatgpt_context.py`: one-file export of the same instructions/references
+  for manual Project context, without native installation or bundled execution tools.
 - `tests/`: synthetic integrity scenarios.
 - `EVALUATION.md`: scope and results of actual checks, including limitations.
 - `CITATION.cff`, `LICENSE`: attribution metadata and license for this tool only.
@@ -51,6 +55,7 @@ Python 3.10+; bootstrap and structural checks use the standard library.
 
 ```bash
 python3 pipeline/build_distribution.py
+python3 pipeline/build_chatgpt_context.py
 python3 -m unittest discover -s pipeline/tests -v
 python3 pipeline/skills/research-assistant-pipeline/scripts/bootstrap_project.py ../my-research --title "My research" --language en
 python3 pipeline/skills/research-assistant-pipeline/scripts/validate_project.py ../my-research
@@ -60,6 +65,11 @@ The validator checks recorded integrity, not scientific validity or the authenti
 of human decisions. The assistant and researcher must inspect the actual evidence.
 No universal meta-analysis script is shipped; project-specific analyses require
 appropriate methods, execution and testing.
+
+The ChatGPT guides distinguish native skill environments from manual Project context.
+Account capabilities and import mechanisms must be checked; no universal ZIP import
+or equivalent performance across hosts is assumed. The context export is derived
+from the unchanged skill payload and does not represent a completed external user trial.
 
 ## Attribution and reuse
 

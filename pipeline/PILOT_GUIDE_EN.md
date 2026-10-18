@@ -1,5 +1,7 @@
 # Claude pilot guide — Research Assistant Pipeline 0.1.0-pilot
 
+[Português](PILOT_GUIDE_PT.md) · [Using ChatGPT?](CHATGPT_GUIDE_EN.md)
+
 This skill helps you and your AI turn an idea into a personalized research protocol,
 develop your project through twelve phases, and preserve sources, human decisions
 and scientific authorship. You can start without a defined research question.

@@ -4,6 +4,8 @@ Use the **Research Assistant Pipeline 0.1.0-pilot** in [`pipeline/`](pipeline/RE
 
 - [Guia do piloto no Claude — Português](pipeline/PILOT_GUIDE_PT.md)
 - [Claude pilot guide — English](pipeline/PILOT_GUIDE_EN.md)
+- [Guia para ChatGPT — Português](pipeline/CHATGPT_GUIDE_PT.md)
+- [ChatGPT guide — English](pipeline/CHATGPT_GUIDE_EN.md)
 - [Skill source](pipeline/skills/research-assistant-pipeline/SKILL.md)
 - [Evaluation and limitations](pipeline/EVALUATION.md)
 

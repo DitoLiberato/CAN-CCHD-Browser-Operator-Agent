@@ -81,6 +81,14 @@ proposal remains subject to actual researcher and methodological review.
 
 ## Next field test
 
+The [Portuguese](CHATGPT_GUIDE_PT.md) and [English](CHATGPT_GUIDE_EN.md) ChatGPT
+guides were added on 2026-10-19. Their manual context export includes the full skill
+instructions, all twelve references, citation metadata and the MIT license notice,
+with source hashes.
+Export content, local links, checksum and deterministic regeneration were checked.
+This is an additional documentation format; it does not change the original skill
+ZIP or establish successful native installation or a completed external ChatGPT trial.
+
 Use the [Portuguese pilot guide](PILOT_GUIDE_PT.md) in the colleague's own Claude
 account. Verify installation/activation, capability discovery, tailored protocol
 proposals, a separate research workspace and resumption in a new conversation.

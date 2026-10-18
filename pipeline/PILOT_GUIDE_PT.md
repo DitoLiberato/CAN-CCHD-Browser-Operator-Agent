@@ -1,5 +1,7 @@
 # Piloto no Claude — Research Assistant Pipeline 0.1.0
 
+[English](PILOT_GUIDE_EN.md) · [Usa ChatGPT?](CHATGPT_GUIDE_PT.md)
+
 Esta skill ajuda você e sua IA a transformar uma ideia em um protocolo próprio,
 desenvolver a pesquisa em 12 fases e preservar fontes, decisões e autoria científica.
 Você pode começar sem uma pergunta definida.
